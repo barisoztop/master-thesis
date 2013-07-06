@@ -5,7 +5,11 @@
 
 \usepackage[T1]{fontenc}
 \usepackage[latin1]{inputenc}
-\usepackage{verbatim} %baris
+
+%package added by baris
+\usepackage{verbatim} %baris to support multi line comment e.g. \begin{comment} ... \end{comment}
+\usepackage[round]{natbib} %baris for bibtex http://www.economics.utoronto.ca/osborne/latex/BIBTEX.HTM
+
 
 %% Einfache Definitionen von Konstanten für das gesamte Dokument.
 %%  Sie werden bspw. beim Aufbau der Titelseite ausgewertet.
@@ -33,7 +37,6 @@
 %%\usepackage{babel} %baris: gave error since I disabled german support at documentclass i.e. ngerman
 \usepackage{paralist}
 \linespread{1.6} %baris
-\usepackage{natbib} %baris for bibtex http://www.economics.utoronto.ca/osborne/latex/BIBTEX.HTM
 
 \usepackage{xspace}
 \tolerance=500   % Verhindet pingelige "`overfull \hbox"'-Meldungen.
