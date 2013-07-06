@@ -1,0 +1,192 @@
+\tolerance 500   % Verhindet pingelige "`overfull \hbox"'-Meldungen.
+
+\documentclass[11pt,a4paper,normalheadings,twoside,DIV9,BCOR10mm,listsleft,fleqn,leqno,tablecaptionbelow,abstracton,pointlessnumbers]{scrbook}
+
+%\documentclass[10pt,ngerman,a4paper,normalheadings,twoside,DIV9,BCOR10mm,listsleft,fleqn,leqno,tablecaptionbelow,abstracton,pointlessnumbers]{scrbook} baris
+
+
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+
+%% Einfache Definitionen von Konstanten für das gesamte Dokument.
+%  Sie werden bspw. beim Aufbau der Titelseite ausgewertet.
+\def\titelname    {Name der Arbeit}
+\def\autorforinfo {Baris Oztop}
+\def\email        {oztop@in.tum.de}
+\def\subjectname  {Prozessmodellierung}	%Beispiel
+\def\location     {München}
+\def\keywordsname {V-Modell XT}			%Beispiel
+
+%% spezifisch fuer eine MA, fuer BA etc. muss das angepasst werden
+\def\doctype{Masterarbeit in Informatik}
+\def\title{Personalized Mass Email Communication}
+\def\titleGer{Personalisierte Email Massenkommunikation}
+\def\author{Baris Oztop}
+\def\date{August 15, 2013}
+
+%% Festlegen der Dokumentmetrik
+\usepackage[inner=2.5cm,outer=3.5cm,top=1cm,bottom=1cm,includeheadfoot]{geometry}
+\usepackage{palatino}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{amsbsy}
+\usepackage{babel}
+\usepackage{paralist}
+\linespread{1.6} %baris
+
+\usepackage{xspace}
+
+%% Bereich Tabellen
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{colortbl}
+\usepackage{everysel}
+\usepackage{framed}
+\usepackage{ragged2e}
+\usepackage{multirow} %baris
+\usepackage{bigstrut} %baris
+\usepackage{tabulary} %baris
+\usepackage{longtable} %baris
+%\usepackage[table]{xcolor} %baris
+%\definecolor{lightgray}{gray}{0.9}
+%\usepackage{floatrow} %baris following two lines belong to this line
+%\DeclareFloatFont{tiny}{\tiny}% "scriptsize" is defined by floatrow, "tiny" not
+%\floatsetup[table]{font=tiny}
+
+%% Einbindung von Minitocs
+\usepackage{shorttoc}
+\usepackage{minitoc}
+
+%% Flexible Tabellenspalten und Kommandos
+\newcolumntype{L}{>{\RaggedRight\arraybackslash}X}%
+\newcolumntype{C}{>{\Centering\arraybackslash}X}%
+\newcolumntype{R}{>{\RaggedLeft\arraybackslash}X}%
+
+\newcommand{\opentableheader}{\toprule}
+\newcommand{\closetableheader}{\toprule}
+
+%% actual versions of the listings package:
+%% ftp://ftp.dante.de/tex-archive/help/Catalogue/entries/listings.html
+\usepackage{listings}
+\usepackage{dotnet_new}
+\usepackage[pdftex, colorlinks,
+            linkcolor=black,
+            citecolor=black,
+            pagecolor=black,
+            filecolor=black,
+            urlcolor=black]{hyperref}
+\usepackage{graphicx}
+
+%\usepackage{bibgerm}
+%\usepackage{array}
+%\usepackage{colortbl}
+%\usepackage{longtable}
+\usepackage[final]{pdfpages}
+
+%% Benutzen der Koma-Headings
+\usepackage[komastyle]{scrpage2}
+
+%% kompakte Items
+\usepackage{paralist}
+
+%% verbatin in footnode
+\usepackage{fancyvrb} 
+
+%% Eigene Packages
+\input{shortcuts}
+\input{commands}
+
+%% enable TUM symbols on title page
+\usepackage{tumlogo}
+
+%% some information for acrobat reader
+\pdfinfo{%
+%  /Title (\titelname)
+  /Author (\autorforinfo)
+  /Subject (\subjectname)
+  /Keywords (\keywordsname)
+}
+\clearscrplain
+%% end of preamble
+
+%% beginning of document
+\begin{document}
+\pagestyle{scrplain}
+
+%\frontmatter
+\input{cover.tex}
+
+\clearemptydoublepage
+\input{titlepage.tex}
+\input{disclaimer.tex}
+\input{acknowledgements.tex}
+\input{abstract.tex}
+
+\clearscrplain
+
+%% table of contents
+\pagenumbering{roman}\setcounter{page}{1}
+\clearscrheadfoot
+\ohead{\headmark}
+\ofoot[\pagemark]{\pagemark}
+\automark[chapter]{section}
+
+%% Konfiguration der Minitocs
+\dominitoc
+\setcounter{minitocdepth}{3}
+\mtcsettitle{minitoc}{Übersicht}
+\mtcsettitlefont{minitoc}{\large\sffamily}
+\mtcsetfont{minitoc}{*}{\sffamily}
+\mtcsetfont{minitoc}{section}{\normalfont}
+\mtcsetfont{minitoc}{subsection}{\normalfont}
+\mtcsetfont{minitoc}{subsubsection}{\normalfont}
+
+%% Erstellen der Inhaltsverzeichnisse, Tabellen und Bilder (Listings opt.)
+\tableofcontents
+\vfill
+\cleardoublepage
+
+\listoffigures
+\cleardoublepage
+
+\listoftables
+\cleardoublepage
+
+\lstlistoflistings
+\cleardoublepage
+
+\clearscrheadfoot
+%\chead{}
+\ohead{\headmark}
+% \cfoot{Marco Kuhrmann}
+\ofoot[\pagemark]{\pagemark}
+\automark[chapter]{section}
+\renewcommand{\headfont}{\normalfont\sffamily\slshape}
+\renewcommand{\pnumfont}{\normalfont\sffamily}
+
+%\renewcommand{\baselinestretch}{1.25}\normalsize
+
+\pagestyle{scrheadings}
+\pagenumbering{arabic}\setcounter{page}{1}
+
+%% Text: Content
+
+\input{chp01.tex}
+\input{chp02.tex}
+
+%\appendix
+%\input{app01.tex}
+
+
+%%\section{Literaturverzeichnis}
+%% bibs...
+%\nocite{*}
+\bibliographystyle{geralpha}
+%\bibliographystyle{alpha}
+\bibliography{thesis}
+%\bibliography{bibtex}
+\vfill
+%\pagebreak
+
+\end{document}
