@@ -9,6 +9,7 @@
 %package added by baris
 \usepackage{verbatim} %baris to support multi line comment e.g. \begin{comment} ... \end{comment}
 \usepackage[round]{natbib} %baris for bibtex http://www.economics.utoronto.ca/osborne/latex/BIBTEX.HTM
+\usepackage[titletoc,toc,title]{appendix}
 
 
 %% Einfache Definitionen von Konstanten für das gesamte Dokument.
@@ -122,6 +123,7 @@
 
 \clearemptydoublepage
 \input{titlepage.tex}
+\pagenumbering{roman}\setcounter{page}{1}
 \input{disclaimer.tex}
 \input{acknowledgements.tex}
 \input{abstract.tex}
@@ -129,7 +131,6 @@
 \clearscrplain
 
 %% table of contents
-\pagenumbering{roman}\setcounter{page}{1}
 \clearscrheadfoot
 \ohead{\headmark}
 \ofoot[\pagemark]{\pagemark}
@@ -150,9 +151,11 @@
 \vfill
 \cleardoublepage
 
+\addcontentsline{toc}{chapter}{List of Figures}	
 \listoffigures
 \cleardoublepage
 
+\addcontentsline{toc}{chapter}{List of Tables}
 \listoftables
 \cleardoublepage
 
@@ -160,9 +163,7 @@
 \cleardoublepage
 
 \clearscrheadfoot
-%\chead{}
 \ohead{\headmark}
-% \cfoot{Marco Kuhrmann}
 \ofoot[\pagemark]{\pagemark}
 \automark[chapter]{section}
 \renewcommand{\headfont}{\normalfont\sffamily\slshape}
@@ -179,8 +180,9 @@
 \input{chp02.tex}
 
 %\appendix
-%\input{app01.tex}
-
+\begin{appendices}
+\input{appendices.tex}
+\end{appendices}
 
 %%\section{Literaturverzeichnis}
 %% bibs...
