@@ -10,6 +10,8 @@
 \usepackage{verbatim} %baris to support multi line comment e.g. \begin{comment} ... \end{comment}
 \usepackage[round]{natbib} %baris for bibtex http://www.economics.utoronto.ca/osborne/latex/BIBTEX.HTM
 \usepackage[titletoc,toc,title]{appendix}
+\usepackage[printonlyused,nohyperlinks]{acronym}
+%\usepackage[margin=10pt,font=small,labelfont=bf,labelsep=endash]{caption}
 
 
 %% Einfache Definitionen von Konstanten für das gesamte Dokument.
@@ -73,7 +75,7 @@
 
 %% actual versions of the listings package:
 %% ftp://ftp.dante.de/tex-archive/help/Catalogue/entries/listings.html
-\usepackage{listings}
+%\usepackage{listings}
 %%\usepackage{dotnet_new}
 \usepackage[pdftex, colorlinks,
             linkcolor=black,
@@ -159,7 +161,7 @@
 \listoftables
 \cleardoublepage
 
-\lstlistoflistings
+\input{acronyms.tex}
 \cleardoublepage
 
 \clearscrheadfoot
