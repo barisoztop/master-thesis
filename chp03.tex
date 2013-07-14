@@ -44,8 +44,8 @@ The analysis examined two products from the categories of \ac{CRM}, help desk, a
 \label{sec:3.3:Resul}
 Evaluation of the products will be done according to their category. A brief description of the products will be presented. This description will mainly focus on the features which are related to support email communication as explained in section~\ref{sec:3.1:SystCate}. After that each category will be concluded with a comparison matrix of the selected products.
 
-\subsection{Customer Relationship Management (CRM)}
-\label{subsec:3.3.1:Cust}
+\subsection{CRM Applications}
+\label{subsec:3.3.1:CRMAppl}
 
 \begin{table}[!ht]
 \begin{center}
@@ -63,14 +63,22 @@ Evaluation of the products will be done according to their category. A brief des
 \end{table}
 
 \paragraph{SugarCRM}
-SugerCRM comes in three different deployment versions. These are on-premise, \ac{SaaS}, and the free community edition. It has a clean \ac{UI} with a single navigation menu. Its calendar view can be synchronized with Outlook's calendar or any platform which supports iCalendar\footnote{iCalendar is the calendar data exchange stanard (RFC 5545) having file extension of .ics, and it allows sending meeting requests or tasks via email.}. It provides email management right in the application, and integrates with several platform like Outlook and Gmail or ant \ac{IMAP} based email servers. 
+SugerCRM comes in three different deployment versions. These are on-premise, \ac{SaaS}, and the free community edition. It has a clean \ac{UI} with a single navigation menu. Its calendar view can be synchronized with Outlook's calendar or any platform which supports iCalendar\footnote{iCalendar is the calendar data exchange stanard (RFC 5545) having file extension of .ics, and it allows sending meeting requests or tasks via email.}. It provides email management right in the application, and integrates with several platform like Outlook and Gmail or an \ac{IMAP} based email server. Users can archive emails in the SugarCRM by adding a unique email address into TO, \ac{CC}, or \ac{BCC} fields. This address can also be used to link email recipients information including email attachments with SugarCRM by simply forwarding the emails, therefore it removes the additional effort to import them into SugarCRM and reduces dependency on a platform. SugarCRM also comes with build in email client. Even though, its inbox view only provide basic functionalities, its email creation view goes a little further to support email marketing by providing custom variables that can be embed into an email's content, and can be replaced with actual values available in SugarCRM. For example, a place holder for first name will be replaced by contact's actual first name while email is being sent (See figure~\ref{fig:SugarCRM-Create_Email}). 
+\vspace{1cm}
 
+\begin{figure}[htbp]
+	\includegraphics[width=1.00\textwidth]{imgs/SugarCRM-Create_Email.png}
+	\caption[SugarCRM Create Email View with Embeded Variables]{SugarCRM Create Email View with Embeded Variables \citep{SugarCRMInc.2013}.}
+	\label{fig:SugarCRM-Create_Email}
+\end{figure}
+
+Initiated email marketing can be monitored to track response rates, generated leads, and unsubscribed contacts. Marketing target lists also can be imported from third-party lists. SugarCRM also provides \ac{HTML} templates 
 
 \paragraph{Highrise}
 
 
-\subsection{Help Desk}
-\label{subsec:3.3.2:HelpDeskSoft}
+\subsection{Help Desk Applications}
+\label{subsec:3.3.2:HelpDeskAppl}
 
 
 \paragraph{Zendesk}
@@ -79,8 +87,8 @@ Cloud-based customer service software Zendesk \footnote{http://www.zendesk.com} 
 \paragraph{Kayako}
 Kayako's\footnote{http://www.kayako.com/} complete solution for customer support is named as Kayako Fusion. It comes as software and \ac{SaaS}. Comparing with Zendesk, its \ac{UI} seems more complicated. Kayako has been had more than 30,000 clients since ten years. Kayako does not have social platforms integration like Zendesk, therefore support tickets are generated over website, email, and phone. Tickets can have custom types, statuses, priorities, and tags. Similar to Zendesk, it also supports macros to assign tickets into a department, owner, type, priority, and provide canned responses for tickets with a click. Kayako also keeps basic customer information if they are registered to the system. Registered customers can also support to build a knowledge base in a forum-like environment by contributing others questions a long with support team. Kayako does not have any native app for mobile platforms like Zendesk. Finally, it has a analytics view to keep track of tickets report measuring customer satisfaction and support team performance \citep{KayakoInc.2013,KayakoInc.2013a}.
 
-\subsection{Email Marketing}
-\label{subsec:3.1.3:EmaiMarkt}
+\subsection{Email Marketing Applications}
+\label{subsec:3.1.3:EmaiMarktAppl}
 
 
 \paragraph{MailChimp}
@@ -92,4 +100,5 @@ Kayako's\footnote{http://www.kayako.com/} complete solution for customer support
 \begin{comment}
 --> At the end, put the all the comparison tables together to the Appendix
 --> These features are also helped us to add them into our app, decided by saying they all support so we can also support
+--> HDesk provides reusibility of emails, CRM provides contact details to replace in email content
 \end{comment}
