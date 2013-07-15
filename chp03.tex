@@ -47,16 +47,20 @@ Evaluation of the products will be done according to their category. A brief des
 \subsection{CRM Applications}
 \label{subsec:3.3.1:CRMAppl}
 
+\paragraph{Overview of Applications}
+SugarCRM and Highrise bla bla
+
 \begin{table}[!ht]
 \begin{center}
 	%\renewcommand{\arraystretch}{2}
 	%\tiny
 	%\setlength{\tabcolsep}{5pt}
 	\caption[Comparison Matrix for CRM Applications]{Comparison Matrix for CRM Applications} \label{tab:comp_matr_crm}
-    \begin{tabular}{ p{3cm} p{3cm}  p{3cm} }
+    \begin{tabular}{ p{3cm} p{5cm}  p{5cm} }
 	\hline
 	& \textbf{SugarCRM} & \textbf{Highrise} \\ \hline
-	\textbf{Neutral power} & 143 (40.1) & 158 (44.4) \\
+	\textbf{Versions} & On-premise and \ac{SaaS} & \ac{SaaS} \\
+	\textbf{Pricing} & \$35 -- \$100 user/month, and free community edition & \$24 -- \$99/mont, and a free plan with limitations \\
 	\textbf{High power} & 150 (42.1) & 154 (43.3) \\ \hline
     \end{tabular}
 \end{center}
@@ -79,6 +83,8 @@ Another \ac{SaaS} is Highrise\footnote{http://highrisehq.com/} offering several 
 
 \subsection{Help Desk Applications}
 \label{subsec:3.3.2:HelpDeskAppl}
+
+\paragraph{Overview of Applications}
 
 \begin{table}[!ht]
 \begin{center}
@@ -103,6 +109,8 @@ Kayako's\footnote{http://www.kayako.com/} complete solution for customer support
 
 \subsection{Email Marketing Applications}
 \label{subsec:3.1.3:EmaiMarktAppl}
+
+\paragraph{Overview of Applications}
 
 \begin{table}[!ht]
 \begin{center}
@@ -129,7 +137,7 @@ MailChimp\footnote{http://mailchimp.com/} comes as \ac{SaaS}, and offers fixed c
 	\label{fig:MailChimp-DragAndDropEditor}
 \end{figure}
 
-Template editor also provides a photo editor, and authors can add comments to give feedback on the content and design of the templates. Created templates can be previewed as if they are viewed in a desktop browser or a mobile browser \citep{TheRocketScienceGroupLLC2013a}. As in the SugarCRM, MailChimp allows you to use placeholder, called merge tags, in the email content. Therefore, send out emails can be personalized with information specific to the recipients. However, it provides more different type of placeholders then SugarCRM, and it is possible to add a conditional logic to it. For example, in listing~\ref{lst:MailChimCondMergTags}
+Template editor also provides a photo editor, and authors can add comments to give feedback on the content and design of the templates. Created templates can be previewed as if they are viewed in a software or an online email client, and a mobile browser \citep{TheRocketScienceGroupLLC2013a}. As in the SugarCRM, MailChimp allows you to use placeholder, called merge tags, in the email content. Therefore, send out emails can be personalized with information specific to the recipients. However, it provides more different type of placeholders then SugarCRM, and it is possible to add a conditional logic to it. For example, in listing~\ref{lst:MailChimCondMergTags}, a custom discount message will be shown in the email depending on the US state of recipients.
 \vspace{1cm}
 
 \lstset {
@@ -159,7 +167,11 @@ Template editor also provides a photo editor, and authors can add comments to gi
 	*|END:IF|*
 \end{lstlisting}
 
+MailChimp offers auto-response based on a triggering event. These events can be a link clicked in the email, being on a specific date like birthday of a contact, or scheduled dates. Finally, there exists a analytics dashboard where users can track the amount of opened emails, or the click rates of the links in the emails \citep{TheRocketScienceGroupLLC2013c,TheRocketScienceGroupLLC2013d}.
+
 \paragraph{Constant Contact}
+Another email marketing \ac{SaaS} is Constant Contact Email Marketing\footnote{http://www.constantcontact.com/email-marketing}, whose purchase plan depends on amount of contacts you have, but there is a free 60 days trial period as well. It offers drag and drop content creation like MailChimp with a clean \ac{UI}. It has quite many templates to pick amount and start customizing it. However, users can embed sign up forms into websites or Facebook. Recipients list can be imported from several sources including Excel, Outlook, and Gmail. In addition, recipients can be group under sublists which can also be merged into each other easily. An option is available to remove duplicate contacts from the lists or clean recipients who unsubscribed from the list. Users can track opens, clicks, forwards, and social platform shares of their email campaign. On the other hand, it does not offer any sophisticated email variables to be replaced by actual content from the application \citep{ConstantContactInc.2013,ConstantContactInc.2013a}. 
+
 
 \begin{comment}
 --> At the end, put the all the comparison tables together to the Appendix
