@@ -76,8 +76,8 @@
 %% actual versions of the listings package:
 %% ftp://ftp.dante.de/tex-archive/help/Catalogue/entries/listings.html
 \usepackage{listings}
-\usepackage{tikz} %baris http://randomlogs.wordpress.com/2010/02/06/latexinserting-code-snippets/
-\usepackage{fancybox}
+%\usepackage{tikz} %baris http://randomlogs.wordpress.com/2010/02/06/latexinserting-code-snippets/
+%\usepackage{fancybox} %baris
 %%\usepackage{dotnet_new}
 \usepackage[pdftex, colorlinks,
             linkcolor=black,
@@ -161,6 +161,10 @@
 
 \addcontentsline{toc}{chapter}{List of Tables}
 \listoftables
+\cleardoublepage
+
+\addcontentsline{toc}{chapter}{Listings}
+\lstlistoflistings
 \cleardoublepage
 
 \input{acronyms.tex}
