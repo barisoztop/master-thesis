@@ -131,31 +131,42 @@ MailChimp\footnote{http://mailchimp.com/} comes as \ac{SaaS}, and offers fixed c
 
 Template editor also provides a photo editor, and authors can add comments to give feedback on the content and design of the templates. Created templates can be previewed as if they are viewed in a desktop browser or a mobile browser \citep{TheRocketScienceGroupLLC2013a}. As in the SugarCRM, MailChimp allows you to use placeholder, called merge tags, in the email content. Therefore, send out emails can be personalized with information specific to the recipients. However, it provides more different type of placeholders then SugarCRM, and it is possible to add a conditional logic to it. For example, in figure
 
-\lstset{language=XML, tabsize=4}
+\lstset{
+language=XML, 
+tabsize=4, 
+backgroundcolor=\color{white},
+basicstyle=\footnotesize,
+captionpos=b,
+frame=, %tb
+keepspaces=false,
+rulecolor=\color{black},
+linewidth=0.6\textwidth
+%caption=Listing f\"ur die oben stehende Tabelle,label=lst:TabellenCode
+}
 \begin{center}
-  \begin{tikzpicture}
-    \node [fill=brightgray,rounded corners=5pt]
-    {{
-        \begin{tabular}{l}
-\begin{lstlisting}[caption=Listing f\"ur die oben stehende Tabelle,label=lst:TabellenCode]
-*|IF:STATE=CA|*
-	Save 20% on surf boards!
-*|END:IF|* 
-*|IF:STATE=GA|*
-	Save 20% on Mountain Bikes!
-*|END:IF|* 
-*|IF:STATE=FL|*
-	Save 40% on water skis!
-*|END:IF|* 
-*|IF:STATE=CO|*
-	Save 50% on ski gear
-*|END:IF|*
-\end{lstlisting}
-        \end{tabular}
-      }};
-  \end{tikzpicture}
-\end{center}
+\shadowbox{
 
+\begin{lstlisting}[]
+	*|IF:STATE=CA|*
+		Save 20% on surf boards!
+	*|END:IF|* 
+	*|IF:STATE=GA|*
+		Save 20% on Mountain Bikes!
+	*|END:IF|* 
+	*|IF:STATE=FL|*
+		Save 40% on water skis!
+	*|END:IF|* 
+	*|IF:STATE=CO|*
+		Save 50% on ski gear
+	*|END:IF|*
+\end{lstlisting}
+
+}
+
+
+\end{center}
+\caption{Beispiel: Nicht skalierte Tabelle}%
+  \label{tab:TabUnskaliert}
 \paragraph{Constant Contact}
 
 \begin{comment}
