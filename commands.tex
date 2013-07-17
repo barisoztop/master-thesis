@@ -27,3 +27,11 @@
 \definecolor{darkgreen}{rgb}{0.0,0.5,0.0}
 \definecolor{dg}{rgb}{0.0,0.5,0.0}  %% dark green (Kommentare in listings)
 \definecolor{dr}{rgb}{0.5,0.0,0.0}  %% dark red
+
+% Footnote without a marker http://tex.stackexchange.com/questions/30720/footnote-without-a-marker
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
