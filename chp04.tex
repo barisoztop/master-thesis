@@ -5,7 +5,39 @@ In this chapter, a mass communication schema, and possible exceptional cases wil
 \section{Mass Email Communication Concept}
 \label{sec:4.1:MassEmaiCommConc}
 
-There are three different application categories that are related with this thesis, and focusing on email communication directly or indirectly. Followings section will give a brief description of those are these product types, and their relation with this thesis:
+When a researcher initiate a mass email communication, there will be many cases that cannot be predicted beforehand, but affects the flow of the communication. Respondents may come up with clarifying questions to initial question, email addresses that are considered active might not be exist anymore, an auto responder might been set since the respondent is not available during a temporary period, and many more cases.
+\vspace{1cm}
+
+In section~\ref{sec:1:EmailDataCol}, the online learning platform scenario was used to illustrate the possible reasons for email data collection. If we consider it in here again, assuming that we are exploring our users to improve our platform. Therefore, we start sending out emails to our registered users to get their permission to ask some questions. This initial email might be similar to listing~\ref{lst:EmaiInvtQest}.
+\vspace{1cm}
+
+\begin{lstlisting}[float, language=, caption={[Email Invitation to Questionnaire for Online Learning Platform]Email Invitation to Questionnaire for Online Learning Platform}, label={lst:EmaiInvtQest}]
+Dear John,
+
+you have recently attended the "Cryptography" and the "Natural Language Processing" courses. Do you mind if you answer some questions regarding these courses?
+
+The questionnaire will take only 15 minutes, and it will help us a lot to improve our platform.
+
+Kind regards,
+your online course team.
+\end{lstlisting}
+
+After the initial invitation email to get their permission for upcoming questionnaire. There are possible answers that we might expect:
+
+\begin{compactenum}
+	\item Yes, I would like to involve
+	\item No, I am quite busy 
+	\item I could involve, but I am busy till the end of this month
+	\item An automated message from recipients to indicate his or her vacation period
+\end{compactenum}
+
+Figure~\ref{fig:EmailDiagram} shows a simplified version of this scenario. The people who accepted our invitation will get a second email including the questionnaire. As soon as they responds back with the answers of the questions, we will return a thank you email for the participation. For those who did not accept the invitation will get a motivation email to encourage for the next time. Next, some people returned conditional acceptance, which we collected them under a "maybe" case. Again, there might be several reason for them for instance they might involve in the the questionnaire but they are busy during that week. Hence, we could reply with an email telling an opinion for their situation like if people attend other exams, we can wish a good luck for it, and afterwards we can mention about a reminder email that will be send out after a time period where participants mentioned in their response. After the reminder email, we will expect to get a acceptance of the questionnaire email. Then conversation will continue as with the people who initially accepted to involve our research. The communication with auto respond case is not clear, therefore the communication will not go further with those people until they reply us in the near future. However, if the auto respond provides some information, we could also set a reminder for a upcoming date to send a reminder email. 
+
+\begin{figure}[H]
+	\includegraphics[width=1.00\textwidth]{imgs/EmailDiagram.png}
+	\caption[An Email Campaign Scenario]{An Email Campaign Scenario}
+	\label{fig:EmailDiagram}
+\end{figure}
 
 \subsection{Customer Relationship Management (CRM)}
 \label{subsec:3.1.1:Cust}
@@ -18,4 +50,8 @@ Have they taken any online courses before?
 --> - DonÕt forget MichaelÕs graph about golden standard
 --> flow chart like in slides
 --> - Asking follow-up questions are limited in other methods (see the book page 22: Beyond The Usability Lab - Conducting Large Scale Online User Experience Studies(2010))
+
+%\begin{figure}
+%\input{imgs/EmailDiagram}%\caption{A simple block diagram\label{diagram}}%\end{figure}
+
 \end{comment}
