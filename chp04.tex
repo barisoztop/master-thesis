@@ -74,9 +74,13 @@ In the next section, we will see that how can we help to researchers to reduce t
 \subsection{Possible Improvements on Reducing Efforts}
 \label{subsec:4.1.2:ImprReduEffo}
 
-After a mass email communication scenario was described in the previous section, we will see the possible improvements in this section.
+After a mass email communication scenario was described in the previous section, we will see the possible improvements in this section to reduce the efforts on the researchers' side.
 
-The invitation email had user specific data, which are the name of the recipient at the salutation, and the courses that he or she attended. As it is hard to write those fields individually to all the emails, we could apply the dynamic variables insertion approach that is used with both email marketing applications (MailChimp and Constant Contact) and one of the \ac{CRM} application (SugarCRM) analyzed in section~\ref{sec:3.3:Resul}. However, the limitation of SugarCRM was that it only allows us to record limited amount of fields, which are basic contact profile information.
+The first step would be to import contacts, and their relevant information. These could the information that we asked during the sign up form when they registered in our learning platform like first and last name, email address, and gender. Therefore, we could easily export those information into a file format like Excel or CSV\footnote{CSV stands for comma separated values, and is a plain-text file to store tabular data to often exchange data between disparate applications \citep{Repici2010}. }. The application that was discussed in section~\ref{sec:3.3:Resul} offers several options to import data into those systems. Hence, additional effort required by the researcher to manually insert contacts' information into those application will not exist.
+
+The invitation email had user specific data, which are the name of the recipient at the salutation, and the courses that he or she attended. As it is hard to write those fields individually to all the emails, we could apply dynamic variables insertion approach that is used with both email marketing applications (MailChimp and Constant Contact) and one of the \ac{CRM} application (SugarCRM) analyzed in section~\ref{sec:3.3:Resul}. However, the limitation of SugarCRM was that it only allows us to record limited amount of fields, which are the basic contact profile information. This could help us only automated generation of the salutations of the emails not the course list of the recipients. On the other hand, Constant Contact and MailChimp have the feature to add custom fields into a contact profile, and dynamically use them in the emails' content. So, we removed the manual effort on the initial invitation email with a email template who has some dynamic fields to be replaced by the application during sending them out.
+
+After we start getting answers from respondents, we could also store them in the application 
 
 only supports hi part, not all
 
