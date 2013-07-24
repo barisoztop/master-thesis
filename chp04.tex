@@ -88,45 +88,27 @@ When we start getting answers from respondents, we might extract some informatio
 After the initial invitation email, there will be many cases to reuse different versions of an email for further state of the conversations. We mentioned the term "template" as an email consisting of some dynamic variables in it. Later on, those variables will get their actual values, and it will be the actual message that we want to send. Here, we will add another meaning to the term "template" to emphasize a message's reusability. Let us consider the "maybe" case that was mentioned to represent respondents who were busy to participate in the questionnaire at that moment, but maybe it is possible for them to participate in later (See figure~\ref{fig:EmailDiagram}). In those responds, recipients will come up with a date that is possible for them to participate, or an unclear answer about the availability of them. It is definite that we cannot ignore if they provide us a date, and send them a reminder before that date to participate in the questionnaire in a generic email. This will make them realize that the messages that we send are automated, and it will result the drawbacks that we discussed in chapter~\ref{chp:FouRelWor}. However, if we create a two email template: one having a dynamic variable in it to mention when we will send a reminder, another one with a more generic content including a time far enough to encourage them to participate in the questionnaire. Therefore, when we encounter different "maybe" conditions, we have now two ready to use email templates to reply them.
 \vspace{1cm}
 
-At this point, we have began to have several email templates for different conditions to ease a researcher's life by allowing reusability on the replies. However, it has also started to difficult to pick a template to use since the state of conversation get advanced, and we have had many email templates for different conditions. This will result in additional effort to find the proper template to choose from. Besides, we will not need some of the templates after conversation's state get further, and use the latest ones more frequently than the older ones. Therefore, we need a view to show us what the current state of the conversation is, as well as allow us to pick the proper template by leveraging this view. Listing~\ref{lst:ConvStatView} represents a view for this purpose. 
+At this point, we have began to have several email templates for different conditions to ease a researcher's life by allowing reusability on the replies. However, it has also started to difficult to pick a template to use since the state of conversation get advanced, and we have had many email templates for different conditions. This will result in additional effort to find the proper template to choose from. Besides, we will not need some of the templates after conversation's state get further, and use the latest ones more frequently than the older ones. Therefore, we need a view to show us what the current state of the conversation is, as well as allow us to pick the proper template by leveraging this view.
 
-\lstset{basicstyle=\ttfamily}
+Figure~\ref{fig:ConvStatView} represents a view in a directory tree like structure for this purpose. All the possible email messages that we wrote are collected in a hierarchical way starting with the first invitation email. After researcher started to get messages from respondents, all the following answers that we can write are at the second level of the figure right after the invitation email. When ever we get a the answers of the questionnaire, we write a email to say thank you. This is also represented under the third level, right after the questionnaire.
 
-\begin{lstlisting}[language=, caption={[A Sample Conversation State and Template View]A Sample Conversation State and Template View}, label={lst:ConvStatView}]
-	Invitation Email
-		|____Questionnaire - Graduate Version (GV)
-		|		|____Thank You GV
-		|____Questionnaire
-		|		|____Thank You
-		|____Questionnaire After Reminder
-		|____Next Time
-		|____Next Time with Motivation
-		|____Reminder with Date
-		|____Reminder Generic
-\end{lstlisting}
-
-
-\Tree [
-.{Invitation Email} 
-	[.{Questionnaire\\Graduate Version} {Thank You GV} ] 
-	[.Questionnaire {Thank You} ] 
-	{Questionnaire\\After Reminder} 
-	{Next Time} 
-	{Next Time \\ with Motivation}
-	]
-	
-\dirtree{%
-.1 Invitation Email.
-.2 Questionnaire - Graduate Version (GV).
-.3 Thank You GV.
-.2 Questionnaire.
-.3 Thank You.
-.2 Questionnaire After Reminder.
-.2 Next Time.
-.2 Next Time with Motivation.
-.2 Reminder with Date.
-.2 Reminder Generic.
-}
+Such a view also help researchers to let them pick a template to reuse according to the email of the respondents. Therefore, they can easily see the previous answers that they gave, and the level of the tree provides the overall conversation state.
+\begin{figure}[htbp]
+	\dirtree{%
+	.1 Invitation Email.
+	.2 Questionnaire - Graduate Version (GV).
+	.3 Thank You GV.
+	.2 Questionnaire.
+	.3 Thank You.
+	.2 Questionnaire After Reminder.
+	.2 Next Time.
+	.2 Next Time with Motivation.
+	.2 Reminder with Date.
+	.2 Reminder Generic.
+	}
+	\caption[A Sample Conversation State and Template View]{A Sample Conversation State and Template View}
+	\label{fig:ConvStatView}
+\end{figure}
 
 difficulty to pick a proper one , --> also no need to see old templates aga in since conversation got advanced
 
