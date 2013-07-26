@@ -121,24 +121,36 @@ Finally, after reviewing these initial information gathering to figure out how c
 
 \section{Prototype}
 \label{sec:4.2:Prot}
-A software prototype provides developers a better understanding of the requirements, what could be developed with existing technology, and by allowing client interaction, it demonstrates them what is functionally feasible, and revise their imagination accordingly, which results better inputs from them and more forward looking systems \citep{Bernstein1996}.
+A software prototype provides developers a better understanding of the requirements, what could be developed with existing technology, and by allowing client interaction, it demonstrates them what is functionally feasible, and revise their imagination accordingly, which results better inputs from them and more forward looking systems \citep{Bernstein1996}. In this section, we will analyze the requirements, and the actual prototype.
 \vspace{1cm}
 
-In section~\ref{subsec:4.1.2:ImprReduEffo}, we initially considered some features to improve a researcher personalized mass email communication. Following points will put those findings into a summary to describe them as a feature of a prototype.
+\subsection{Requirements Analysis}
+\label{subsec:4.2.1:ProtReqiAnal}
+
+In section~\ref{subsec:4.1.2:ImprReduEffo}, we initially considered some features to improve a researcher's personalized mass email communication. Following points will put those findings into a summary to describe them as requirements of the prototype.
 
 \begin{compactitem}
-	\item Contact information can come from different sources, and assuming we have at least recipients' first names, last names, and email addresses. System should store these information under a contact list permanently. 
-	\item Application user can use place holder for first and last names, therefore he or she can add those dynamic variables into email's content to personalize the salutation of the emails.
-	\item Application user should extract information while reading responds into a key-value pair\footnote{A \ac{KVP} represents two conntected data items, where a key is a unique identifier for some data items, and the value can be again a data item or a pointer to the location of data \citep{Rouse2008}. In this context, this thesis uses \ac{KVP} in the context of extracted information as values, and a unique key to represents its class. For example, "first name" can be a key, and each recipients first names will be a value for the "first name" key.}.
-	\item
+	\item Contact information can come from different sources, and assuming we have at least recipients' first names, last names, and email addresses. Application must store those information under a contact list permanently. 
+	\item Application user can use place holders for first and last names, therefore application must allow user to add those dynamic variables into email's content to personalize the salutation of the emails.
+	\item Application user can extract information while reading responds into a \ac{KVP}\footnote{A key-value pair (KVP) represents two conntected data items, where a key is a unique identifier for some data items, and the value can be again a data item or a pointer to the location of data \citep{Rouse2008}. In this context, this thesis uses \ac{KVP} in the context of extracted information as values, and a unique key to represents its class. For example, "first name" can be a key, and each recipients first names will be a value for the "first name" key.}. Therefore, application must offer an option to get \ac{KVP}s from user. At the end, each contact's record will have enough information saved in \ac{KVP} to describe all findings that we know about them.
+	\item Application must allow user to use those extracted \ac{KVP}s as dynamic variables in the email content. This will allow us to personalize the email with the information specific to each recipients.
+	\item User can reuse a sent email as a template to reply respondents or initiate a conversation for group of people. Therefore, application must offer a view to pick the templates from a list.
+	\item Application must show the whole state of the conversation. Therefore, the template list can be showed in a directory tree structure as in figure~\ref{fig:ConvStatView}. Each node must represent the templates that user created, and have a given template name by the user.
+	\item Application must offer the template selection and conversation state representation under one view. Therefore, user should be able to pick the templates to reuse by looking at nodes in the tree to figure out the state of the conversation .
 \end{compactitem}
 
+Next, the prototype implemented to satisfy initial idea of a personalized mass email communication system, and the aforementioned requirements.
 
+\subsection{System}
+\label{subsec:4.2.2:ProtSyst}
 
+Initial system was built on the top of an existing project named as EmailValet\footnote{https://www.gmailvalet.com/} also known as GmailValet in \ac{HCI} group\footnote{https://hci.stanford.edu/} at Stanford University. EmailValet is a \ac{SaaS} email client that combines task management together. Remote assistants from an expert crowdsourcing marketplace extract tasks from incoming emails, and annotate them in a task list separated from email inbox \citep{Kokkalis2013}.
+\begin{comment}
+
+--> bu prototype aklimiza gelen ilk ozelligi de anlatiyor de
 --> bi section da sorunlar neydi diye yaz bunla ilgili
 --> Google Formla nasil kolay data aliniyor diye bahset
-
-\begin{comment}
+--> KVP ler sadece son kampnyayala ilgili, hepsi olsa daha iyi olurdu: drawbacks of prototype'a yaz bunu
 
 difficulty to pick a proper one , --> also no need to see old templates aga in since conversation got advanced
 
