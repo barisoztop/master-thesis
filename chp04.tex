@@ -129,15 +129,15 @@ A software prototype provides developers a better understanding of the requireme
 
 In section~\ref{subsec:4.1.2:ImprReduEffo}, we initially considered some features to improve a researcher's personalized mass email communication. Following points will put those findings into a summary to describe them as requirements of the prototype.
 
-\begin{compactitem}
+\begin{compactenum}
 	\item Contact information can come from different sources, and assuming we have at least recipients' first names, last names, and email addresses. Application must store those information under a contact list permanently. 
-	\item Application user can use place holders for first and last names, therefore application must allow user to add those dynamic variables into email's content to personalize the salutation of the emails.
-	\item Application user can extract information while reading responds into a \ac{KVP}\footnote{A key-value pair (KVP) represents two conntected data items, where a key is a unique identifier for some data items, and the value can be again a data item or a pointer to the location of data \citep{Rouse2008}. In this context, this thesis uses \ac{KVP} in the context of extracted information as values, and a unique key to represents its class. For example, "first name" can be a key, and each recipients first names will be a value for the "first name" key.}. Therefore, application must offer an option to get \ac{KVP}s from user. At the end, each contact's record will have enough information saved in \ac{KVP} to describe all findings that we know about them.
+	\item Application user can use variables in the email message for a recipient's first name and last name. Therefore, application must allow user to add those dynamic variables into email's content to personalize the salutation of the emails.
+	\item Application user can extract information from an email message into a \ac{KVP}\footnote{A key-value pair (KVP) represents two conntected data items, where a key is a unique identifier for some data items, and the value can be again a data item or a pointer to the location of data \citep{Rouse2008}. In this context, this thesis uses \ac{KVP} in the context of extracted information as values, and a unique key to represents its class. For example, "first name" can be a key, and each recipients first names will be a value for the "first name" key.} while reading responds. Therefore, application must offer an option to get \ac{KVP}s from user. At the end, each contact's record will have enough information saved in \ac{KVP} to describe all findings that we know about them.
 	\item Application must allow user to use those extracted \ac{KVP}s as dynamic variables in the email content. This will allow us to personalize the email with the information specific to each recipients.
 	\item User can reuse a sent email as a template to reply respondents or initiate a conversation for group of people. Therefore, application must offer a view to pick the templates from a list.
 	\item Application must show the whole state of the conversation. Therefore, the template list can be showed in a directory tree structure as in figure~\ref{fig:ConvStatView}. Each node must represent the templates that user created, and have a given template name by the user.
 	\item Application must offer the template selection and conversation state representation under one view. Therefore, user should be able to pick the templates to reuse by looking at nodes in the tree to figure out the state of the conversation .
-\end{compactitem}
+\end{compactenum}
 
 Next, the prototype implemented to satisfy initial idea of a personalized mass email communication system, and the aforementioned requirements.
 
@@ -150,8 +150,8 @@ Initial system was built on the top of an existing project named as EmailValet\f
 Having a ready-to-use email client to implement the first version of the personalized mass email communication system helped us to save time and effort, and make us focus on the initial requirements as discussed in section~\ref{subsec:4.2.1:ProtReqiAnal}. From the technology point of view, we were also limited with the existing EmailValet's architecture, which was developed in a Web framework \ac{RoR}\footnote{http://rubyonrails.org/}, and JavaScript framework jQuery\footnote{http://jquery.com/}.
 \vspace{1cm}
 
-Figure \ref{fig:GmailValetInbox} show EmailValet's inbox view with the modifications of \ac{KVP} a
-
+EmailValet requires an Gmail account to register and sign in to the system, therefore application user has to grant access to EmailValet to use it. Figure \ref{fig:GmailValetInbox} shows EmailValet's inbox view after user signed in and browse to a campaign\footnote{In this thesis, the word campaign is used as a shorhand for a mass email communication campaign, where a researcher initiates a conversation with gorups of people related to one specific topic.}. On the left hand side, there is the email list pane, and selected email can be read on the reading pane, at right.
+ 
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=1.00\textwidth]{imgs/GmailValetInbox.png}
@@ -159,21 +159,39 @@ Figure \ref{fig:GmailValetInbox} show EmailValet's inbox view with the modificat
 	\label{fig:GmailValetInbox}
 \end{figure}
 
+Starting a campaign is done exactly the same way as in composing an email. However, the corresponding view has additional two input fields to get the campaign and the template names from the user. Campaign name will help to identify the groups of conversations from other campaigns, or regular email conversations in the inbox. Template name will help us to identify which respondents's answers correspond to which email that we sent. For example, in figure \ref{fig:GmailValetInbox}, a recipient's answer is a response to the questionnaire invitation that we sent earlier. A template name will also help us to represent a template in a tree structure to pick from to reuse, and show the state of the conversation in the same tree structure.
+\vspace{1cm}
 
-\begin{figure}[htbp]
+Researcher can add their recipients list into the Merge\footnote{The word "merge" comes from the term "mail merge", which means a procedure to enable you to combine a document with data files which consists a list of names, therefore copies of the document will be different for each person it is sent to \citep{CollinsEnglishDictionary2013}.} input field as in figure \ref{imgs/ComposePaneWithTemplates.png}, which corresponds to "To" field in a regular email client. However, the format should be as in the figure, that is first name, last name, and email address in angle brackets. Hence, those fields can be used dynamically in the salutation of the emails by writing \textit{\{\{first\_name\}\}} and \textit{\{\{last\_name\}\}} variables. Once those recipients list is entered and the email is sent, those contacts will be recorded in the Gmail's contacts book.
+\vspace{1cm}
+
+\clearpage
+
+\begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.70]{imgs/ComposePaneWithTemplates.png}
 	\caption[Email Template Selection to Reuse Earlier Replies]{Email Template Selection to Reuse Earlier Replies}
 	\label{fig:ComposePaneWithTemplates}
 \end{figure}
 
+Figure \ref{imgs/ComposePaneWithTemplates.png} also shows the template tree to show the state of the conversation, and allow users to select template from. The indentation at the nodes of the tree helps to identify which templates are used after which template, and therefore it gives an idea about the current state of the conversation. According to this sample scenario in the figure, After the invitation email, there were two possible answers that we gave to the recipients according to their response to out invitation. For those who who rejected our invitation, we can select the "Rejected" node from the tree to reuse that answer that we gave before. This can be a motivation email as discussed in section \ref{subsec:4.1.2:ImprReduEffo}. At the parallel, the conversation was continued with the people who accepted the invitation, and we continued to send \ac{NDA}, and afterwards questionnaire. After we sent the questionnaire, there were cases, where respondents returned back with an email to ask some questions to clarify some points in the questionnaire that we sent. According to figure \ref{imgs/ComposePaneWithTemplates.png}, these cases were the questions number 3 and 18, and we explained those two questions from the questionnaire. Again, since the system allow us to reuse the templates, we don't need to rewrite our explanation if those questions were not clear for many people. On the other hand, if researchers want to create a new template, he or she can simply add the name of the template into corresponding input fields, and send the email. Next time, the researcher will find it in the template tree under the corresponding level of the node. Also, it is possible to select a template, made some modification and save it as a new template. Therefore, a slightly different versions of template can be reused during the communication.
+\vspace{1cm}
+
+Finally, there is an option to add \ac{KVP}s while reading respondents' answers. In the reading pane, two input fields are offered to enter a key and its value to attach them to the email that is being read. As in figure \ref{imgs/EMailKVPs.png}, while user can add new \ac{KVP}s, they can also see the existing ones attached to that email message.
+
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[scale=0.80]{imgs/EMailKVPs.png}
+	\includegraphics[scale=0.75]{imgs/EMailKVPs.png}
 	\caption[Extracted Key-Value Pairs and Input New Ones]{Extracted Key-Value Pairs and Input New Ones}
 	\label{fig:EMailKVPs}
 \end{figure}
 
+In conclusion, while the prototype satisfied many of the initial requirements that was discussed in section \ref{subsec:4.2.1:ProtReqiAnal}, there were some drawbacks that will be mentioned in the section \ref{sec:4.3:EvalProt} why it was discarded instead of going into the production code. But before that, we will go into some implementation details about EmailValet's mass email communication modifications.
+
+\subsection{Architecture}
+\label{subsec:4.2.3:ProtArch}
+
+--> message id yi nasil kullanigini yaz
 
 
 
@@ -181,9 +199,14 @@ Figure \ref{fig:GmailValetInbox} show EmailValet's inbox view with the modificat
 \label{sec:4.3:EvalProt}
 
 --> Write drawback in here
+--> KVPs are about one email, not about a contact
+- last 100 email
+- we don't need a whole inbox, we don't email to replace your email client, but come and use us when you wanna create campaigns
+- it slow cause of above two things
+- if no name or surname, email will have blank placeholders
 
 \begin{comment}
-
+--> Sonra chapter da IMAP e de deyin biraz buna bakarak gdoc: Myriad - Developer Documentation [Fetching]
 --> bu prototype aklimiza gelen ilk ozelligi de anlatiyor de
 --> bi section da sorunlar neydi diye yaz bunla ilgili
 --> Google Formla nasil kolay data aliniyor diye bahset
