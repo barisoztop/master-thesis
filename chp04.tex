@@ -204,22 +204,31 @@ In conclusion, while the prototype satisfied many of the initial requirements th
 
 Even though, we had a ready-to-use email client with EmailValet, there were quite bit changes to reflect the requirements that was mentioned in section \ref{subsec:4.2.1:ProtReqiAnal}, and since EmailValet was dealing with single email messages not a group of them as a email client, there were also some modifications to make the prototype understand whether a message belongs to a campaign or not. In this section, we will briefly see how the changes for prototype fit into existing EmailValet's design, and a technology overview to understand how mass email communication is done.
 
-\paragraph{Identification of Campaign Messages}
-An email message consists header and body sections as defined by RFC 5322. While a message's header keeps structured information such as "From", "To", "\ac{CC}", Subject, Date, and other information with a special syntax, a message's body can consists the content, which is unstructured text and optional to have \citep{rfc5322}. A sample email message with its header fields can be found in Appendix \ref{app:EmaiMessForm}.
+\paragraph{Identification of a Campaign Message}
+An email message consists header and body sections as defined by RFC 5322. While a message's header keeps structured information such as "From", "To", "\ac{CC}", Subject, Date, and other information with a special syntax, a message's body consists the content, which is an unstructured text and optional to have \citep{rfc5322}. An example email message with its header fields and body can be found in Appendix \ref{app:EmaiMessForm}.
+\vspace{1cm}
 
+One of the fields in an email message's header is called Message-ID\footnote{The message identifier, Message-ID, is enclosed in the angle bracket characters, "<" and ">", an its syntax only permits the dot-atom-text form, which is \verb|1*atext *("." 1*atext)|, on the left-hand side of the "@" and a domain name is recommended for the right-hand side of the "@" \citep{rfc5322}. For example: \verb|<CAF2E4bfH4+GAYHcJFZJ6dTJJ+pux4mTjff2neCS_VR_zVCUY9g@mail.gmail.com>|}, which is a unique message identifier, and set by email clients. A Message-ID is used in another header field, named In-Reply-To, when a message is a reply to that message.
+\vspace{1cm}
 
+EmailValet had already the data model to store an email message's related data when it is synchronized with Gmail. However, creating a mass email campaign requires to identify if the synchronized email belongs to a mass email campaign that was created or if it is an answer to a campaign message that was sent. Because, EmailValet's initial design were able to fetch emails from Gmail, then assign properties afterwards. Even the emails composed by EmailValet were stored after they got replies from their recipients. Therefore, Message-ID and In-Reply-To fields of an email message are leveraged to keep track of a campaign message by setting a Message-ID of it, and storing in a Campaign data model as in figure \ref{fig:UML_Prototype}. Hence, we were able to identify the messages during the synchronization with Gmail whether a message is an initial campaign message, or if it is an answer to a campaign message that was created.
 
- Some of those information are related with message threading, where email clients recognized of a message is a reply to another message
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=1.00\textwidth]{imgs/UML_Draw_Prototype.png}
+	\caption[Model Dependency of the New Features]{Model Dependency of the New Features}
+	\label{fig:UML_Prototype}
+\end{figure}
 
-- goes into details, so you won't need to talk about in the final product
-- Sync process
+\paragraph{Template and Email Message Relation} Each campaign message that is composed in EmaiValet is actually a template with dynamic variables in it. Therefore, the campaign messages that is fetched from Gmail corresponds to a template in EmailValet. This relation can be seen in figure \ref{fig:UML_Prototype}.
+-- burda TRee den de bahset, text olur cok guzel
 \paragraph{\ac{KVP}s Relation with a Campaign and a Message}
-
-\paragraph{Template and Email Message Relation}
-
 
 --> message id yi nasil kullanigini yaz
 - fotolar daki guzel database diagramlari kullan
+
+--> FOOTNOTE: synchronization is actually IMAP call
+--> FOOTNOTE: ORM niye table demiyon da data model diyon acikla
 
 
 \section{Evaluation of the Prototype}
@@ -240,6 +249,12 @@ In conclusion, while the prototype satisfied many of the initial requirements th
 - if no name or surname, email will have blank placeholders
 
 \begin{comment}
+
+ Some of those information are related with message threading, where email clients recognized of a message is a reply to another message
+
+- goes into details, so you won't need to talk about in the final product
+- Sync process
+
 --> Sonra chapter da IMAP e de deyin biraz buna bakarak gdoc: Myriad - Developer Documentation [Fetching]
 --> bu prototype aklimiza gelen ilk ozelligi de anlatiyor de
 --> bi section da sorunlar neydi diye yaz bunla ilgili
