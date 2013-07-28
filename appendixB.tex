@@ -1,0 +1,61 @@
+\chapter{An Email Message Format}
+%\section{Detailed Validation Results}
+\label{app:EmaiMessForm}
+
+\textbf{\blfootnote{In the interest of privacy, email addresses have been changed.}}
+
+\lstset {
+ basicstyle=\footnotesize,
+ frame=shadowbox,
+ rulesepcolor=\color{black},
+ showspaces=false,showtabs=false,tabsize=4,
+ numberstyle=\tiny,
+ captionpos=b,
+ abovecaptionskip=1\baselineskip,
+ breaklines=true,
+ keepspaces=true,
+ breakindent=0pt,
+ columns=flexible
+}
+
+\begin{lstlisting}[language=, caption={[An Email Message with Header and Body Sections]An Email Message with Header and Body Sections}, label={lst:EmaiMessForm}]
+Delivered-To: oztop.baris@gmail.com
+Received: by 10.112.143.99 with SMTP id sd3csp47394lbb;
+        Sun, 28 Jul 2013 03:35:18 -0700 (PDT)
+Return-Path: <boztop@gmail.com>
+Received-SPF: pass (google.com: domain of boztop@gmail.com designates 10.182.186.66 as permitted sender) client-ip=10.182.186.66
+Authentication-Results: mr.google.com;
+       spf=pass (google.com: domain of boztop@gmail.com designates 10.182.186.66 as permitted sender) smtp.mail=boztop@gmail.com;
+       dkim=pass header.i=@gmail.com
+X-Received: from mr.google.com ([10.182.186.66])
+        by 10.182.186.66 with SMTP id fi2mr49092899obc.98.1375007717111 (num_hops = 1);
+        Sun, 28 Jul 2013 03:35:17 -0700 (PDT)
+X-Received: by 10.182.186.66 with SMTP id fi2mr49092899obc.98.1375007717106;
+ Sun, 28 Jul 2013 03:35:17 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.76.120.234 with HTTP; Sun, 28 Jul 2013 03:34:57 -0700 (PDT)
+From: Baris Oztop <boztop@gmail.com>
+Date: Sun, 28 Jul 2013 12:34:57 +0200
+Message-ID: <CAF2E4bfH4+GAYHcJFZJ6dTJJ+pux4mTjff2neCS_VR_zVCUY9g@mail.gmail.com>
+Subject: Questionnaire
+To: Baris Oztop <oztop.baris@gmail.com>
+Content-Type: multipart/alternative; boundary=089e0153688e8aabe504e28feec4
+
+--089e0153688e8aabe504e28feec4
+Content-Type: text/plain; charset=UTF-8
+
+Hi,
+
+thank you for reaching out. I'd like to participate in the questionnaire. I
+hope my answers will be helpful for you.
+
+Best,
+Baris
+
+--089e0153688e8aabe504e28feec4
+Content-Type: text/html; charset=UTF-8
+
+<div dir="ltr">Hi,<br><br>thank you for reaching out. I&#39;d like to participate in the questionnaire. I hope my answers will be helpful for you.<br><br>Best, <br>Baris<br></div>
+
+--089e0153688e8aabe504e28feec4--
+\end{lstlisting}

@@ -13,6 +13,18 @@ When a researcher initiate a mass email communication, there will be many cases 
 In section~\ref{sec:1:EmailDataCol}, the online learning platform scenario was used to illustrate the possible reasons for email data collection. If we consider it in here again, assuming that we are exploring our users to improve our platform. Therefore, we start sending out emails to our registered users to get their permission to ask some questions. This initial email might be similar to listing~\ref{lst:EmaiInvtQest}.
 \vspace{1cm}
 
+\lstset {
+ basicstyle=\footnotesize,
+ frame=shadowbox,
+ rulesepcolor=\color{black},
+ showspaces=false,showtabs=false,tabsize=4,
+ numberstyle=\tiny,
+ captionpos=b,
+ xleftmargin=0.7cm, xrightmargin=0.5cm,
+ lineskip=-0.1em,
+ abovecaptionskip=1\baselineskip
+}
+
 \begin{lstlisting}[language=, caption={[Email Invitation to Questionnaire for Online Learning Platform]Email Invitation to Questionnaire for Online Learning Platform}, label={lst:EmaiInvtQest}]
 Dear John,
 
@@ -122,12 +134,11 @@ Finally, after reviewing these initial information gathering to figure out how c
 \section{Prototype}
 \label{sec:4.2:Prot}
 A software prototype provides developers a better understanding of the requirements, what could be developed with existing technology, and by allowing client interaction, it demonstrates them what is functionally feasible, and revise their imagination accordingly, which results better inputs from them and more forward looking systems \citep{Bernstein1996}. In this section, we will analyze the requirements, and the actual prototype.
-\vspace{1cm}
 
 \subsection{Requirements Analysis}
 \label{subsec:4.2.1:ProtReqiAnal}
 
-In section~\ref{subsec:4.1.2:ImprReduEffo}, we initially considered some features to improve a researcher's personalized mass email communication. Following points will put those findings into a summary to describe them as requirements of the prototype.
+In section~\ref{subsec:4.1.2:ImprReduEffo}, we initially considered some features to improve a researcher's personalized mass email communication. Following points will put those findings into a summary to describe them as requirements of the prototype:
 
 \begin{compactenum}
 	\item Contact information can come from different sources, and assuming we have at least recipients' first names, last names, and email addresses. Application must store those information under a contact list permanently. 
@@ -151,8 +162,10 @@ Having a ready-to-use email client to implement the first version of the persona
 \vspace{1cm}
 
 EmailValet requires an Gmail account to register and sign in to the system, therefore application user has to grant access to EmailValet to use it. Figure \ref{fig:GmailValetInbox} shows EmailValet's inbox view after user signed in and browse to a campaign\footnote{In this thesis, the word campaign is used as a shorhand for a mass email communication campaign, where a researcher initiates a conversation with gorups of people related to one specific topic.}. On the left hand side, there is the email list pane, and selected email can be read on the reading pane, at right.
+
+\clearpage
  
-\begin{figure}[htbp]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=1.00\textwidth]{imgs/GmailValetInbox.png}
 	\caption[EmailValet Inbox View and Message Reading Pane]{EmailValet Inbox View and Message Reading Pane}
@@ -162,10 +175,8 @@ EmailValet requires an Gmail account to register and sign in to the system, ther
 Starting a campaign is done exactly the same way as in composing an email. However, the corresponding view has additional two input fields to get the campaign and the template names from the user. Campaign name will help to identify the groups of conversations from other campaigns, or regular email conversations in the inbox. Template name will help us to identify which respondents's answers correspond to which email that we sent. For example, in figure \ref{fig:GmailValetInbox}, a recipient's answer is a response to the questionnaire invitation that we sent earlier. A template name will also help us to represent a template in a tree structure to pick from to reuse, and show the state of the conversation in the same tree structure.
 \vspace{1cm}
 
-Researcher can add their recipients list into the Merge\footnote{The word "merge" comes from the term "mail merge", which means a procedure to enable you to combine a document with data files which consists a list of names, therefore copies of the document will be different for each person it is sent to \citep{CollinsEnglishDictionary2013}.} input field as in figure \ref{imgs/ComposePaneWithTemplates.png}, which corresponds to "To" field in a regular email client. However, the format should be as in the figure, that is first name, last name, and email address in angle brackets. Hence, those fields can be used dynamically in the salutation of the emails by writing \textit{\{\{first\_name\}\}} and \textit{\{\{last\_name\}\}} variables. Once those recipients list is entered and the email is sent, those contacts will be recorded in the Gmail's contacts book.
+Researcher can add their recipients list into the Merge\footnote{The word "merge" comes from the term "mail merge", which means a procedure to enable you to combine a document with data files which consists a list of names, therefore copies of the document will be different for each person it is sent to \citep{CollinsEnglishDictionary2013}.} input field as in figure \ref{fig:ComposePaneWithTemplates}, which corresponds to "To" field in a regular email client. However, the format should be as in the figure, that is first name, last name, and email address in angle brackets. Hence, those fields can be used dynamically in the salutation of the emails by writing \textit{\{\{first\_name\}\}} and \textit{\{\{last\_name\}\}} variables. Once those recipients list is entered and the email is sent, those contacts will be recorded in the Gmail's contacts book.
 \vspace{1cm}
-
-\clearpage
 
 \begin{figure}[H]
 	\centering
@@ -174,10 +185,10 @@ Researcher can add their recipients list into the Merge\footnote{The word "merge
 	\label{fig:ComposePaneWithTemplates}
 \end{figure}
 
-Figure \ref{imgs/ComposePaneWithTemplates.png} also shows the template tree to show the state of the conversation, and allow users to select template from. The indentation at the nodes of the tree helps to identify which templates are used after which template, and therefore it gives an idea about the current state of the conversation. According to this sample scenario in the figure, After the invitation email, there were two possible answers that we gave to the recipients according to their response to out invitation. For those who who rejected our invitation, we can select the "Rejected" node from the tree to reuse that answer that we gave before. This can be a motivation email as discussed in section \ref{subsec:4.1.2:ImprReduEffo}. At the parallel, the conversation was continued with the people who accepted the invitation, and we continued to send \ac{NDA}, and afterwards questionnaire. After we sent the questionnaire, there were cases, where respondents returned back with an email to ask some questions to clarify some points in the questionnaire that we sent. According to figure \ref{imgs/ComposePaneWithTemplates.png}, these cases were the questions number 3 and 18, and we explained those two questions from the questionnaire. Again, since the system allow us to reuse the templates, we don't need to rewrite our explanation if those questions were not clear for many people. On the other hand, if researchers want to create a new template, he or she can simply add the name of the template into corresponding input fields, and send the email. Next time, the researcher will find it in the template tree under the corresponding level of the node. Also, it is possible to select a template, made some modification and save it as a new template. Therefore, a slightly different versions of template can be reused during the communication.
+Figure \ref{fig:ComposePaneWithTemplates} also shows the template tree to show the state of the conversation, and allow users to select template from. The indentation at the nodes of the tree helps to identify which templates are used after which template, and therefore it gives an idea about the current state of the conversation. According to this sample scenario in the figure, After the invitation email, there were two possible answers that we gave to the recipients according to their response to out invitation. For those who who rejected our invitation, we can select the "Rejected" node from the tree to reuse that answer that we gave before. This can be a motivation email as discussed in section \ref{subsec:4.1.2:ImprReduEffo}. At the parallel, the conversation was continued with the people who accepted the invitation, and we continued to send \ac{NDA}, and afterwards questionnaire. After we sent the questionnaire, there were cases, where respondents returned back with an email to ask some questions to clarify some points in the questionnaire that we sent. According to figure \ref{fig:ComposePaneWithTemplates}, these cases were the questions number 3 and 18, and we explained those two questions from the questionnaire. Again, since the system allow us to reuse the templates, we don't need to rewrite our explanation if those questions were not clear for many people. On the other hand, if researchers want to create a new template, he or she can simply add the name of the template into corresponding input fields, and send the email. Next time, the researcher will find it in the template tree under the corresponding level of the node. Also, it is possible to select a template, made some modification and save it as a new template. Therefore, a slightly different versions of template can be reused during the communication.
 \vspace{1cm}
 
-Finally, there is an option to add \ac{KVP}s while reading respondents' answers. In the reading pane, two input fields are offered to enter a key and its value to attach them to the email that is being read. As in figure \ref{imgs/EMailKVPs.png}, while user can add new \ac{KVP}s, they can also see the existing ones attached to that email message.
+Finally, there is an option to add \ac{KVP}s while reading respondents' answers. In the reading pane, two input fields are offered to enter a key and its value to attach them to the email that is being read. As in figure \ref{fig:EMailKVPs}, while user can add new \ac{KVP}s, they can also see the existing ones attached to that email message.
 
 \begin{figure}[htbp]
 	\centering
@@ -191,12 +202,35 @@ In conclusion, while the prototype satisfied many of the initial requirements th
 \subsection{Architecture}
 \label{subsec:4.2.3:ProtArch}
 
---> message id yi nasil kullanigini yaz
+Even though, we had a ready-to-use email client with EmailValet, there were quite bit changes to reflect the requirements that was mentioned in section \ref{subsec:4.2.1:ProtReqiAnal}, and since EmailValet was dealing with single email messages not a group of them as a email client, there were also some modifications to make the prototype understand whether a message belongs to a campaign or not. In this section, we will briefly see how the changes for prototype fit into existing EmailValet's design, and a technology overview to understand how mass email communication is done.
 
+\paragraph{Identification of Campaign Messages}
+An email message consists header and body sections as defined by RFC 5322. While a message's header keeps structured information such as "From", "To", "\ac{CC}", Subject, Date, and other information with a special syntax, a message's body can consists the content, which is unstructured text and optional to have \citep{rfc5322}. A sample email message with its header fields can be found in Appendix \ref{app:EmaiMessForm}.
+
+
+
+ Some of those information are related with message threading, where email clients recognized of a message is a reply to another message
+
+- goes into details, so you won't need to talk about in the final product
+- Sync process
+\paragraph{\ac{KVP}s Relation with a Campaign and a Message}
+
+\paragraph{Template and Email Message Relation}
+
+
+--> message id yi nasil kullanigini yaz
+- fotolar daki guzel database diagramlari kullan
 
 
 \section{Evaluation of the Prototype}
 \label{sec:4.3:EvalProt}
+
+In this section, we will analyze what are the drawbacks of the prototype, even though it fulfilled most of the requirements mentioned in \ref{subsec:4.2.1:ProtReqiAnal}. Some of these drawbacks were related with continuing to development of the prototype on an existing application whose main purpose was different than a regular email client.
+
+
+In conclusion, while the prototype satisfied many of the initial requirements that was discussed in section \ref{subsec:4.2.1:ProtReqiAnal}, there were some drawbacks that will be mentioned in the section \ref{sec:4.3:EvalProt} why it was discarded instead of going into the production code. But before that, we will go into some implementation details about EmailValet's mass email communication modifications.
+
+
 
 --> Write drawback in here
 --> KVPs are about one email, not about a contact
