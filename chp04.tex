@@ -234,12 +234,10 @@ Nested set model helps us to find a node's children faster than a usual agency s
 Template data model in \ref{fig:UML_Prototype} keeps those left and right number information on one column named "ancestry", which is populated by a gem\footnote{A Gem or a RubyGem is a software package, containining a packaged Ruby application or library \citep{RubyGemsGuides2013}.} named Ancestry\footnote{https://github.com/stefankroes/ancestry}.
 
 \paragraph{\ac{KVP}s Relation with a Campaign and a Message}
+As in figure \ref{fig:UML_Prototype}, each email message can have more than one value that corresponds to a key of \ac{KVP}. This allows us identify, when a \ac{KVP} added to a message belonging to a respondent. Key are organized according to campaigns, therefore a same key name can be used in different campaigns for different purposes. This is mainly because a word chosen as a key can have different meanings depending on context.
+\vspace{1cm}
 
---> message id yi nasil kullanigini yaz
-- fotolar daki guzel database diagramlari kullan
-
---> FOOTNOTE: ORM niye table demiyon da data model diyon acikla
-
+After getting an overview of the technical implementation of mass Emil communication feature on EmailValet, next section will focus on what was missing on this initial design, and where were the problems on that.
 
 \section{Evaluation of the Prototype}
 \label{sec:4.3:EvalProt}
@@ -250,7 +248,6 @@ In this section, we will analyze what are the drawbacks of the prototype, even t
 In conclusion, while the prototype satisfied many of the initial requirements that was discussed in section \ref{subsec:4.2.1:ProtReqiAnal}, there were some drawbacks that will be mentioned in the section \ref{sec:4.3:EvalProt} why it was discarded instead of going into the production code. But before that, we will go into some implementation details about EmailValet's mass email communication modifications.
 
 
-
 --> Write drawback in here
 --> KVPs are about one email, not about a contact
 - last 100 email
@@ -259,6 +256,10 @@ In conclusion, while the prototype satisfied many of the initial requirements th
 - if no name or surname, email will have blank placeholders
 
 \begin{comment}
+--> message id yi nasil kullanigini yaz
+- fotolar daki guzel database diagramlari kullan
+
+--> FOOTNOTE: ORM niye table demiyon da data model diyon acikla
 
  Some of those information are related with message threading, where email clients recognized of a message is a reply to another message
 
