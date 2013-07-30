@@ -229,31 +229,45 @@ EmailValet had already the data model to store an email message's related data w
 	\label{fig:NestedSetModelTree}
 \end{figure}
 
-Nested set model helps us to find a node's children faster than a usual adjacency set model, where each node only keeps information about its parent node, which is the id \citep[pages 45--47]{Celko2004}. For example, to find all the nodes of the node named "Albert" in figure \ref{fig:NestedSetModelTree}, we just need to find all nodes whose left value is greater than 1, and right value is less than 12. In adjacency list, however, we first need to find all the nodes whose parent ids are equal to "Albert"s id, then for those nodes' ids, we need to find other nodes whose parent ids are equal to them, and it continues until all nodes are finished in the tree.
-
-Template data model in \ref{fig:UML_Prototype} keeps those left and right number information in one column named "ancestry", which is populated by a gem named Ancestry\footnote{https://github.com/stefankroes/ancestry}.
-
-\paragraph{\ac{KVP}s Relation with a Campaign and a Message}
-As in figure \ref{fig:UML_Prototype}, each email message can have more than one value that corresponds to a key of \ac{KVP}. This allows us to identify, when a \ac{KVP} is added to a message which belongs to a respondent. Keys are organized according to campaigns, therefore same key's value can be used in different campaigns for different purposes. This is mainly because, a word chosen as a key can have different meanings depending on context.
+Nested set model helps us to find a node's children faster than a usual adjacency set model, where each node only keeps information about its parent node, which is the id \citep[pages 45--47]{Celko2004}. For example, to find all the nodes of the root node named "Albert" in figure \ref{fig:NestedSetModelTree}, we just need to find all nodes whose left value is greater than 1, and right value is less than 12. In adjacency list, however, we first need to find all the nodes whose parent ids are equal to "Albert"s id, then for those nodes' ids, we need to find other nodes whose parent ids are equal to them, and it continues until all nodes are finished in the tree in the same way.
 \vspace{1cm}
 
-After getting an overview of the technical implementation of mass emil communication feature of EmailValet, the next section will focus on what was missing on this initial design comparing with initial requirements described in section \ref{subsec:4.2.1:ProtReqiAnal}, the problems with it, and which new ideas that it was emerged.
+The template data model in \ref{fig:UML_Prototype} keeps those left and right number information in one column named "ancestry", which is populated by a gem named Ancestry\footnote{https://github.com/stefankroes/ancestry}.
+
+\paragraph{\ac{KVP}s Relation with a Campaign and a Message}
+As in figure \ref{fig:UML_Prototype}, each email message can have more than one values that correspond to a key of \ac{KVP}. This allows us to identify, when a \ac{KVP} is added to a message that belongs to a respondent. Keys are organized according to the campaigns, therefore same key's value can be used in different campaigns for different purposes. This is mainly because, a word chosen as a key can have different meanings depending on context.
+\vspace{1cm}
+
+After getting an overview of the technical implementation of the prototype, the next section will focus on what was missing on this initial design comparing with initial requirements described in section \ref{subsec:4.2.1:ProtReqiAnal}, the problems with it, and which new ideas that it was emerged.
 
 \section{Evaluation of the Prototype}
 \label{sec:4.3:EvalProt}
 
-In this section, we will analyze what are the drawbacks of the prototype, even though it fulfilled most of the requirements mentioned in \ref{subsec:4.2.1:ProtReqiAnal}. Some of these drawbacks were related with developing a prototype on an existing application whose main purpose was different than a regular email client. As one of the purpose of prototyping is to make developers and users realize the new requirements or review the existing ones, we will also mention where we realized some new requirements, and as a result new feature ideas.
+In this section, we will analyze what are the drawbacks of the prototype, even though it fulfilled most of the requirements mentioned in \ref{subsec:4.2.1:ProtReqiAnal}. Some of these drawbacks were related with developing a prototype on an existing application whose main purpose was different than a regular email client. As one of the reason for prototyping is to make developers and users realize the new requirements or review the existing ones, we will also mention where we realized some new requirements, and as a result the new feature ideas.
 
+\subsection{Limitation of the Existing Application}
+\label{subsec:4.3.1:LimiEmaiVale}
 
-In conclusion, while the prototype satisfied many of the initial requirements that was discussed in section \ref{subsec:4.2.1:ProtReqiAnal}, there were some drawbacks that will be mentioned in the section \ref{sec:4.3:EvalProt} why it was discarded instead of going into the production code. But before that, we will go into some implementation details about EmailValet's mass email communication modifications.
+As it is mentioned, using EmailValet as an email client to start developing a prototype helped us to save time and effort. However, there were some limitations with it since its purpose was a crowd-assisted task manager rather than a simple email client.
 
+\paragraph{Number of Message Limitation}
+One of the problem with EmailValet was its limit on the amount of messages that are synchronized from Gmail. It was limited to the latest 100 messages as a technique for EmailValet's privacy and accountability \citep{Kokkalis2013}. However, a mass email campaign will reach quickly to that limit, and it might ignore some of the older emails.
 
---> Write drawback in here
---> KVPs are about one email, not about a contact
-- last 100 email
-- we don't need a whole inbox, we don't email to replace your email client, but come and use us when you wanna create campaigns
-- it slow cause of above two things
-- if no name or surname, email will have blank placeholders
+\paragraph{Different Inbox Purpose}
+EmailValet was offering an email client with a task manager feature as a replacement of people's regular email client. However, a mass email communication is not something that a person does on a daily basis like their personal email communication. Therefore, a mass email communication application should be separated from a person's regular inbox since it does not need to show all the emails except the ones related to an email campaign. Combining both inboxes also resulted drawbacks on the performance when it synchronized with Gmail to fetch new emails. Because, EmailValet was also performing some additional steps during the synchronization such as checking and comparing the message headers to find the changes in the last 100 emails.
+
+\subsection{Limitation of the Prototype}
+\label{subsec:4.3.2:ProtDesi}
+
+\paragraph{\ac{KVP}s Relation} In the prototype design, each value of a key belongs to an email message of a respondent. However, we need to see all \ac{KVP}s in an aggregated way when we browse to a message belonging to a specific person. Therefore, assigning \ac{KVP}s to an email message actually means that assigning them to a contact in a mass email campaign. This requires to keep each individual contacts in a separate data model, and relating it with the existing EmailValet's design. Since we already spotted the limitations of EmailValet in the previous section, the decision was adding those enhancements into a new application.
+
+\paragraph{Getting Contact List into the System}
+At Stanford \ac{HCI} group, we realized that people who do such a mass email communication import their contact list from a spreadsheet or a similar data store. Since, the prototype requires to input a contact list in a special syntax that was mentioned in section \ref{subsec:4.2.2:ProtSyst}, this makes the users change their existing contact list in a format that the prototype will be able to parse. This reduces flexibility, and adds an additional effort to the researchers who have already a contact list ready in a data file. Again, it was a feature where it would be better to start implementing it in a new project separated from EmailValet. 
+
+\section{Conclusion}
+\label{sec:4.4:Conc}
+In this section, a mass email communication concept was introduced with an illustrative scenario. We pointed out how could be possible to reduce the efforts on the researchers' side, while to increase the personalization of the emails. Later, we collected those ideas as software requirements for the prospective prototype, where we introduced the features and their architecture. Finally, the evaluation of the prototype made the basis to the next chapter, where the mentioned limitations are removed or minimized on the final design, and the new requirements are created from the feedbacks of the users' during the final application's iterative design cycles.
+
 
 \begin{comment}
 --> message id yi nasil kullanigini yaz
