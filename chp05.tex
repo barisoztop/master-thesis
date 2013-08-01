@@ -12,11 +12,7 @@ Having seen the prototype in action made us to review the requirements, and brin
 As it it discussed in section \ref{subsec:4.1.1:Cust}, the standard that we want to achieve within a mass email communication is the most adequately personalized emails according to recipients with minimum effort on a researcher's side. The initial idea and the prototype brought several features as discussed in chapter \ref{chp:4:InitIdeaProt} for this purpose. However, if you consider the gold standard in the figure \ref{fig:ChartEffortCustom} we would like to achieve, the prototype still leaves effort on a researcher to accomplished a successful mass email campaign.
 \vspace{1cm}
 
-In order to minimize the efforts on the researcher's side, the additional assistants' involvement was considered. Therefore, a primary researcher will be able to share the tasks with permitted assistants. These tasks may be extracting information from the incoming answers or even writing replies to those answers. Hence, the primary researcher will only need to interact with the flow of a mass email campaign when there is situation where it requires primary researcher attention.
-\vspace{1cm}
-
-By making involvement of assistants possible on a mass email campaign, we distribute the tasks, and reduce the primary researcher's efforts to minimum.
-
+In order to minimize the efforts on the researcher's side, the additional assistants' involvement was considered. Therefore, a primary researcher will be able to share the tasks with permitted assistants. These tasks may be extracting information from the incoming answers or even writing replies to those answers. Hence, the primary researcher will only need to interact with the flow of a mass email campaign when there is situation where it requires primary researcher attention. However, the system still needs to provide the necessary features that we will see in the next sections to support the work flow in a mass email campaign, hence assistants will only need to interact with this work flow to let the continuation of the email campaign by providing answers with the email templates, and extract information as \ac{KVP}s.
 
 \subsection{Dynamic Variables and \ac{KVP}s}
 \label{subsec:5.1.2:DynmVariKVPs}
@@ -28,27 +24,37 @@ As a result, instead of keeping the \ac{KVP}s in the system according to the res
 \vspace{1cm}
 Importing the \ac{KVP}s should be done in several ways. One option is that system should be able to synchronize with an online spreadsheet, e.g. Google Spreadsheet, to get the \ac{KVP}s at the beginning of a campaign. This is a convenient way for the researchers since they are already familiar with spreadsheet environment. Other options should be a campaign-wide view and a contact specific view in the system. Also, system should allow to edit both keys and values in a campaign.
 
-\subsection{Importing Contacts and Information}
-\label{subsec:5.1.1:AssiSupp}
+\subsection{Importing and Exporting Contacts and Their Information}
+\label{subsec:5.1.3:ImpoExpoContInfo}
+In the prototype, application user had to enter the basic information of the recipients such as first name, last name, and email address into the system manually. However, we realized while they were doing this, they use a spreadsheet and copy the contact information from there. This was also the case for their regular email client that they used for email campaigns. The applications that was investigated in section \ref{sec:3.3:Resul} had an option to import from spreadsheet to ease the process. Therefore, the system should offer an option to import contacts from the spreadsheet environment.
+\vspace{1cm}
 
-\subsection{Dependency on a Email Client}
-\label{subsec:5.1.1:AssiSupp}
-- gmail labels
+However, importing should not be limited only the basic information of the recipients. Since we already mentioned about importing \ac{KVP}s from spreadsheet in the previous section, system should detect and import the contact information and \ac{KVP}s related to that contact if it is available from a provided spreadsheet. 
+\vspace{1cm}
 
-\subsection{Notifications}
-\label{subsec:5.1.1:AssiSupp}
-- you are assigned as a assistant
-- there is an action that you need to take
+System should provide a bi-directional synchronization, not just importing data from the spreadsheet. Therefore, system should provide an option to export contact information and their created \ac{KVP}s from the system to the spreadsheet. This will also gives a reporting functionality to the application users, where they can see all the contacts, and their extracted information from a campaign in one view.
 
-\subsection{Automated Decision-Making}
-\label{subsec:5.1.1:AssiSupp}
+\subsection{Interoperability with Other Email Clients}
+\label{subsec:5.1.4:InteEmaiClie}
+Even though we provide a new system for the users to conduct their mass email communication, there might be some cases where a mass email communication initiated in the user's regular email client, and the system is not aware of that campaign since it was not created with it. Application should provide an option to import those emails messages created with another email client in to the system by recognizing those annotated messages by the user.
+\vspace{1cm}
 
+Enabling the system to import email conversations from other email clients reduce the dependency on the application, and while a researcher continue to use their own email client, assigned assistants can take care of those imported emails by the researcher. We saw such a import feature in \ac{CRM} applications in section \ref{subsec:3.3.1:CRMAppl} as well, where a user is able to forward an email into the \ac{CRM} application, and system takes care of assigning the imported email to the corresponding recipient entry in the system.
 
-rule-based approchdan bahset burda
+\subsection{Automated Decision-Making and Notifications}
+\label{subsec:5.1.5:AutoDeciMakiNoti}
+Even though the involvement of assistants make the initial researcher's life easier, the system still needs to provide an automated approach to answer the emails whose status is clear in the flow of a mass email communication. Therefore, a rule based decision-making mechanism should be used, where users sets the values of the keys of \ac{KVP}s, and it triggers the action of sending an email to a respondent.
+\vspace{1cm}
 
+Since the application's only purpose is the managing mass email communication and each campaign results great amount of messages in the inbox, the system should provide notifications regarding what should be done next for each recipients. Labels added to the email conversation should state whose turn is next in the communication. For instance, by proving a label saying "You need to reply" to the application user, the state of the communication waits an action from a researcher or an assistant. In the same way the unread conversations and the conversation waiting an answer from the respondents should be also annotated in the similar fashion. System should also provide email notification to the assistants' email addresses to notify them there is an action waiting to be taken care of.
 
 \section{Final System}
 \label{sec:5.2:FinaSyst}
+In this section, we will see that how the revised and improved requirements from section \ref{sec:5.1:ImprRequ} reflected to the final product.
+
+
+
+As it was the same case for the prototype in section \ref{subsec:4.2.2:ProtSyst}, 
 
 \section{Architecture}
 \label{sec:5.3:FinaArch}
@@ -57,6 +63,10 @@ rule-based approchdan bahset burda
 \label{sec:5.4:Conc}
 
 \begin{comment}
+
+--> Gmail labellari ni anlatirken, diger urunlerde import nasil email forwardingle yapiliyordu onu anlat kesin.
+
+
 However, we still needs to supply a system, where it offers a work flow to make it happen. satisfy these 
 
 distribution of the work
