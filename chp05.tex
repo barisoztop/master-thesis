@@ -52,14 +52,13 @@ Since the application's only purpose is the managing mass email communication an
 \label{sec:5.2:FinaSyst}
 In this section, we will see that how the revised and improved requirements from section \ref{sec:5.1:ImprRequ} reflected to the final product, named "Myriad".
 
-\subsection{Creating an Email Campaign}
-\label{subsec:5.2.1:CreaEmaiCamp}
+\subsection{Log-In and Campaign Overview}
+\label{subsec:5.2.1:CampOver}
 
 As it was the same case for the prototype in section \ref{subsec:4.2.2:ProtSyst}, Myriad also requires a Gmail account to work with. the reason behind is not just the popularity of the Gmail, but also Stanford University uses Google Apps by default. Therefore, each member of the university has a Google account to use with Myriad. This also provides flexibility to use Myriad, because there  is no registration form or sign in screen.
 \vspace{1cm}
 
-After user sign in to the system, the first screen that they will see is the campaigns overview screen, in where all the created campaigns including the ones that are shared with the user (as a assistant) are shown as in figure \ref{fig:CampaignsOverviewScreen}. It has a simple and a clean \ac{UI}, deferring from regular email clients to emphasize its focus on mass email communication.
-\vspace{1cm}
+After user sign in to the system, the first screen that they will see is the campaigns overview screen, in where all the created campaigns including the ones that are shared with the user (as a assistant) are shown as in the figure \ref{fig:CampaignsOverviewScreen}. It has a simple and a clean \ac{UI}, deferring from regular email clients to emphasize its focus on mass email communication.
 
 \begin{figure}[htbp]
 	\centering
@@ -71,7 +70,7 @@ After user sign in to the system, the first screen that they will see is the cam
 \subsection{Synchronization with Other Sytems}
 \label{subsec:5.2.2:SyncOtheSyst}
 
-Myriad is able to get the contacts' information and their \ac{KVP}s from Google Spreadsheet. This is a convenient way to import contacts into the system since many people already keeps their information in a spreadsheet environment as we discussed in section \ref{subsec:5.1.3:ImpoExpoContInfo.}. Therefore, Myriad offers a bi-directional syncing from and to the spreadsheet defined at the creation of a campaign.
+Myriad is able to get the contacts' information and their \ac{KVP}s from Google Spreadsheet. This is a convenient way to import contacts into the system since many people already keeps their information in a spreadsheet environment as we discussed in section \ref{subsec:5.1.3:ImpoExpoContInfo}. Therefore, Myriad offers a bi-directional syncing from and to the spreadsheet defined at the creation of a campaign.
 \vspace{1cm}
 
 The corresponding columns in the spreadsheet start with "first name", "last name", and "email address" as in the figure \ref{fig:GoogleSpreadsheet}. The rest of the columns will be acted as a \ac{KVP}, and imported into the system as well.
@@ -83,24 +82,47 @@ The corresponding columns in the spreadsheet start with "first name", "last name
 	\label{fig:GoogleSpreadsheet}
 \end{figure}
 
-As it was discussed in section \ref{subsec:5.1.4:InteEmaiClie}, importing existing email conversation as a campaign into the system is an important feature, since researchers may initiate conversations in their regular email client, and later on to make it more manageable, they can import them into Myriad. Myriad leverages Gmail's labeling feature which is equivalent to the \ac{IMAP} protocol's folders \citep{GoogleInc.2013}.  
+As it was discussed in section \ref{subsec:5.1.4:InteEmaiClie}, importing existing email conversations as campaigns into the system is an important feature, since researchers may initiate conversations in their regular email client, and later on to make them more manageable, they can import them into Myriad. Myriad leverages Gmail's labeling feature which is equivalent to the \ac{IMAP} protocol's folders for this purpose \citep{GoogleInc.2013}. Myriad creates a Gmail label in the user's account, and the only thing that user needs to do is the enable label syncing feature at the create campaign screen. Next, there will appear a label with the campaign name, and group under the root label of "myriad" in Gmail's inbox as in the figure \ref{fig:GmailLabels}. Hence, researcher will able to imports email messages, which were not considered to belong to a campaign for some reason, into Myriad.
 
-  from other email client
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[scale=0.60]{imgs/GmailLabels.png}
+	\caption[Gmail's Labels and the Myriad's Campaigns Under the Myriad Label]{Gmail's Labels and the Myriad's Campaigns Under the Myriad Label}
+	\label{fig:GmailLabels}
+\end{figure}
 
-The campaign creation screen 
+\subsection{Creating an Email Campaign}
+\label{subsec:5.2.3:CreaEmaiCamp}
+
+The campaign creation screen (see figure \ref{fig:CreateCampaign}) has input fields for a campaign name and Google Spreadsheet's URL to synchronize with. Other two checkboxes for the spreadsheet are to manage the frequency of synchronization and disabling the warning in case of erroneous data in the spreadsheet such as an empty email address field for a contact. The option for importing emails from Gmail's inbox is also in this screen under label synching.
 
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=1.00\textwidth]{imgs/CreateCampaign.png}
-	\caption[Creating a Campaing in Myriad]{Creating a Campaing in Myriad}
+	\caption[Contacts and Their \ac{KVP}s After Synchronization]{Contacts and Their \ac{KVP}s After Synchronization}
 	\label{fig:CreateCampaign}
 \end{figure}
+
+After the campaign is created, all the contacts and their \ac{KVP}s will imported if the user provided a Google Spreadsheet as in the figure \ref{fig:ContactListInCampaign}. The next is sending the initial email to all the people in the contact list by pressing the button ""
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=1.00\textwidth]{imgs/ContactListInCampaign.png}
+	\caption[Creating a Campaing in Myriad]{Creating a Campaing in Myriad}
+	\label{fig:ContactListInCampaign}
+\end{figure}
+
+
+
 
 \section{Architecture}
 \label{sec:5.3:FinaArch}
 
 \section{Conclusion}
 \label{sec:5.4:Conc}
+
+\section{Experiences}
+\label{sec:5.5:Expr}
 
 \begin{comment}
 
