@@ -1,3 +1,5 @@
 - final solution smart phone destlemiyor, native app yok yani
 - michael'in graphini conclusion da yine kullan ama bu sefer ahnge app hangi bolgeye disiyor diye goster o tahtadaki resimler gibi, ve bizim app nereye dusuyor range olarak goster
 - introlar kotu dedi, oraya chapter 4 icin deki kullanan olmadi fazla yaz
+
+- acknowledgment ta git ve latex e de tesekkur et
