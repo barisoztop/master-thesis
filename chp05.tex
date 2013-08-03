@@ -52,7 +52,7 @@ Since the application's only purpose is the managing mass email communication an
 \label{sec:5.2:FinaSyst}
 In this section, we will see that how the revised and improved requirements from section \ref{sec:5.1:ImprRequ} reflected to the final product, named "Myriad".
 
-\subsection{Log-In and Campaign Overview}
+\subsection{Log-In and Campaigns Overview}
 \label{subsec:5.2.1:CampOver}
 
 As it was the same case for the prototype in section \ref{subsec:4.2.2:ProtSyst}, Myriad also requires a Gmail account to work with. the reason behind is not just the popularity of the Gmail, but also Stanford University uses Google Apps by default. Therefore, each member of the university has a Google account to use with Myriad. This also provides flexibility to use Myriad, because there  is no registration form or sign in screen.
@@ -70,7 +70,7 @@ After user sign in to the system, the first screen that they will see is the cam
 \subsection{Synchronization with Other Sytems}
 \label{subsec:5.2.2:SyncOtheSyst}
 
-Myriad is able to get the contacts' information and their \ac{KVP}s from Google Spreadsheet. This is a convenient way to import contacts into the system since many people already keeps their information in a spreadsheet environment as we discussed in section \ref{subsec:5.1.3:ImpoExpoContInfo}. Therefore, Myriad offers a bi-directional syncing from and to the spreadsheet defined at the creation of a campaign.
+Myriad is able to get the contacts' information and their \ac{KVP}s from Google Spreadsheet. This is a convenient way to import contacts into the system since many people already keeps their information in a spreadsheet environment as we discussed in section \ref{subsec:5.1.3:ImpoExpoContInfo}. Therefore, Myriad offers a bi-directional syncing from and to the spreadsheet defined at the creation of a campaign. Besides, Myriad also offers an option to enter recipients first name, last name, and email address into the system directly.
 \vspace{1cm}
 
 The corresponding columns in the spreadsheet start with "first name", "last name", and "email address" as in the figure \ref{fig:GoogleSpreadsheet}. The rest of the columns will be acted as a \ac{KVP}, and imported into the system as well.
@@ -99,21 +99,46 @@ The campaign creation screen (see figure \ref{fig:CreateCampaign}) has input fie
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=1.00\textwidth]{imgs/CreateCampaign.png}
-	\caption[Contacts and Their \ac{KVP}s After Synchronization]{Contacts and Their \ac{KVP}s After Synchronization}
+	\caption[Creating a Campaing in Myriad]{Creating a Campaing in Myriad}
 	\label{fig:CreateCampaign}
 \end{figure}
 
-After the campaign is created, all the contacts and their \ac{KVP}s will imported if the user provided a Google Spreadsheet as in the figure \ref{fig:ContactListInCampaign}. The next is sending the initial email to all the people in the contact list by pressing the button ""
+After the campaign is created, all the contacts and their \ac{KVP}s will imported if the user provided a Google Spreadsheet as in the figure \ref{fig:ContactListInCampaign}.
 
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=1.00\textwidth]{imgs/ContactListInCampaign.png}
-	\caption[Creating a Campaing in Myriad]{Creating a Campaing in Myriad}
+	\caption[Contacts and Their \ac{KVP}s After Synchronization]{Contacts and Their \ac{KVP}s After Synchronization}
 	\label{fig:ContactListInCampaign}
 \end{figure}
 
+\subsection{Composing an Email Message}
+\label{subsec:5.2.4:CompEmaiMess}
 
+Users can send emails to all the contacts that they entered or imported into the system, or select a subset of it by using the filtering functionality as in figure \ref{fig:ContactFilters}. Provided filtering option are according to values of \ac{KVP}s, conversation status such as unread, replied, or unreplied, or the last message's template name.
 
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=1.00\textwidth]{imgs/ContactFilters.png}
+	\caption[Filtering the Contact List in Myriad]{Filtering the Contact List in Myriad}
+	\label{fig:ContactFilters}
+\end{figure}
+
+Filtered recipients are ready to be composed of email at the compose screen after pressing the corresponding button. The compose email pane (see figure \ref{fig:ComposeEmail}) contains a section that lists the previously sent emails to reuse. This is the same templating idea that was introduced at the prototype in chapter \ref{chp:4:InitIdeaProt} section \ref{subsec:4.2.2:ProtSyst}. It also shows the visualization of the state of the communication by using a tree structure, as well as the number of messages sent by using the corresponding template.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=1.00\textwidth]{imgs/ComposeEmail.png}
+	\caption[Compose an Email in Myriad by Reusing Earlier Messages]{Compose an Email in Myriad by Reusing Earlier Messages}
+	\label{fig:ComposeEmail}
+\end{figure}
+
+The compose pane allows users to dynamic variables into the content of messages to personalize them according to recipients. Those variables are not just limited to the first name and last name, but also can be any keys from the assigned \ac{KVP}s in the campaign.
+\vspace{1cm}
+
+\ac{KVP}s are accessible among different campaigns, therefore extracted information from an earlier campaign can be used in a new campaign as well. Having broader knowledge about a recipient may help  researchers personalize the content of the emails more easily and properly. For example, if we had extracted information regarding which sports that the recipients play in an earlier campaign. We can use the same information to make a frankly and friendly start in the new campaign by mentioning about the latest events of those sports areas in the country. Such a technique also supports the social exchange and diffusion of responsibility theories as discussed in section \ref{sec:2.3:PersEmai}. Myriad also allows users to disable the \ac{KVP}s in a campaign if they are not related at all or became obsolete during the flow of the campaign.
+
+-- after sending actions???
 
 \section{Architecture}
 \label{sec:5.3:FinaArch}
