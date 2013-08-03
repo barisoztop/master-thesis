@@ -3,3 +3,4 @@
 - introlar kotu dedi, oraya chapter 4 icin deki kullanan olmadi fazla yaz
 
 - acknowledgment ta git ve latex e de tesekkur et
+- experience'in altinda graph ciz, ve kampanya tarihlerini kullnaral freq. yi bul guzel olur. Bunu admin paneldeki diger column lar icin de yap
