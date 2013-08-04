@@ -10,15 +10,31 @@
 	\label{fig:GooglePermissions}
 \end{figure}
 
-\begin{table}[H]
+	
+
 \begin{center}
-	\renewcommand{\arraystretch}{1}
+	%\renewcommand{\arraystretch}{1}
 	%\tiny
 	%\setlength{\tabcolsep}{5pt}
+	%\footnotesize
+    \begin{longtable}{ | p{5cm} | p{8cm} | }
 	\caption[Comparison Matrix for Help Desk Applications]{Comparison Matrix for Help Desk Applications} \label{tab:comp_matr_help}
-    \begin{tabular}{ | p{5cm} | p{8cm} | }
+	\\ \hline
+	\multicolumn{1}{|p{5cm}|}{\textbf{Permission}} & \multicolumn{1}{p{8cm}|}{\textbf{Description}} \\ \hline 
+	\endfirsthead
+	
+	\multicolumn{2}{c}%
+	{{\bfseries \tablename\ \thetable{} -- continued from previous page}} \\
+	\hline \multicolumn{1}{|c|}{\textbf{Permission}} &
+	\multicolumn{1}{c|}{\textbf{Description}} \\ \hline 
+	\endhead
+
+	\hline \multicolumn{2}{|r|}{{Continued on next page}} \\ \hline
+	\endfoot
+
 	\hline
-	\textbf{Permission} & \textbf{Description} \\ \hline
+	\endlastfoot
+	
 	\textbf{View and manage your mail} & 
 	\begin{compactitem}
 		\item View and manage your mail in Google Mail
@@ -53,6 +69,5 @@
 		\item View and modify existing spreadsheets
 		\item Share spreadsheets with others
 	\end{compactitem} \\ \hline	
-    \end{tabular}
+    \end{longtable}
 \end{center}
-\end{table}
