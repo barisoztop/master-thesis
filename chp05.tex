@@ -1,8 +1,8 @@
-\chapter{Final Solution}
+\chapter{The Final Solution}
 \label{chp:5:FinaSolu}
 In this chapter, a final design of a mass communication system, named Myriad, will be introduced. Firstly, the improvements on the requirements will be compared to the ones defined for the prototype from previous chapter. Later, the actual product's features, and its architecture will be discussed.
 
-\section{Improved Requirements}
+\section{The Improved Requirements}
 \label{sec:5.1:ImprRequ}
 
 Having seen the prototype in action made us to review the requirements, and bring the ones. Some of those requirements are shaped according to the feedbacks that we got at the Stanford \ac{HCI} group, as well as the organizations who do mass email communication on weekly basis to reach their community. Following sections will discussed those new features on the final product. 
@@ -124,7 +124,7 @@ Users can send emails to all the contacts that they entered or imported into the
 	\label{fig:ContactFilters}
 \end{figure}
 
-Filtered recipients are ready to be composed of email at the compose screen after pressing the corresponding button. The compose email pane (see figure \ref{fig:ComposeEmail}) contains a section that lists the previously sent emails to reuse. This is the same templating idea that was introduced at the prototype in chapter \ref{chp:4:InitIdeaProt} section \ref{subsec:4.2.2:ProtSyst}. It also shows the visualization of the state of the communication by using a tree structure, as well as the number of messages sent by using the corresponding template. A more long term campaign's visualization tree can be found in appendix \ref{app:VisuCommStat}.
+Filtered recipients are ready to be composed of email at the compose screen after pressing the corresponding button. The compose email pane (see figure \ref{fig:ComposeEmail}) contains a section that lists the previously sent emails to reuse. This is the same templating idea that was introduced at the prototype in chapter \ref{chp:4:InitIdeaProt} section \ref{subsec:4.2.2:ProtSyst}. It also shows the visualization of the state of the communication by using a tree structure, as well as the number of messages sent by using the corresponding template. A more long term campaign's visualization tree can be found in appendix \ref{app:VisuCommStat}. The system also suggest an email template while repling a responded by considering the nodes at the same tree structure.
 
 \begin{figure}[htbp]
 	\centering
@@ -136,13 +136,15 @@ Filtered recipients are ready to be composed of email at the compose screen afte
 The compose pane allows users to dynamic variables into the content of messages to personalize them according to recipients. Those variables are not just limited to the first name and last name, but also can be any keys from the assigned \ac{KVP}s in the campaign.
 \vspace{1cm}
 
-\ac{KVP}s are accessible among different campaigns, therefore extracted information from an earlier campaign can be used in a new campaign as well. Having broader knowledge about a recipient may help  researchers personalize the content of the emails more easily and properly. For example, if we had extracted information regarding which sports that the recipients do in an earlier campaign. We can use the same information to make a more frankly and friendly start in the new campaign by mentioning about the latest events of those sports areas in the country. Such a technique also supports the social exchange and the diffusion of responsibility theories as discussed in section \ref{sec:2.3:PersEmai}. There is also an option to hide the \ac{KVP}s in a campaign if they are not related at all or became obsolete during the flow of the campaign to avoid cluttering of \ac{KVP}s in the application's view.
+Each campaign has a link to the other campaigns if the recipient was involved for them as well as we will see in the next section. A researcher can access to the conversations and the \ac{KVP}s from other campaigns by switching to the campaigns via that link. Providing an option to see the earlier campaigns that a recipients was involved gives broader knowledge about a recipient that may help researchers to personalize the content of the emails more easily and properly. For example, if we had extracted information regarding which sports that the recipients do in an earlier campaign. We can use the same information to make a more frankly and friendly start in the new campaign by mentioning about the latest events of those sports areas in the country. Such a technique also supports the social exchange and the diffusion of responsibility theories as discussed in section \ref{sec:2.3:PersEmai}. There is also an option to hide the \ac{KVP}s in a campaign if they are not related at all or became obsolete during the flow of the campaign to avoid cluttering of \ac{KVP}s in the application's view.
 \vspace{1cm}
 
-In the figure \ref{fig:ComposeEmail}, under the section of after-sending actions, users are able to set the values of the keys right after an email is sent. Therefore, a user does not need to browse another screen to change or set \ac{KVP}s whose values depends on the email user has just sent.
+In the figure \ref{fig:ComposeEmail}, at the pane of "after-sending actions", users are able to set the values of the keys right after an email is sent. Therefore, a user does not need to browse another screen to change or set \ac{KVP}s whose values depends on the email user has just sent.
 \vspace{1cm}
 
 At the beginning of this section it is mentioned that a user can filter the recipients list, and send an email to the subset of it according to filtered condition. Myriad saves those filtered condition under the "Rules" menu as in the figure \ref{fig:AutomatedRules} after the user sent the email. Hence, the next time if there are new emails satisfying the same conditions as before, user will notice them under the rules menu, and the earlier sent email message can be sent to those new matching recipients automatically if user chose to enable it automated option or a user can simple press the send button manually in the same screen. For example, it the figure \ref{fig:AutomatedRules}, there are 3 recipients whose "attending" key was set to "yes", and the system already recognized that we already sent an email to those whose attending, and there are new matches for the same condition. In this case, the user can simply press the send button after, or automated the process by enabling the provided option.
+
+\clearpage
 
 \begin{figure}[htbp]
 	\centering
@@ -154,7 +156,13 @@ At the beginning of this section it is mentioned that a user can filter the reci
 \subsection{Extracting Information from Email Messages}
 \label{subsec:5.2.5:ExtrInfoEmaiMess}
 
-Myriad's reading pane (see figure \ref{fig:MyriadReadingPane}) offers a threaded view for all the messages of a recipient in a campaign. Each of the researcher's message is also annotated with the name of the message template that was used to make the latest state of the communication can easily recognizable.
+Myriad's reading pane (see figure \ref{fig:MyriadReadingPane}) offers a threaded view where all the messages from a recipient are visually grouped together. The advantage of threaded view is that it allows the researcher to get a quick overview of the whole state of a conversation with an individual, therefore a researcher can write a customized message more easily by focusing on the specific personality of the individual being respond to.
+\vspace{1cm}
+
+Each of the researcher's message is also annotated with the name of the message template that was used, hence it makes the latest state of the communication easily recognizable. In the figure \ref{fig:MyriadReadingPane}, the emails that was send by the application user had a green highlighted labels writing the name of the templates that was used, which is "Accepted" and "Invitation".
+\vspace{1cm}
+
+While reading a recipient's answer, the extracted information can be recorded in \ac{KVP}s at the right-hand side of the reading pane (see figure \ref{fig:MyriadReadingPane}). Earlier recorded keys' values can be also updated at the same pane. Having \ac{KVP}s along with the conversation thread gives a researcher necessary information about the person that is going to be replied. Under the \ac{KVP} pane, a researcher can also see if the responded was involved in other campaigns with a link to those campaigns and the amount of emails that was exchanged next to it. This is an helpful feature to remind the researcher about the existing of previous relation with the respondent, and if necessary the researcher can switch to other campaign to get an overview of extracted informations in \ac{KVP}s.
 
 \begin{figure}[htbp]
 	\centering
@@ -168,6 +176,8 @@ Myriad's reading pane (see figure \ref{fig:MyriadReadingPane}) offers a threaded
 
 A researcher can add other researchers as assistants into a campaign by adding their Google account email addresses into Myriad as in the figure \ref{fig:AddAssistants}. The task of a researcher can be extracting information from the email, writing answer to the recipients, or even proofreading of a researcher's emails before sending them.
 
+\clearpage
+
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=1.00\textwidth]{imgs/AddAssistants.png}
@@ -180,6 +190,8 @@ After an assistant is assigned to a campaign, he or she will get an notification
 
 Myriad provides status labels for each received or sent email to give a hint about the next required actions as in the figure \ref{fig:EmailStatuses}. These status labels give a hint about the next action that should be done in the state the conversation such as if the application user needs to read or reply a message, or the action is required from the recipient's side to continue the communication. There are also status labels related with Myriad's internal state regarding to an email message such as if Myriad sent the messages, or there was a failure with sending. The same view also provides a column to show what was the last message that is sent by an application user. Therefore, researchers and assistants will easily realize what should be done next, and see the status of the communication for each recipient. 
 
+\clearpage
+
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=1.00\textwidth]{imgs/EmailStatuses.png}
@@ -190,11 +202,11 @@ Myriad provides status labels for each received or sent email to give a hint abo
 \section{Architecture}
 \label{sec:5.3:FinaArch}
 
-\section{Conclusion}
-\label{sec:5.4:Conc}
-
 \section{Experiences}
 \label{sec:5.5:Expr}
+
+\section{Conclusion}
+\label{sec:5.4:Conc}
 
 \begin{comment}
 
