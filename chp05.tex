@@ -210,7 +210,14 @@ As it was at the prototype, Myriad was also developed using framework stack of \
 It was mentioned in section \ref{sec:4.2:Prot}, the prototype didn't keep information regarding to the recipients, but about the messages that they sent. Therefore, the extracted information, which are \ac{KVP}s, was related to the email messages of the recipients. The side effect of this approach was not the able get all the \ac{KVP}s of the recipients at one glance instead browsing by the earlier emails of the recipients, and each time we had to create the same key for each recipients since the system was not aware if it was already created for other email in the same campaign.
 \vspace{1cm}
 
-In Myriad, we overcame this issue by keeping all the recipients information in a separate data model named contact as in the figure \ref{}.
+In Myriad, we overcame this issue by keeping all the recipients information in a separate data model named contact as in the figure \ref{fig:UML_Draw_Final_2}.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=1.00\textwidth]{imgs/UML_Draw_Final_2.png}
+	\caption[Model Dependency of the Myriad Compared with the Prototype]{Model Dependency of the Myriad Compared with the Prototype}
+	\label{fig:UML_Draw_Final_2}
+\end{figure}
 
 \section{Experiences}
 \label{sec:5.5:Expr}
