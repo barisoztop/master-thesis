@@ -1,0 +1,24 @@
+View and manage your mail
+	View and manage your mail in Google Mail
+View basic information about your account
+	View your name, public profile URL, and photo
+	View your gender and birthdate
+	View your country, language, and timezone
+View your email address
+	View the email address associated with your account
+View and manage any of your documents and files in Google Drive
+	List and search all of your documents and files in Google Drive
+	Download any of your documents and files in Google Drive
+	Create, move, copy, edit, or delete any of your documents and files in Google Drive
+	Share or unshare any of your documents and files in Google Drive
+View and manage any of your documents and files in Google Drive
+	List and search all of your documents and files in Google Drive
+	Download any of your documents and files in Google Drive
+	Create, move, copy, edit, or delete any of your documents and files in Google Drive
+	Share or unshare any of your documents and files in Google Drive
+View and manage your spreadsheets in Google Drive
+	Create new spreadsheets
+	View and modify existing spreadsheets
+	Share spreadsheets with others
+	
+Myriad Development and Google will use this information in accordance with their respective terms of service and privacy policies.
