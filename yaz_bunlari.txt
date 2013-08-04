@@ -5,7 +5,11 @@
 - acknowledgment ta git ve latex e de tesekkur et
 - experience'in altinda graph ciz, ve kampanya tarihlerini kullnaral freq. yi bul guzel olur. Bunu admin paneldeki diger column lar icin de yap
 
+- sonunda bi yerde application'in nasil workflow u desteledigni bi ornekle, ve graphla acikla . Myriad - Exception Workflow pdf i ornek olabilir
 
+- Michael'in diger graphida iyiydi: MailMerge UI Solutions
 
+- Hypothesis bul mt-huebnerj'deki gibi p79
 
  You have granted the following services access to your Google Account: 
+
