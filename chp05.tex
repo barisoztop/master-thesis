@@ -249,8 +249,26 @@ The identification of the emails depends on the three different conditions:
 \begin{compactenum}
 	\item The emails that are fetched from Gmail and reply to one of to the campaign message.
 	\item The emails that are composed in Myriad as a part of the campaign whether they are the emails to initiate a campaign or replies to the recipients' emails.
-	\item The emails that are imported into Myriad from Gmail's inbox during synchronization (see section \ref{} for label synchronization).
+	\item The emails that are imported into Myriad from Gmail's inbox during synchronization (see section \ref{} for label synchronization)
 \end{compactenum}
+
+Myriad initially retrieves all the email's \ac{UID}s\footnote{} from Gmail's inbox of the last two weeks instead of all the emails of the inbox to reduce the time consumption of the fetching process. For those \ac{UID}s whose not stored in Email data model in Myriad, Myriad retrieves the actual email along with the metadata such as Gmail thread id\footnote{} and Gmail labels.
+\vspace{1cm}
+
+As it was in the prototype, we set a message-ID to the emails that are composed in Myriad. Therefore, we are able to identify during the aforementioned fetching process whether an email from Gmail is the one that was composed to initiate a campaign or was a reply to the one of the recipients email in a campaign by a Myriad user. Message-ID field is again leveraged for identifying the recipients messages belonging to a campaign. Myriad retrieves the Message-ID written in the In-Reply-To, and checks if it matches one of the campaign messages in Myriad. Another field that Myriad checks is the "References" field\footnote{} to identify the messages belongs to a campaign but forwarded to another person by the recipients in order to reply the message. Since the forwarded endpoint's email client sets the Message-ID of the forwarded message into the In-Reply-To, which is not known at all by Myriad, Myriad checks the "References" field to identify a Message-ID that belongs to a campaign in this case. This scenario is illustrated in the figure \ref{fig:drawingMessageReferences}.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=1.00\textwidth]{imgs/drawingMessageReferences.png}
+	\caption[A Scenario Using References Field in an Email]{A Scenario Using References Field in an Email}
+	\label{fig:drawingMessageReferences}
+\end{figure}
+
+
+- NOW labels
+
+
+
 
 --MessageId nin yaninda baska hangi Id lerini de kullaniyor u yaz, fark olarak.
 
