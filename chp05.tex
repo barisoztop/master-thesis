@@ -84,6 +84,8 @@ The corresponding columns in the spreadsheet start with "first name", "last name
 
 As it was discussed in section \ref{subsec:5.1.4:InteEmaiClie}, importing existing email conversations as campaigns into the system is an important feature, since researchers may initiate conversations in their regular email client, and later on to make them more manageable, they can import them into Myriad. Myriad leverages Gmail's labeling feature which is equivalent to the \ac{IMAP} protocol's folders for this purpose \citep{GoogleInc.2013}. Myriad creates a Gmail label in the user's account, and the only thing that user needs to do is the enable label syncing feature at the create campaign screen. Next, there will appear a label with the campaign name, and group under the root label of "myriad" in Gmail's inbox as in the figure \ref{fig:GmailLabels}. Hence, researcher will able to imports email messages, which were not considered to belong to a campaign for some reason, into Myriad.
 
+\clearpage
+
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[scale=0.60]{imgs/GmailLabels.png}
@@ -112,6 +114,8 @@ After the campaign is created, all the contacts and their \ac{KVP}s will importe
 	\label{fig:ContactListInCampaign}
 \end{figure}
 
+\clearpage
+
 \subsection{Composing an Email Message}
 \label{subsec:5.2.4:CompEmaiMess}
 
@@ -135,6 +139,8 @@ Filtered recipients are ready to be composed of email at the compose screen afte
 
 The compose pane allows users to dynamic variables into the content of messages to personalize them according to recipients. Those variables are not just limited to the first name and last name, but also can be any keys from the assigned \ac{KVP}s in the campaign.
 \vspace{1cm}
+
+\clearpage
 
 Each campaign has a link to the other campaigns if the recipient was involved for them as well as we will see in the next section. A researcher can access to the conversations and the \ac{KVP}s from other campaigns by switching to the campaigns via that link. Providing an option to see the earlier campaigns that a recipients was involved gives broader knowledge about a recipient that may help researchers to personalize the content of the emails more easily and properly. For example, if we had extracted information regarding which sports that the recipients do in an earlier campaign. We can use the same information to make a more frankly and friendly start in the new campaign by mentioning about the latest events of those sports areas in the country. Such a technique also supports the social exchange and the diffusion of responsibility theories as discussed in section \ref{sec:2.3:PersEmai}. There is also an option to hide the \ac{KVP}s in a campaign if they are not related at all or became obsolete during the flow of the campaign to avoid cluttering of \ac{KVP}s in the application's view.
 \vspace{1cm}
@@ -210,14 +216,48 @@ As it was at the prototype, Myriad was also developed using framework stack of \
 It was mentioned in section \ref{sec:4.2:Prot}, the prototype didn't keep information regarding to the recipients, but about the messages that they sent. Therefore, the extracted information, which are \ac{KVP}s, was related to the email messages of the recipients. The side effect of this approach was not the able get all the \ac{KVP}s of the recipients at one glance instead browsing by the earlier emails of the recipients, and each time we had to create the same key for each recipients since the system was not aware if it was already created for other email in the same campaign.
 \vspace{1cm}
 
-In Myriad, we overcame this issue by keeping all the recipients information in a separate data model named contact as in the figure \ref{fig:UML_Draw_Final_2}.
+In Myriad, we overcame this issue by keeping all the recipients information in a separate data model named contact as in the figure \ref{fig:UML_Draw_Final}. Hence, we are able to keep track of recipients among different campaigns via the conversations of them, which is another data model in the Myriad as each campaign has many conversations of a recipient.
+\vspace{1cm}
+
+Myriad keeps the basic profile information of the recipients which are the first names, last names, and email addresses. Those information can be imported into Myriad by the spreadsheet synchronization, by adding them into "To" filed when user compose an email, or by importing from Gmail's inbox via the label synchronization. The recipients' email addresses are unique identifier for Myriad to compare already existing recipient information with the synchronized ones. 
 
 \begin{figure}[htbp]
 	\centering
-	\includegraphics[width=1.00\textwidth]{imgs/UML_Draw_Final_2.png}
+	\includegraphics[width=1.00\textwidth]{imgs/UML_Draw_Final.png}
 	\caption[Model Dependency of the Myriad Compared with the Prototype]{Model Dependency of the Myriad Compared with the Prototype}
-	\label{fig:UML_Draw_Final_2}
+	\label{fig:UML_Draw_Final}
 \end{figure}
+
+\subsection{The \ac{KVP}s and the Templates}
+\label{subsec:5.3.2:KVPsTemp}
+
+Having a separate contact data model to keep track of recipients also made us to relate each extracted information, namely \ac{KVP}s, to them, instead of their message in a campaign as in figure \ref{fig:UML_Draw_Final}. Each campaign has many keys, and their values are according to recipients. One advantages of this is when we browse to a conversation of a recipient, we are able to see all the \ac{KVP}s of that recipients under one view, which was the \ac{KVP} pane next to the email threads in the figure \ref{fig:ComposeEmail}. The other benefit comes at the synchronization with spreadsheet. When a new key is added to a recipient or a value of a key is updated via Myriad, it will be reflected to the spreadsheet as well. Therefore, the spreadsheet will always contain the latest changes done by user in Myriad. 
+\vspace{1cm}
+
+As it was in the prototype, the templates contains emails messages with dynamic variables in it, and the actual emails whose dynamic variables are filled with values are kept in the Email data model as in the figure \ref{fig:UML_Draw_Final} after they are fetched from Gmail.
+\vspace{1cm}
+
+To visualize the state of the conversation, and let the users select templates, Myriad offers the tree structure as it was in the prototype. However, the implementation of the tree structure is different from the prototype. In section \ref{subsec:4.2.3:ProtArch}, it was mentioned that the hierarchy between the nodes of the tree was a nested set model. We decided to use adjacency list model instead of nested set model to increase the readability of the templates' relation at the data model level from the developers' perspective. Since the relation of the templates is not as completed as in other relations, the performance drawbacks on this decision was negligible. 
+
+\subsection{A Campaign Message Identification}
+\label{subsec:5.3.3:MessIden}
+At the prototype, due to dependency on the existing EmailValet's email fetching process, we were identifying the emails which belongs to a campaign, then inserting them into the same inbox in EmailValet. With Myriad, we removed this dependency, and only consider and show the emails which belongs to a campaign.
+\vspace{1cm}
+
+The identification of the emails depends on the three different conditions:
+
+\begin{compactenum}
+	\item The emails that are fetched from Gmail and reply to one of to the campaign message.
+	\item The emails that are composed in Myriad as a part of the campaign whether they are the emails to initiate a campaign or replies to the recipients' emails.
+	\item The emails that are imported into Myriad from Gmail's inbox during synchronization (see section \ref{} for label synchronization).
+\end{compactenum}
+
+--MessageId nin yaninda baska hangi Id lerini de kullaniyor u yaz, fark olarak.
+
+
+- burda bahset gmail label stuff i
+- spreadhseet
+- gmail labels
 
 \section{Experiences}
 \label{sec:5.5:Expr}
