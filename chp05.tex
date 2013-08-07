@@ -249,13 +249,13 @@ The identification of the emails depends on the three different conditions:
 \begin{compactenum}
 	\item The emails that are fetched from Gmail and reply to one of to the campaign message.
 	\item The emails that are composed in Myriad as a part of the campaign whether they are the emails to initiate a campaign or replies to the recipients' emails.
-	\item The emails that are imported into Myriad from Gmail's inbox during synchronization (see section \ref{} for label synchronization)
+	\item The emails that are imported into Myriad from Gmail's inbox via label synchronization (see section \ref{} for label synchronization)
 \end{compactenum}
 
-Myriad initially retrieves all the email's \ac{UID}s\footnote{} from Gmail's inbox of the last two weeks instead of all the emails of the inbox to reduce the time consumption of the fetching process. For those \ac{UID}s whose not stored in Email data model in Myriad, Myriad retrieves the actual email along with the metadata such as Gmail thread id\footnote{} and Gmail labels.
+Myriad initially retrieves all the email's \ac{UID}s\footnote{UID (Unique Identifier) is 32-bit integer value to uniquely identify emails in a mailbox in \ac{IMAP}. Each email added into mailbox will have a higher value than the ones added before, however they are not necessarily contiguous \citep{rfc3501}. \ac{UID} is used as it was in the prototype by the implementation of the EmailValet's part. It is used to identify if a message is already fetched from Gmail, if it is not, it is fetched since it is a new message.} from Gmail's inbox of the last 14 days instead of all the emails of the inbox to reduce the time consumption of the fetching process. For those \ac{UID}s whose not stored in Email data model in Myriad, Myriad retrieves the actual email along with the metadata such as Gmail thread ID\footnote{Gmail thread ID is a 64-bit integer that is part of the provided Gmail's IMAP extension. It helps to associate groups of messages in the same manner as in the Gmail web interface \citep{GoogleInc.2013a}.} and Gmail labels.
 \vspace{1cm}
 
-As it was in the prototype, we set a message-ID to the emails that are composed in Myriad. Therefore, we are able to identify during the aforementioned fetching process whether an email from Gmail is the one that was composed to initiate a campaign or was a reply to the one of the recipients email in a campaign by a Myriad user. Message-ID field is again leveraged for identifying the recipients messages belonging to a campaign. Myriad retrieves the Message-ID written in the In-Reply-To, and checks if it matches one of the campaign messages in Myriad. Another field that Myriad checks is the "References" field\footnote{} to identify the messages belongs to a campaign but forwarded to another person by the recipients in order to reply the message. Since the forwarded endpoint's email client sets the Message-ID of the forwarded message into the In-Reply-To, which is not known at all by Myriad, Myriad checks the "References" field to identify a Message-ID that belongs to a campaign in this case. This scenario is illustrated in the figure \ref{fig:drawingMessageReferences}.
+As it was in the prototype, we set a message-ID to the emails that are composed in Myriad. Therefore, we are able to identify during the aforementioned fetching process whether an email from Gmail is the one that was composed to initiate a campaign or was a reply to the one of the recipients email in a campaign by a Myriad user. Message-ID field is again leveraged for identifying the recipients messages belonging to a campaign. Myriad retrieves the Message-ID written in the In-Reply-To, and checks if it matches one of the campaign messages in Myriad. Another field that Myriad checks is the "References" field\footnote{Reference field in another identification field along with Message-ID defined by RFC 5322. It contains one or more Message-IDs used when creating a reply to a message to identify the original message or the other messages when a reply to a message that was itself a reply \citep{rfc5322}.} to identify the messages belongs to a campaign but forwarded to another person by the recipients in order to reply the message. Since the forwarded endpoint's email client sets the Message-ID of the forwarded message into the In-Reply-To, which is not known at all by Myriad, Myriad checks the "References" field to identify a Message-ID that belongs to a campaign in this case. This scenario is illustrated in the figure \ref{fig:drawingMessageReferences}.
 
 \begin{figure}[htbp]
 	\centering
@@ -264,18 +264,7 @@ As it was in the prototype, we set a message-ID to the emails that are composed 
 	\label{fig:drawingMessageReferences}
 \end{figure}
 
-
-- NOW labels
-
-
-
-
---MessageId nin yaninda baska hangi Id lerini de kullaniyor u yaz, fark olarak.
-
-
-- burda bahset gmail label stuff i
-- spreadhseet
-- gmail labels
+If an email is not identified as a campaign message by comparing the Message-IDs with the ones in Myriad's Email data model, the next step is to evaluate those emails in case of they were labelled as a Myriad campaign in the Gmail's inbox. In this case, if an email has a label in the pattern of "myriad/campaign-name", and there is already a created campaign in Myriad with the name "Campaign Name", that email will be stored in the data model. Finally, an identified email will be assigned to a contact by looking its parent email's Message-ID if it was a reply or if it fails the contact information will be recorded from the email's "From" header field. The rest of the emails will be ignored since there were no matches found in the mentioned email header fields, which are Message-ID, In-Reply-To, and References, or Gmail's Label.
 
 \section{Experiences}
 \label{sec:5.5:Expr}
