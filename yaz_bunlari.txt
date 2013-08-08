@@ -26,6 +26,7 @@
 - TO WOLFGANG
   - proofread
   - experiences part needs attention
+  - Scott and Michael's name
 
 removed rows:
 - subject contations test
