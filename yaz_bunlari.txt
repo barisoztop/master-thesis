@@ -15,7 +15,9 @@
 
  You have granted the following services access to your Google Account: 
 
-
+-- EKLE
+ -- analytics view as a feaature!!
+  -- mobile support as a feauter to chapter 6
 
 
 - TO PHILLIP
