@@ -267,8 +267,20 @@ As it was in the prototype, we set a message-ID to the emails that are composed 
 
 If an email is not identified as a campaign message by comparing the Message-IDs with the ones in Myriad's Email data model, the next step is to evaluate those emails in case of they were labelled as a Myriad campaign in the Gmail's inbox. In this case, if an email has a label in the pattern of "myriad/campaign-name", and there is already a created campaign in Myriad with the name "Campaign Name", that email will be stored in the data model. Finally, an identified email will be assigned to a contact by looking its parent email's Message-ID if it was a reply or if it fails the contact information will be recorded from the email's "From" header field. The rest of the emails will be ignored since there were no matches found in the mentioned email header fields, which are Message-ID, In-Reply-To, and References, or Gmail's Label.
 
+\section{The Benefits of the Final Solution}
+\label{sec:5.4:BeneFinaSolu}
+
+sdfs
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=1.00\textwidth]{imgs/drawingStatesOfEmailCommunication.png}
+	\caption[A Scenario Using References Field in an Email]{A Scenario Using References Field in an Email}
+	\label{fig:drawingStatesOfEmailCommunication}
+\end{figure}
+
 \section{Experiences}
-\label{sec:5.4:Expr}
+\label{sec:5.5:Expr}
 
 To date, Myriad has 67 users since its beta launch\footnote{Beta version of Myriad was launced at http://gv.stanford.edu/ and still accessebile from this address.} at January 30, 2013. Among those 67 users, 30 of them is actively using it since last month. In this section, there will be given statistics about the created campaigns and users' profile, and continued with some user's testimonials.
 
