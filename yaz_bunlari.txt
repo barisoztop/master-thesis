@@ -50,3 +50,5 @@ Perceptions Initial Survey mailing list
  4.3.1 Number of Message Limitation - bu sacma
 communication(s)
 he/she him/her --> he or she
+workflow --> work flow
+iki whitespace are ve sil
