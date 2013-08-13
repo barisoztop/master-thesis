@@ -1,64 +1,64 @@
 \chapter{The Final Solution}
 \label{chp:5:FinaSolu}
-In this chapter, a final design of a mass communication system, named Myriad, will be introduced. Firstly, the improvements on the requirements will be compared to the ones defined for the prototype from previous chapter. Later, the actual product features, and its architecture will be discussed.
+In this chapter, a final design of a mass communication system named Myriad will be introduced. To begin with, improvements on the requirements will be compared to those defined for the prototype from the previous chapter. Later on, the actual product features, its architecture, and the benefits of the final solution will be discussed.
 
 \section{The Improved Requirements}
 \label{sec:5.1:ImprRequ}
 
-Having seen the prototype in action made us to revise the requirements, and bring the new ones. Some of those requirements are shaped according to the feedback that we got during our research at the Stanford \ac{HCI} group, as well as from the organizations who do mass email communication on weekly basis to reach their community. In the following sections those new features of the final product will be discussed.
+Seeing the prototype in action made us realize the need to revise the requirements and bring new ones. Some of those requirements are shaped according to the feedback we got during our research at the Stanford \ac{HCI} group, as well as from a Stanford organization who conduct mass email communication regularly in reaching their community. The following section will discuss those new features for the final product.
 
 \subsection{Assistant Support}
 \label{subsec:5.1.1:AssiSupp}
-As it was described in section \ref{subsec:4.1.1:Cust}, the standard that we want to achieve within a mass email communication is the most adequately personalized emails for each recipients with minimum effort on a researcher's side. The initial idea and the prototype included several features for this purpose as discussed in chapter \ref{chp:4:InitIdeaProt} for this purpose. However, if you consider the gold standard we would like to achieve in the figure \ref{fig:ChartEffortCustom}, the prototype still leaves some effort on a researcher's side to accomplish a successful mass email campaign.
+As described in section \ref{subsec:4.1.1:Cust}, the standard we want to achieve within a mass email communication is the most adequately personalized emails for every individual recipient, with a minimum effort on the researcher's side. The initial idea, as well as the prototype, included several features for this purpose, as discussed in chapter \ref{chp:4:InitIdeaProt}. However, considering the gold standard we would like to achieve as shown in figure \ref{fig:ChartEffortCustom}, the prototype manages to still leave an amount of effort on the researcher's side in accomplishing a successful mass email campaign.
 \vspace{1cm}
 
-In order to reduce the effort as much as possible during a mass email communication, the additional assistants' involvement was considered. Therefore, a primary researcher will be able to share the tasks with permitted assistants. These might be tasks such as extracting information from the incoming answers, proofreading the primary researcher's replies before sending, or even writing replies to those answers. Hence, the primary researcher will only need to interact with the flow of a mass email campaign when there is a situation where the primary researcher's attention needed. However, the system still needs to provide the necessary features that we will see in the next sections to support the work flow in a mass email campaign, hence assistants will only need to interact with this work flow to let the continuation of the email campaign by providing answers with the email templates, and extract information as \ac{KVP}s.
+In order to reduce the effort as much as possible during a mass email communication, the addition of an assistants' involvement was considered. Therefore, a primary researcher will be able to share tasks with permitted assistants. These might be tasks such as extracting information from the incoming answers, proofreading the primary researcher's replies before sending them, or even writing replies to those answers. Therefore, the primary researcher will only need to interact with the flow of a mass email campaign when the situation calls for it. However, the system would still needs to provide necessary features that will be seen in the next sections in support for the work flow in a mass email campaign, hence, assistants will only need to interact with this work flow in letting the email campaign carry on by providing answers with the provided email templates and extract information as \ac{KVP}s.
 
 \subsection{Dynamic Variables and \ac{KVP}s}
 \label{subsec:5.1.2:DynmVariKVPs}
-We introduced dynamic variables at the initial prototype, however it was only limited to the salutation of the email. Since it makes the personalization of emails easier, and email marketing applications also support this feature in the same way, as described in section \ref{subsec:3.3.3:EmaiMarktAppl}, the final product will also include this feature. As a result, application users can create \ac{KVP}s and use those keys in the content of an email message to be replaced dynamically by its value according to the recipient. Therefore, the extracted information from emails will not just help us to gather information in an organized way, but also use it to personalize the emails
+We introduced the use of dynamic variables at the initial prototype; however, it was only limited to the salutation of the email. As described in section \ref{subsec:3.3.3:EmaiMarktAppl}, email marketing applications support this feature. And because it makes the personalization of emails easier, the final product will also include this feature. As a result, application users can create \ac{KVP}s and use the said keys in the content of an email message to be replaced dynamically by its value, according to the recipient. Therefore, the extracted information from emails will not just help us gather information in an organized way, but also in personalizing the emails.
 \vspace{1cm}
 
-As a result, instead of keeping the \ac{KVP}s in the system according to the responses, the system should keep them according to the recipients itself. This is where the \ac{KVP}-idea differs from the prototype as well. So, we have now profiles of contacts for a campaign having all \ac{KVP}s of a recipient visible during the whole state of the conversation. However, the system should offer an option to hide individual \ac{KVP}s to avoid cluttering on the view, and keep the \ac{KVP} list with the ones that are actively used.
+As a result, instead of storing the \ac{KVP}s in the system according to their respective responses, the system should store them according to the recipients itself. This is where the \ac{KVP}-idea differs from the prototype. With this, we now have profiles of contacts for a campaign having all \ac{KVP}s of a recipient visible during the whole state of the conversation. However, the system should offer an option to hide individual \ac{KVP}s to avoid cluttering the view, and make the actively used \ac{KVP} list the default view.
 
 \vspace{1cm}
-Importing the \ac{KVP}s should be done in several ways. One option is that the system should be able to synchronize with an online spreadsheet, e.g. Google Spreadsheet, to get the \ac{KVP}s at the beginning of a campaign. This is a convenient way for researchers since they are already familiar with spreadsheet environments. Other options should be a campaign-wide view and a contact specific view in the system. Also, it should be allowed to edit both keys and values in a campaign.
+Importing \ac{KVP}s can be done in several ways. One option is that the system should be able to synchronize with an online spreadsheet, e.g. Google Spreadsheet, in obtaining the \ac{KVP}s at the beginning of a campaign. This is a convenient way for researchers, since they are already familiar with spreadsheet environments. Other options should include a campaign-wide view and a contact specific view in the system. Also, it should have an editable keys and values in a campaign.
 
 \subsection{Importing and Exporting Contacts and Their Information}
 \label{subsec:5.1.3:ImpoExpoContInfo}
-In the prototype, the application user had to enter the basic information of the recipients such as first name, last name, and email address into the system manually. However, we realized while they were doing this, they use a spreadsheet and copy the contact information from there. This was also the case for their regular email client that they used for email campaigns. The applications that were investigated in section \ref{sec:3.3:Resul} had an option to import data from spreadsheet to ease the process. Therefore, the system should offer an option to import contacts from a spreadsheet environment.
+In the prototype, the application user has to enter all the basic information of the recipients such as first name, last name, and email address into the system manually. However, as they perform this, they use a spreadsheet and copy the contact information from there. This was also done for their regular email client used for email campaigns. The applications that were reviewed in section \ref{sec:3.3:Resul} all had an option to import data from spreadsheets to ease the process. Therefore, the system should also offer an option similar to this in importing contact information.
 \vspace{1cm}
 
-However, importing should not only be limited to the basic information of recipients. Since we already mentioned about importing \ac{KVP}s from a spreadsheet in the previous section, the system should detect and import the contact information and \ac{KVP}s related to that contact if they are available at a provided spreadsheet. 
+However, importing should not only be limited to the basic information of the recipients. Since we already mentioned about importing \ac{KVP}s from a spreadsheet in the previous section, the system should also able to detect and import the contact information and \ac{KVP}s related to a specific recipient, granting that they are available in the provided spreadsheet. 
 \vspace{1cm}
 
-The system should provide a bi-directional synchronization, not just support to import data from the spreadsheet. Therefore, the system should provide an option to export contact information and their created \ac{KVP}s from the system to the spreadsheet. This gives a reporting functionality to the application users, where they can see all the contacts, and their extracted information from a campaign on one view.
+The system should provide a bi-directional synchronization, and not just support to import data from the spreadsheet. Therefore, the system should provide an option to export contact information and their created \ac{KVP}s from the system to the spreadsheet as well. This gives a reporting functionality to the application users, where they can see all of their recipients, and the extracted information from a specific campaign, all in one view.
 
 \subsection{Interoperability with Other Email Clients}
 \label{subsec:5.1.4:InteEmaiClie}
-Even though we provide a new system for the users to initiate their mass email communication, there might be some cases where a mass email communication initiated in the user's regular email client, and the system is not aware of that campaign since it was not created with it. The application should provide an option to import those email messages created with another email client into the system by recognizing those messages annotated by the user.
+Even though we provided a new system for the users in initiating their mass email communication, there might be other cases wherein a mass email communication was initiated using a regular email client, therefore the system is not aware such campaign, since it was not created with it. The application should be able to provide an option in importing email messages created with a different email client into the system by recognizing specific messages, as annotated by the user.
 \vspace{1cm}
 
-Enabling the system to import email conversations from other email clients reduce the dependency on the application, and while researchers continue to use their own email clients, assigned assistants can take care of those emails imported by the researchers. We saw such an import feature in \ac{CRM} applications in section \ref{subsec:3.3.1:CRMAppl} as well, where a user is able to forward an email to the \ac{CRM} application's provided unique email addresses, and the system takes care of assigning the imported emails to the corresponding recipients in the system.
+Allowing the system to import email conversations from other email clients reduces the need for dependency on the application, and while researchers continue on using their own email clients, assigned assistants can take care of those emails, as imported by the researchers. We saw the same import feature in \ac{CRM} applications presented in section \ref{subsec:3.3.1:CRMAppl} as well, where a user can easily forward an email to the \ac{CRM} application's provided unique email addresses, and the system then takes care of assigning the imported emails to the corresponding recipients in the system.
 
 \subsection{Automated Decision-Making and Notifications}
 \label{subsec:5.1.5:AutoDeciMakiNoti}
-Even though the involvement of assistants makes the primary researcher's life easier, the system still needs to provide an automated approach to answer the emails whose statuses are clear in the flow of a mass email communication. Therefore, a rule based decision-making mechanism should be used, at which a user sets the values of the keys from \ac{KVP}s, and it triggers the action of sending emails to respondents whose \ac{KVP}s satisfies the provided condition.
+Even though the involvement of assistants helps make the primary researcher's life easier, the system still needs to provide an automated approach in answering emails whose statuses are clear in terms of its mass email communication flow. Therefore, a rule based decision-making mechanism should be used, at which a user sets the values of the keys from \ac{KVP}s, and it triggers the action of sending emails to qualified respondents whose \ac{KVP}s satisfy the provided condition.
 \vspace{1cm}
 
-Since the application's only purpose is the managing mass email communication and each campaign results great amount of messages in the inbox, the system should provide notifications regarding what should be done next for each recipients. Labels should be added to the email conversations to state whose turn is the next in the communication. For instance, by proving a label saying "You need to reply" to the application user, the state of the communication waits an action from a researcher or an assistant. In the same way the unread conversations and the conversation waiting an answer from the recipients should be also annotated in the similar way. The system should also provide email notifications to the assistants' email addresseses to notify them there is an action waiting to be taken care of.
+Since the only purpose of the application is managing mass email communication and each campaign results to a great amount of messages in the inbox, the system should be able to provide notifications regarding what should be done next for each recipient. Labels should be added to email conversations to indicate whose turn is the next in the communication. For an instance, by proving a label saying "You need to reply" to the application user, the state of the communication awaits for an ample action from a researcher, or an assistant. In the same way, unread conversations and conversations waiting for an answer from the recipients should also be annotated in the appropriately. The system should also provide email notifications to the assistants' email addresses, to notify them whenever there is an action waiting to be taken care of.
 
 \section{Final System}
 \label{sec:5.2:FinaSyst}
-In this section, we will see that how the revised and improved requirements from the previous section reflected to the final product, named "Myriad".
+In this section, we will see how the revised and improved requirements from the previous section reflected on the final product, named "Myriad".
 
 \subsection{Log-In and Campaigns Overview}
 \label{subsec:5.2.1:CampOver}
 
-As it was the same case for the prototype in section \ref{subsec:4.2.2:ProtSyst}, Myriad also requires a Gmail account to work with. The reason behind this is not just the popularity of Gmail, but also that Stanford University uses Google Apps by default at university wide. Therefore, each member of the university has already a Google account to use with Myriad. This also provides flexibility, because there is no registration form or sign in screen at the Myriad. All the requested Google's permissions from a Myriad's user and their descriptions can be found in appendix \ref{app:GoogPerm}.
+Similar to the prototype featured in section \ref{subsec:4.2.2:ProtSyst}, Myriad also requires a Gmail account to work with. The reason behind this is not just the popularity of Gmail, but also given the fact that Stanford University uses Google Apps by default, university wide. Therefore, each member of the university has a Google account ready to use with Myriad. This also provides flexibility, because Myriad does not have a registration form or a sign in screen. All the requested Google's permissions from a Myriad's user and their descriptions can be found in appendix \ref{app:GoogPerm}.
 \vspace{1cm}
 
-After users sign in to the system, the first screen that they will see is the campaigns overview screen. All the created campaigns including the ones assigned by other user's as an assistant are shown as in the figure \ref{fig:CampaignsOverviewScreen}. It has a simple and clean \ac{UI}, deferring from regular email clients to emphasize its focus on mass email communication.
+After users sign in to the system, the first screen they will see is the campaign overview screen. All created campaigns, including the ones assigned by other user's as an assistant are shown as in figure \ref{fig:CampaignsOverviewScreen}. It has a simple and clean \ac{UI}, compared to regular email clients, emphasizing its focus on mass email communication.
 
 \begin{figure}[htbp]
 	\centering
@@ -67,13 +67,13 @@ After users sign in to the system, the first screen that they will see is the ca
 	\label{fig:CampaignsOverviewScreen}
 \end{figure}
 
-\subsection{Synchronization with Other Sytems}
+\subsection{Synchronization with Other Systems}
 \label{subsec:5.2.2:SyncOtheSyst}
 
-Myriad is able to get the recipients' information and their \ac{KVP}s from Google Spreadsheet\footnote{https://docs.google.com/spreadsheet/}. This is a convenient way to import recipients' information into the system since many people already keep their recipients' and related information in a spreadsheet environment as we discussed in section \ref{subsec:5.1.3:ImpoExpoContInfo}. Therefore, Myriad offers a bi-directional syncing from and to the spreadsheet defined at the creation of a campaign. Besides, Myriad also has an option to enter recipients first name, last name, and email address into the system directly.
+Myriad has the ability to get the recipients' information and their \ac{KVP}s from Google Spreadsheet\footnote{https://docs.google.com/spreadsheet/}. This is a convenient way in importing recipients' information into the system, since many people already keep their recipients' and related information in a spreadsheet environment as we discussed in section \ref{subsec:5.1.3:ImpoExpoContInfo}. Therefore, Myriad offers a bi-directional syncing from and to a spreadsheet, defined at the beginning of the creation of a campaign. Besides this, Myriad also has an option to enter a recipient's first name, last name, and email address into the system directly.
 \vspace{1cm}
 
-The corresponding columns in a Google Spreadsheet start with "first name", "last name", and "email address" as in the figure \ref{fig:GoogleSpreadsheet}. The rest of the columns will be acted as a \ac{KVP}, and imported into the system as well.
+The corresponding columns in a Google Spreadsheet start with "first name", "last name", and "email address" as shown in the figure \ref{fig:GoogleSpreadsheet}. The rest of the columns will be filled out as a \ac{KVP}, and imported into the system as well.
 
 \begin{figure}[htbp]
 	\centering
@@ -82,7 +82,7 @@ The corresponding columns in a Google Spreadsheet start with "first name", "last
 	\label{fig:GoogleSpreadsheet}
 \end{figure}
 
-As it was mentioned in the section \ref{subsec:5.1.4:InteEmaiClie}, importing existing email conversations as a campaign message into the system is an important feature. Because, researchers may initiate conversations in their regular email client, and later on to make them more manageable, they can import them into Myriad. Myriad leverages Gmail's labeling feature which is equivalent to the \ac{IMAP} protocol's folders for this purpose \citep{GoogleInc.2013}. Myriad creates a Gmail label in the user's account, and the only thing that user needs to do is the enable label syncing feature at the campaign creation screen. Next, there will be a label same with the campaign's name, and grouped under the root label, "myriad", in the Gmail's inbox (see the figure \ref{fig:GmailLabels}). Hence, a researcher will able to import email messages, which were not considered to belong to a campaign for some reasons, into Myriad.
+As mentioned in section \ref{subsec:5.1.4:InteEmaiClie}, importing existing email conversations as a campaign message into the system is an important feature. Researchers might have initiated conversations using their regular email client, and if later on they decide to make them more manageable, they can import them into Myriad. Myriad takes advantage of Gmail's labeling feature, which is equivalent to the \ac{IMAP} protocol's folders for the same purpose \citep{GoogleInc.2013}. Myriad creates a Gmail label in the user's account, and the only thing a user needs to do is the enable the label syncing feature at the campaign creation screen. Next, there will be a label similar to the campaign's name, and grouped under the root label, "myriad" in the Gmail's inbox (see the figure \ref{fig:GmailLabels}). Hence, researchers will able to import email messages not considered a part of a campaign for some reasons, into Myriad.
 
 \clearpage
 
@@ -96,7 +96,7 @@ As it was mentioned in the section \ref{subsec:5.1.4:InteEmaiClie}, importing ex
 \subsection{Creating an Email Campaign}
 \label{subsec:5.2.3:CreaEmaiCamp}
 
-The campaign creation screen (see figure \ref{fig:CreateCampaign}) has input fields for a campaign name and Google Spreadsheet's \ac{URL} to synchronize with. Other two checkboxes for the spreadsheet are to manage the frequency of synchronization and disabling the cascading warning messages in case of erroneous data in the spreadsheet such as an empty email address field for a contact. The option for importing emails from Gmail's inbox is also in this screen under the label synching section.
+The campaign creation screen (see figure \ref{fig:CreateCampaign}) has input fields for a campaign name and Google Spreadsheet's \ac{URL} to synchronize with. Other two checkboxes for the spreadsheet are used to manage the frequency of synchronization and disabling the cascading warning messages in case of an erroneous data in the spreadsheet such as an empty email address field for a contact. The option for importing emails from Gmail's inbox is also in this screen, labeled as "synching section".
 
 \begin{figure}[htbp]
 	\centering
@@ -105,7 +105,7 @@ The campaign creation screen (see figure \ref{fig:CreateCampaign}) has input fie
 	\label{fig:CreateCampaign}
 \end{figure}
 
-After the campaign is created, all the contacts and their \ac{KVP}s will be imported if the user provided a Google Spreadsheet \ac{URL} like in the figure \ref{fig:ContactListInCampaign}.
+After the campaign is created, all the contacts and their \ac{KVP}s will be imported as long as the user provided a Google Spreadsheet \ac{URL} like in the figure \ref{fig:ContactListInCampaign}.
 
 \begin{figure}[htbp]
 	\centering
@@ -119,7 +119,7 @@ After the campaign is created, all the contacts and their \ac{KVP}s will be impo
 \subsection{Composing an Email Message}
 \label{subsec:5.2.4:CompEmaiMess}
 
-Users can send emails to all the contacts that they entered or imported into the system, or select a subset of them by using the filtering functionality as in figure \ref{fig:ContactFilters}. Provided filtering options are according to the values of \ac{KVP}s, the conversation statuses such as unread, replied, or unreplied, or the message's template names.
+Users can send emails to all of the contacts they entered or imported into the system, or select a subset of them by using the filtering functionality as shown in figure \ref{fig:ContactFilters}. Provided filtering options are according to the values of \ac{KVP}s, the conversation statuses such as unread, replied, or unreplied, or the message's template names.
 
 \begin{figure}[htbp]
 	\centering
@@ -128,7 +128,7 @@ Users can send emails to all the contacts that they entered or imported into the
 	\label{fig:ContactFilters}
 \end{figure}
 
-Filtered recipients are ready to compose email to them at the compose screen after pressing the corresponding button. The compose email pane (see figure \ref{fig:ComposeEmail}) contains a section that lists the previously sent emails to reuse. This is the same templating idea that was introduced at the prototype in chapter \ref{chp:4:InitIdeaProt} section \ref{subsec:4.2.2:ProtSyst}. It also shows the visualization of the state of the communication by using a tree structure, as well as the number of messages sent by using the corresponding template. A more long term campaign's visualization tree can be found in appendix \ref{app:VisuCommStat}. The system also suggest an email template while replying a responded by considering the nodes at the same tree structure.
+By pressing the corresponding button, users can now readily compose emails for their filtered recipients at the compose screen. The compose email pane (see figure \ref{fig:ComposeEmail}) contains a section that lists previously sent emails available for reuse. This is the same template concept that was introduced for the prototype in Chapter \ref{chp:4:InitIdeaProt}. Section \ref{subsec:4.2.2:ProtSyst}. It also shows the visualization of the flow of the communication by using a tree structure, as well as the number of messages sent by using the corresponding template. A more long term campaign's visualization tree can be found in appendix \ref{app:VisuCommStat}. The system also suggests an email template while composing a reply by considering the nodes at the same tree structure.
 
 \begin{figure}[htbp]
 	\centering
@@ -137,18 +137,18 @@ Filtered recipients are ready to compose email to them at the compose screen aft
 	\label{fig:ComposeEmail}
 \end{figure}
 
-The compose pane allows users to add dynamic variables into the content of messages to personalize them according to recipients. Those variables are not just limited to the first name and last name, they can also be any keys from the assigned \ac{KVP}s in the campaign.
+The compose pane allows users to add dynamic variables in the content of messages to personalize them according to the recipients. These variables are not just limited to the first name and last name, as they can also be of any keys from the assigned \ac{KVP}s in the campaign.
 \vspace{1cm}
 
 \clearpage
 
-Each campaign has a link to the other campaigns if the recipient was involved for them too as we will see in the next section. A researcher can access to the conversations and the \ac{KVP}s from other campaigns by switching to the campaign via the provided link. Providing an option to see the earlier campaigns that a recipient involved gives broader knowledge about a recipient that may help researchers to personalize the content of the emails more easily and properly. For example, if we had extracted information regarding which sports the recipients do in an earlier campaign. We can use the same information to make a more friendly and frankly start in the new campaign by mentioning about the latest events of those sports areas in the country. Such a technique also supports the social exchange and the diffusion of responsibility theories as discussed in section \ref{sec:2.3:PersEmai}. There is also an option to hide the \ac{KVP}s in a campaign if they are not related at all or became obsolete during the flow of a campaign to avoid cluttering of them in the application's view.
+Each campaign has a link to the other campaigns, as ling as the recipient is involved in both campaigns, as featured in the next section. A researcher can access conversations and \ac{KVP}s from other campaigns by switching to the campaign via the provided link. Providing an option to see the earlier campaigns a recipient got involved in gives broader knowledge about a recipient that may help researchers in personalizing the content of the emails more easily and properly. For example, if we have extracted information regarding which sports did the recipients got involved with in an earlier campaign. We can use the same information in making a friendlier and to frankly start a new campaign by mentioning details about the latest events of those sports areas in the country. Such a technique also supports the social exchange theory and the diffusion of responsibility theory as discussed in section \ref{sec:2.3:PersEmai}. There is also an option to hide the \ac{KVP}s in a campaign if they are not related at all or have become obsolete during the flow of a campaign to avoid cluttering the application's view.
 \vspace{1cm}
 
-In the figure \ref{fig:ComposeEmail}, at the pane of "after-sending actions", users are able to set the values of the keys right after an email is sent. Therefore, a user does not need to browse to another screen to change or set \ac{KVP}s whose values depends on the email that was recently sent.
+In the figure \ref{fig:ComposeEmail}, at the pane of "after-sending actions", users are able to set the values of the keys right after an email is sent. Therefore, a user does not need to browse to another screen in order to change or set \ac{KVP}s whose values depends on the email that was recently sent.
 \vspace{1cm}
 
-At the beginning of this section it is mentioned that a user can filter the recipients list, and send an email to the subset of it according to the filtered condition. Myriad saves those filtered conditions under the "Rules" menu as in the figure \ref{fig:AutomatedRules} after the user sent the email. Hence, the next time if there are new emails satisfying the same conditions as before, user will notice them under the rules menu, and the earlier sent email messages can be sent to those new matching recipients automatically if user choose to enable automated option or a user can simple press the send button manually in the same screen. For example, in the figure \ref{fig:AutomatedRules}, there are 3 recipients whose "attending" key was set to "yes", and the system already recognized that we already sent an email to those whose attending, and there are new matches for the same condition recently. In this case, the user can simply press the send button, or automate the process by enabling the provided option.
+At the beginning of this section it was mentioned that a user can filter the recipients list, and then send an email to a subset, according to the filter's criteria. Myriad saves those filtered criteris under the "Rules" menu as shown in figure \ref{fig:AutomatedRules} after the user sent the email. Therefore, the next time the system receives new emails with the same conditions as before, user will see them under the rules menu, and the earlier sent email messages can be sent to those new matching recipients automatically, if user opt to enable the automated response feature or a user can simply press the send button manually in the same screen. For example, in figure \ref{fig:AutomatedRules}, there are three recipients whose "attending" key were set to "yes", and since the system already recognized that we have already sent an email to those whose attending, new matches for the same condition applies. In this case, the user can simply press the send button, or automate the process by enabling the provided option.
 
 \clearpage
 
@@ -162,13 +162,13 @@ At the beginning of this section it is mentioned that a user can filter the reci
 \subsection{Extracting Information from Email Messages}
 \label{subsec:5.2.5:ExtrInfoEmaiMess}
 
-Myriad's reading pane (see figure \ref{fig:MyriadReadingPane}) offers a threaded view where all the messages of a recipient and a researcher are visually grouped together. The advantage of threaded view is that it allows a researcher to get a quick overview of the whole state of a conversation, therefore a researcher can write a customized message more easily by focusing on the specific personality of the individual being respond to considering the earlier conversations with him or her at a single glance.
+Myriad's reading pane (see figure \ref{fig:MyriadReadingPane}) offers a threaded view wherein all of the messages between a specific recipient and a researcher are visually grouped together. The advantage of a threaded view is that it allows a researcher to get a quick overview of the whole state of a conversation, therefore a researcher can write a customized message more easily by focusing on the specific personality of the individual being responded to, considering the earlier conversations with him or her at a single glance.
 \vspace{1cm}
 
-Each of the researcher's message is also annotated with the name of the message template that was used with, hence it makes the latest state of the communication easily recognizable without looking its content. In the figure \ref{fig:MyriadReadingPane}, the emails that were sent by the user had green labels writing the name of the templates that was used in it, such as "Accepted" and "Invitation" in this example.
+Each of the researcher's message is also annotated with the name of the message template that was used with, making the latest state of the communication easily recognizable without having to look for its content. In figure \ref{fig:MyriadReadingPane}, emails sent by the user have green labels writing with indicators of the name of the template used, such as "Accepted" and "Invitation".
 \vspace{1cm}
 
-While reading a recipient's answer, the extracted information can be recorded as \ac{KVP}s at the right-hand side of the reading pane (see figure \ref{fig:MyriadReadingPane}). Earlier recorded keys' values can also be updated at the same pane. Having \ac{KVP}s along with the conversation thread gives a researcher necessary information about the person that is going to be replied. Under the \ac{KVP}s pane, a researcher can also see if the recipient was involved in the other campaigns, and a link to those campaigns are provided with the amount of emails that was exchanged next to it. This is a helpful feature to remind the researcher about the existence of previous relation with the recipient, and if necessary the researcher can switch to the other campaigns to get an overview of extracted information as \ac{KVP}s.
+While reading a recipient's answer, the extracted information can be recorded as \ac{KVP}s at the right-hand side of the reading pane (see figure \ref{fig:MyriadReadingPane}). Earlier recorded keys' values can also be updated at the same pane. Having \ac{KVP}s along with the conversation thread gives a researcher necessary information about the person being replied to. Under the \ac{KVP}s pane, the researcher can also see if the recipient is involved with another campaign, and a link to the involved campaigns are provided with the number of emails exchanged, next to it. This is a helpful feature in reminding researchers about the existence of previous interactions with the recipient, and if necessary the researcher can switch to the other campaigns to get an overview of extracted information as \ac{KVP}s.
 
 \begin{figure}[htbp]
 	\centering
@@ -180,7 +180,7 @@ While reading a recipient's answer, the extracted information can be recorded as
 \subsection{Enabling Assistants}
 \label{subsec:5.2.6:EnabAssi}
 
-A researcher can add other researchers as assistants into a campaign by adding their Google account associated email addresses into Myriad as in the figure \ref{fig:AddAssistants}. The task of a researcher can be extracting information from emails, writing answers to the recipients, or proofreading of a researcher's emails before sending them, and many other tasks that can be generated according to the type of help a researcher needs.
+A researcher can add other researchers as assistants into a campaign by adding their Google account associated email addresses into the Myriad application, as shown in figure \ref{fig:AddAssistants}. The task of the assistant can range from extracting information from emails, writing answers to the recipients, to proofreading a researcher's emails before sending them, and many other tasks that can be generated according to the type of help a researcher needs.
 
 \clearpage
 
@@ -191,10 +191,10 @@ A researcher can add other researchers as assistants into a campaign by adding t
 	\label{fig:AddAssistants}
 \end{figure}
 
-After an assistant is assigned to a campaign, he or she will get a notification email including the link to the campaign. Again, there will be notification emails for each email of respondents to the assistants' email address to let them know about the action required situation.
+After an assistant is assigned to a campaign, he or she will get a notification email including the link to the campaign. Again, there will be a notification email for each email sent by a respondent to the assistants' email address to let them know that they need to act on the situation.
 \vspace{1cm}
 
-Myriad provides status labels for each received or sent email to give a hint about the next awaiting actions like in the figure \ref{fig:EmailStatuses}. These status labels give a hint about the next action that should be done according to the state of the conversations such as if the user needs to read or reply a message, or the conversation waits an answer from the recipient's side to continue to the communication. There are also status labels related with Myriad's internal state regarding to an email message such as if Myriad sent the messages successfully, or there was a failure with sending. The same view also provides a column to show what was the last sent message by the user. Therefore, the researchers and the assistants will easily realize what should be done next, and see the status of the communication for each recipient. 
+Myriad provides status labels for each received or sent email, giving a hint on the next awaiting actions similar to what is shown in figure \ref{fig:EmailStatuses}. These status labels give hints about the next action to be taken according to the state of the conversation, such as if the user needs to read or to send a message, or the conversation awaits for an answer from the recipient's side to continue to the communication. There are also status labels related with Myriad's internal state regarding to an email message, such as if Myriad was able to send the messages successfully, or if there was a failure encountered while sending them. The same view also provides a column showing the last sent by the user. With this, the researchers and the assistants will easily realize what should be done next, and see the status of the communication for each recipient. 
 
 \clearpage
 
