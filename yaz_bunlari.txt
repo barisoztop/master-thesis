@@ -52,3 +52,4 @@ communication(s)
 he/she him/her --> he or she
 workflow --> work flow
 iki whitespace are ve sil
+bazen help desk bazen helpdesk demissin
