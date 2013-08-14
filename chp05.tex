@@ -12,7 +12,7 @@ Seeing the prototype in action made us realize the need to revise the requiremen
 As described in section \ref{subsec:4.1.1:Cust}, the standard we want to achieve within a mass email communication is the most adequately personalized emails for every individual recipient, with a minimum effort on the researcher's side. The initial idea, as well as the prototype, included several features for this purpose, as discussed in chapter \ref{chp:4:InitIdeaProt}. However, considering the gold standard we would like to achieve as shown in figure \ref{fig:ChartEffortCustom}, the prototype manages to still leave an amount of effort on the researcher's side in accomplishing a successful mass email campaign.
 \vspace{1cm}
 
-In order to reduce the effort as much as possible during a mass email communication, the addition of an assistants' involvement was considered. Therefore, a primary researcher will be able to share tasks with permitted assistants. These might be tasks such as extracting information from the incoming answers, proofreading the primary researcher's replies before sending them, or even writing replies to those answers. Therefore, the primary researcher will only need to interact with the flow of a mass email campaign when the situation calls for it. However, the system would still need to provide necessary features that will be seen in the next sections in support for the work flow in a mass email campaign, hence, assistants will only need to interact with this work flow in letting the email campaign carry on by providing answers with using the provided email templates and extract information as \ac{KVP}s.
+In order to reduce the effort as much as possible during a mass email communication, the addition of an assistants' involvement was considered. Therefore, a primary researcher will be able to share tasks with permitted assistants. These might be tasks such as extracting information from the incoming answers, proofreading the primary researcher's replies before sending them, or even writing replies to those answers. Therefore, the primary researcher will only need to interact with the flow of a mass email campaign when the situation calls for it. However, the system would still need to provide necessary features that will be seen in the next sections in support for the workflow in a mass email campaign, hence, assistants will only need to interact with this workflow in letting the email campaign carry on by providing answers with using the provided email templates and extract information as \ac{KVP}s.
 
 \subsection{Dynamic Variables and \ac{KVP}s}
 \label{subsec:5.1.2:DynmVariKVPs}
@@ -213,7 +213,7 @@ Similar to the prototype, Myriad was also developed using a framework stack of \
 \subsection{Keeping Track of Recipients}
 \label{subsec:5.3.1:ReciCont}
 
-As mentioned in section \ref{sec:4.2:Prot}, the prototype was not able to keep the basic contact information of the recipients, only the messages of them. Therefore, extracted information such as \ac{KVP}s are only limited to email messages related to the recipients. The downside of this approach is its inability in obtaining  all the \ac{KVP}s of the recipients all at one glance. Instead, we need to go through earlier emails of the recipients each time we need to create the same key, since the system was not aware of an existing \ac{KVP} created for a different email in the same campaign.
+As mentioned in section \ref{sec:4.2:Prot}, the prototype was not able to keep the basic contact information of the recipients, only the messages of them. Therefore, extracted information such as \ac{KVP}s are only limited to email messages related to the recipients. The downside of this approach is its inability in obtaining all the \ac{KVP}s of the recipients all at one glance. Instead, we need to go through earlier emails of the recipients each time we need to create the same key, since the system was not aware of an existing \ac{KVP} created for a different email in the same campaign.
 \vspace{1cm}
 
 In Myriad's case, this issue was solved by keeping all the recipients' information in a separate data model named "contact" as shown in figure \ref{fig:UML_Draw_Final}. With this, we were able to keep track of the recipients among different campaigns through different conversations involving them, which is another set of a data model in the Myriad system, as each campaign involves many conversations with the recipient involved with them.
@@ -284,7 +284,7 @@ After discussing what Myriad is and its features, let us see how these features 
 \subsection{Handling The Incoming Emails}
 \label{subsec:5.4.1:IncoEmai}
 
-Myriad has a campaign inbox view to avoid cluttering of unrelated messages  in the inbox, fetching only the campaign related emails from the user's email account by ignoring private emails, and grouping each email according to the campaign it belongs to.
+Myriad has a campaign inbox view to avoid cluttering of unrelated messages in the inbox, fetching only the campaign related emails from the user's email account by ignoring private emails, and grouping each email according to the campaign it belongs to.
 \vspace{1cm}
 
 As a researcher reads the incoming emails, he/she can also record the extracted information from those emails into \ac{KVP}s at the same time. This avoids the need on using a third-party application like a spreadsheet. However, if a researcher prefers a traditional way in recording information like a spreadsheet, Myriad still offers an option in synchronizing those \ac{KVP}s with a Google Spreadsheet.
@@ -414,7 +414,7 @@ I use Myriad to manage a large volume of emails about the courses that I'm teach
 
 \begin{lstlisting}[language=, caption={[User Testimonial \#3 about Myriad]User Testimonial \#3 about Myriad}, label={lst:Testimonial3}]
 
-I use Myriad when I'm mass-mailing a group of people and want to personalize the email. Before, I was using Mailchimp or BCC everyone. It's a great tool to send personalized emails to the network! I use Myriad whenever I need to email more than 10 people and want to personalize the emails.  For less than 10, the set up for Myriad may take longer than sending out the emails individually (this was discovered through trial and error).
+I use Myriad when I'm mass-mailing a group of people and want to personalize the email. Before, I was using Mailchimp or BCC everyone. It's a great tool to send personalized emails to the network! I use Myriad whenever I need to email more than 10 people and want to personalize the emails. For less than 10, the set up for Myriad may take longer than sending out the emails individually (this was discovered through trial and error).
 \end{lstlisting}
 
 \section{Conclusion}
@@ -442,7 +442,7 @@ In the next section, we will see the conclusion of this study and the possible e
 --> Gmail labellari ni anlatirken, diger urunlerde import nasil email forwardingle yapiliyordu onu anlat kesin.
 
 
-However, we still needs to supply a system, where it offers a work flow to make it happen. satisfy these 
+However, we still needs to supply a system, where it offers a workflow to make it happen. satisfy these 
 
 distribution of the work
 
