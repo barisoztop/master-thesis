@@ -47,3 +47,21 @@ Perceptions Initial Survey mailing list
 -- CORRECT THEM
  4.2.3 , 4.3 un oncesindeki kisma Wolfgang'in user study feedback'ini uygula.
 communication(s)
+
+
+
+-----
+*
+At the end of the chapter 2, a brief summary/conclusion could be helpful. Thereby, you could also put the related work in perspective to your problem statement, i.e. explaining where the existing work falls short or can be improved (by your solution).
+
+*
+At the end of Section 4, it is somewhat unclear, how the mentioned drawbacks were acquired, did you do an informal user test (with how many users etc.)?
+
+Overall, you could explain the methodology more explicitly throughout the thesis, i.e. describing why something was done. One way to do it, is in the introductory paragraphs of Sections. You give a brief overview on what the sections contain but not why an initial prototype was set up, for example, and how this fits the overall course of action in the thesis. Other than that, I do not have any remarks at this time, you can continue finishing the thesis.
+
+*
+but it seems to me that the description of the solution very much focusses on the system and its details. I think you could a few more statements about how the solution enhances the existing state-of-the-art from a conceptional point of view, including references to the earlier sections in your thesis. You could probably connect the "theoretical" and "practical" parts of your work a little bit more.
+
+*
+5.4. is good as well. I would propose to merge it with 5.6.
+At least, I would draw the benefits after the user experiences from 5.5.

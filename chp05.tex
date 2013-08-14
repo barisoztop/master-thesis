@@ -267,55 +267,8 @@ For the prototype, we have set a specific message-ID to the emails composed in M
 
 If an email is not identified as a part of a campaign message by comparing the Message-IDs with the ones in Myriad's Email data model, the next step is to evaluate those emails in case they are labeled as part of a Myriad campaign in Gmail's inbox. In this case, if an email has a label in the pattern of "myriad/campaign-name", and there is already a created campaign in Myriad with the name "Campaign Name", that email will be stored in the data model. Finally, an identified email will be assigned to a contact by looking at its parent email's Message-ID if it was a reply or if it fails, the contact information will be recorded from the email's "From" header field. The rest of the emails will be ignored if no matches were found in the mentioned email header fields, specifically Message-ID, In-Reply-To, and References, or Gmail's Label.
 
-\section{The Benefits of the Final Solution}
-\label{sec:5.4:BeneFinaSolu}
-
-A personalized mass email communication can be illustrated as shown in figure \ref{fig:drawingStatesOfEmailCommunication}. The information will be extracted from the recipients' emails and then a researcher will compose personalized emails for each recipient, according to the extracted information.
-
-\begin{figure}[htbp]
-	\centering
-	\includegraphics[width=1.00\textwidth]{imgs/drawingStatesOfEmailCommunication.png}
-	\caption[Illustration of a Personalized Mass Email Communication]{Illustration of a Personalized Mass Email Communication}
-	\label{fig:drawingStatesOfEmailCommunication}
-\end{figure}
-
-After discussing what Myriad is and its features, let us see how these features fit into a personalized mass email communication, as depicted in the figure. While it decreases the effort on the researcher's side, it increases personalization in the composed emails, which results into a higher response rate in a campaign.
-
-\subsection{Handling The Incoming Emails}
-\label{subsec:5.4.1:IncoEmai}
-
-Myriad has a campaign inbox view to avoid cluttering of unrelated messages in the inbox, fetching only the campaign related emails from the user's email account by ignoring private emails, and grouping each email according to the campaign it belongs to.
-\vspace{1cm}
-
-As a researcher reads the incoming emails, he or she can also record the extracted information from those emails into \ac{KVP}s at the same time. This avoids the need on using a third-party application like a spreadsheet. However, if a researcher prefers a traditional way in recording information like a spreadsheet, Myriad still offers an option in synchronizing those \ac{KVP}s with a Google Spreadsheet.
-\vspace{1cm}
-
-Assistants can help a researcher with appropriate given permission on extraction of information from incoming emails.
-
-
-\subsection{Handling The Outgoing Emails}
-\label{subsec:5.4.2:IncoEmai}
-
-Myriad provides a threaded view of all the email conversations of a recipient in a campaign letting researchers consider the earlier conversations with a recipient, without having the need to browse through other views. This saves time and helps on getting a quick overview of the conversation history to get a better context on personalizing the succeeding new messages.
-\vspace{1cm}
-
-The researchers can continue on using his or her own Gmail's account on answering or initiating a conversation. Myriad offers Gmail label synchronization to import those emails into a campaign, and make them more manageable along with other campaign emails.
-\vspace{1cm}
-
-The researchers can opt to reuse previously written emails as a template in composing new emails. The provided template tree also gives a direct visualization of the current campaign state and flow to let the researcher easily go through earlier given answers.
-\vspace{1cm}
-
-The researchers can use the recorded \ac{KVP}s to personalize the outgoing emails. Since personalization has been addressed as an important factor in increasing response rates, the initiated campaign will end up with better results compared to non-personalized emails.
-\vspace{1cm}
-
-Myriad records the previous actions of a user as a rule in the system to notify the automation of the email sending process with the matching conditions of a group of recipients. This helps to save time and increase awareness of the researcher to previously taken actions for repeated or similar situations.
-\vspace{1cm}
-
-Assigned assistants can also help the primary researcher in composing emails or proofreading the composed emails before they get sent out to their respective recipients.
-
-
 \section{Experiences}
-\label{sec:5.5:Expr}
+\label{sec:5.4:Expr}
 
 To date, Myriad has 67 users since its beta launch\footnote{Beta version of Myriad was launched at http://gv.stanford.edu/ and still accessible from this address.} last January 30, 2013. Among those 67 users, 30 of them are actively using it, since last month. In this section, statistics will be given about the created campaigns, and continued with some user's testimonials.
 
@@ -428,6 +381,47 @@ Previous sections continued showing how those features were applied for Myriad's
 
 Finally, user and campaign statistics were given to show how actively Myriad was used during its beta stage, and the section was followed by testimonials from the active users of Myriad.
 \vspace{1cm}
+
+After discussing what Myriad is, its features, and users' testimonials, let us see how these features fit into a personalized mass email communication. A personalized mass email communication can be illustrated as shown in figure \ref{fig:drawingStatesOfEmailCommunication}.
+
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=1.00\textwidth]{imgs/drawingStatesOfEmailCommunication.png}
+	\caption[Illustration of a Personalized Mass Email Communication]{Illustration of a Personalized Mass Email Communication}
+	\label{fig:drawingStatesOfEmailCommunication}
+\end{figure}
+
+The information will be extracted from the recipients' emails and then a researcher will compose personalized emails for each recipient, according to the extracted information. Therefore, the discussed features of Myriad and their benefits can be grouped under the handling of the incoming emails and the outgoing email as follows:
+\vspace{1cm}
+
+\paragraph{Handling The Incoming Emails} \mbox{}\\
+
+Myriad has a campaign inbox view to avoid cluttering of unrelated messages in the inbox, fetching only the campaign related emails from the user's email account by ignoring private emails, and grouping each email according to the campaign it belongs to.
+\vspace{1cm}
+
+As a researcher reads the incoming emails, he or she can also record the extracted information from those emails into \ac{KVP}s at the same time. This avoids the need on using a third-party application like a spreadsheet. However, if a researcher prefers a traditional way in recording information like a spreadsheet, Myriad still offers an option in synchronizing those \ac{KVP}s with a Google Spreadsheet.
+\vspace{1cm}
+
+Assistants can help a researcher with appropriate given permission on extraction of information from incoming emails.
+
+\paragraph{Handling The Outgoing Emails} \mbox{}\\
+
+Myriad provides a threaded view of all the email conversations of a recipient in a campaign letting researchers consider the earlier conversations with a recipient, without having the need to browse through other views. This saves time and helps on getting a quick overview of the conversation history to get a better context on personalizing the succeeding new messages.
+\vspace{1cm}
+
+The researchers can continue on using his or her own Gmail's account on answering or initiating a conversation. Myriad offers Gmail label synchronization to import those emails into a campaign, and make them more manageable along with other campaign emails.
+\vspace{1cm}
+
+The researchers can opt to reuse previously written emails as a template in composing new emails. The provided template tree also gives a direct visualization of the current campaign state and flow to let the researcher easily go through earlier given answers.
+\vspace{1cm}
+
+The researchers can use the recorded \ac{KVP}s to personalize the outgoing emails. Since personalization has been addressed as an important factor in increasing response rates, the initiated campaign will end up with better results compared to non-personalized emails.
+\vspace{1cm}
+
+Myriad records the previous actions of a user as a rule in the system to notify the automation of the email sending process with the matching conditions of a group of recipients. This helps to save time and increase awareness of the researcher to previously taken actions for repeated or similar situations.
+\vspace{1cm}
+
+Assigned assistants can also help the primary researcher in composing emails or proofreading the composed emails before they get sent out to their respective recipients.
 
 In the next section, we will see the conclusion of this study and the possible extensions on the requirements of Myriad as a future work.
 
