@@ -61,7 +61,3 @@ Overall, you could explain the methodology more explicitly throughout the thesis
 
 *
 but it seems to me that the description of the solution very much focusses on the system and its details. I think you could a few more statements about how the solution enhances the existing state-of-the-art from a conceptional point of view, including references to the earlier sections in your thesis. You could probably connect the "theoretical" and "practical" parts of your work a little bit more.
-
-*
-5.4. is good as well. I would propose to merge it with 5.6.
-At least, I would draw the benefits after the user experiences from 5.5.

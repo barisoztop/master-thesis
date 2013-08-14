@@ -1,6 +1,6 @@
 \chapter{The Initial Idea and the Prototype}
 \label{chp:4:InitIdeaProt}
-In this chapter, a mass communication schema and possible exceptional cases will be introduced. Afterwards, the initial prototype will be reviewed and its drawback will be discussed.
+In this chapter, a mass communication schema and possible exceptional cases will be introduced. Afterwards, the initial prototype will be reviewed and evaluated.
 
 \section{Mass Email Communication Concept}
 \label{sec:4.1:MassEmaiCommConc}
@@ -199,7 +199,7 @@ Finally, there is an option to add \ac{KVP}s while reading the respondents' answ
 	\label{fig:EMailKVPs}
 \end{figure}
 
-In conclusion, while the prototype satisfied many of the initial requirements discussed in section \ref{subsec:4.2.1:ProtReqiAnal}, there were some drawbacks that will be discussed on the next section, section \ref{sec:4.3:EvalProt} to explain why it was discarded, instead of considering it for consumer production. But before that, we address some implementation details about EmailValet's mass email communication modifications in the next section.
+In the next section, we will address some implementation details about EmailValet's mass email communication modifications.
 
 \subsection{Architecture}
 \label{subsec:4.2.3:ProtArch}
@@ -240,12 +240,12 @@ The template data model in \ref{fig:UML_Prototype} keeps those left and right nu
 As shown in figure \ref{fig:UML_Prototype}, each email message can have more than one value corresponding to a key of \ac{KVP}. This allows us to identify when a \ac{KVP} is added to a message that belongs to a respondent. Keys are organized according to campaigns; therefore, same key's value can be used in different campaigns for different purposes. This is mainly because a word chosen as a key can have different meanings, depending on context.
 \vspace{1cm}
 
-After getting an overview of the technical implementation of the prototype, the next section will focus on what was missing from this initial design comparing with the initial requirements, as described in section \ref{subsec:4.2.1:ProtReqiAnal}, the problems with it, and what new ideas can emerge with its development.
+After getting an overview of the technical implementation of the prototype, the next section will focus on the evaluation of the prototype by pointing out the missing features of initial requirements due to the limitations on the existing email client, and what new ideas were emerged after the informal user test within the Stanford University.
 
 \section{Evaluation of the Prototype}
 \label{sec:4.3:EvalProt}
 
-In this section, we will analyze the drawbacks of the prototype, despite the fact that it was able to fulfill most of the requirements mentioned in section \ref{subsec:4.2.1:ProtReqiAnal}. Some of these drawbacks are related with the development of a prototype from an existing application, whose main purpose is different than that of a regular email client. One of the reasons for making a prototype is to let developers and users conceptualize different requirements or review the existing ones. In here is where we will also mention new and different requirements we realized as we went through the whole process, as well as our future ideas.
+In this section, we will analyze the limitations of the prototype, despite the fact that it was able to fulfill most of the requirements mentioned in section \ref{subsec:4.2.1:ProtReqiAnal}. Some of these limitations are related with the development of a prototype from an existing application, whose main purpose is different than that of a regular email client. One of the reasons for making a prototype is to let developers and users conceptualize different requirements or review the existing ones. In here is where we will also mention new and different requirements we deducted as we went through the whole process, as well as after the informal user test within the Stanford \ac{HCI} group and with an organization at Stanford University conducting mass email communication regularly to reach their community. As an informal user test, we asked the participants to use the prototype instead of their regular applications or methods to conduct a mass email communication, and collected the feedback.
 
 \subsection{Limitation of the Existing Application}
 \label{subsec:4.3.1:LimiEmaiVale}
@@ -256,7 +256,7 @@ As mentioned, using EmailValet as an email client on developing a prototype help
 One of the problems encountered with EmailValet was the limit on the amount of messages synchronized from Gmail. It is limited to the latest 100 messages, to maintain EmailValet's privacy and accountability \citep{Kokkalis2013}. However, a mass email campaign will quickly reach that given limit, which may ignore older emails.
 
 \paragraph{Different Inbox Purpose}
-EmailValet offers an email client with a task manager feature, as a replacement to everyone's regular email client. However, a mass email communication is not something a regular person needs to resort to for personal email communication. Moreover, a mass email communication application should be separated from a person's regular inbox, since it does not need to show all their emails, except those related to an email campaign. Combining both inboxes also resulted to some drawbacks on the performance while it was synchronizing with Gmail to fetch new emails. It is because EmailValet was also performing some additional steps during the synchronization on the side, such as checking and comparing message headers, checking for changes in the earlier messages up to a date, defined by the amount of the messages.
+EmailValet offers an email client with a task manager feature, as a replacement to everyone's regular email client. However, a mass email communication is not something a person needs to resort as frequent as a personal email communication. Therefore, a mass email communication application should be separated from a person's regular inbox, since it does not need to show all their emails, except those related to an email campaign. Combining both inboxes also resulted to some drawbacks on the performance while it was synchronizing with Gmail to fetch new emails. It is because EmailValet was also performing some additional steps during the synchronization on the side, such as checking and comparing message headers for changes in the earlier messages up to a date.
 
 \subsection{Limitation of the Prototype}
 \label{subsec:4.3.2:ProtDesi}
@@ -264,11 +264,11 @@ EmailValet offers an email client with a task manager feature, as a replacement 
 \paragraph{\ac{KVP}s Relation} In the prototype design, each value of a key belongs to an email message of a respondent. However, we need to see that all \ac{KVP}s are aggregated in a certain way when we browse a set of messages belonging to a specific person. Therefore, assigning \ac{KVP}s to an email message actually means assigning them to a recipient in a mass email campaign. This requires keeping each individual recipient in a separate data model, and relating it with the existing EmailValet's design. Since we have already identified the limitations of EmailValet in the previous section, the decision was to add those enhancements into a new application.
 
 \paragraph{Getting Contact List into the System}
-At Stanford \ac{HCI} group, we realized that the people who performs such mass email communication import their recipient list from a spreadsheet, or a similar data file. Since, the prototype requires them to input a recipient list in a special syntax as mentioned in section \ref{subsec:4.2.2:ProtSyst}, this requires the users to change their existing contact list in a format that the prototype will be able to parse with. This reduces flexibility and adds additional effort on the researchers, whose contact list is already in a data file. With this said, it is a feature considered to be implemented on a different project, separate from EmailValet. 
+During the informal user test at the Stanford \ac{HCI} group, we realized that the people who performs such mass email communication import their recipient list from a spreadsheet, or a similar data file. Since, the prototype requires them to input a recipient list in a special syntax as mentioned in section \ref{subsec:4.2.2:ProtSyst}, this requires the users to change their existing contact list in a format that the prototype will be able to parse with. This reduces flexibility and adds additional effort on the researchers, whose contact list is already in a data file. With this said, it is a feature considered to be implemented on a different project, separate from EmailValet. 
 
 \section{Conclusion}
 \label{sec:4.4:Conc}
-In this section, a mass email communication concept was introduced with an illustrative scenario. We pointed out how it could be possible to reduce the efforts on the researchers' side while increasing the personalization of the emails at the same time. Later on, we converted those ideas into software requirements for the prospective prototype, where we introduced the features and their architecture. Finally, the evaluation of the prototype made the basis to the next chapter, where the mentioned limitations are removed or minimized on the final design, and the new requirements are created from user feedbacks during the final application's iterative design cycles.
+In this section, a mass email communication concept was introduced with an illustrative scenario. We pointed out how it could be possible to reduce the efforts on the researchers' side while increasing the personalization of the emails at the same time. Later on, we converted those ideas into software requirements for the prospective prototype, where we introduced its features and architecture. Finally, the informal user test helped us to evaluate the prototype to find out its limitations and to emerge new requirements, which made the basis to the next chapter, where the mentioned limitations are removed and the new requirements are reflected during the final application's iterative design cycles.
 
 
 \begin{comment}
