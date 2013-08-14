@@ -45,11 +45,5 @@ removed rows:
 Perceptions Initial Survey mailing list
 
 -- CORRECT THEM
- the figure 4.5 --> figure 4.5 , the section 5.4 --> section 5.4
  4.2.3 , 4.3 un oncesindeki kisma Wolfgang'in user study feedback'ini uygula.
- 4.3.1 Number of Message Limitation - bu sacma
 communication(s)
-he/she him/her --> he or she
-workflow --> work flow
-iki whitespace are ve sil
-bazen help desk bazen helpdesk demissin
