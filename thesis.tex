@@ -147,8 +147,7 @@
 \input{disclaimer.tex}
 \input{acknowledgements.tex}
 \input{abstract.tex}
-
-\clearscrplain
+\cleardoublepage
 
 %% table of contents
 \clearscrheadfoot
@@ -156,7 +155,7 @@
 \ofoot[\pagemark]{\pagemark}
 \automark[chapter]{section}
 
-%% Konfiguration der Minitocs
+%% config for Minitocs
 \dominitoc
 \setcounter{minitocdepth}{3}
 \mtcsettitle{minitoc}{Übersicht}
@@ -166,25 +165,27 @@
 \mtcsetfont{minitoc}{subsection}{\normalfont}
 \mtcsetfont{minitoc}{subsubsection}{\normalfont}
 
-%% Erstellen der Inhaltsverzeichnisse, Tabellen und Bilder (Listings opt.)
 \tableofcontents
-\vfill
-\cleardoublepage
+\clearemptydoublepage
 
+\phantomsection
 \addcontentsline{toc}{chapter}{List of Figures}	
 \listoffigures
-\cleardoublepage
+\clearemptydoublepage
 
+\phantomsection
 \addcontentsline{toc}{chapter}{List of Tables}
 \listoftables
-\cleardoublepage
+\clearemptydoublepage
 
+\phantomsection
 \addcontentsline{toc}{chapter}{Listings}
 \lstlistoflistings
-\cleardoublepage
+\clearemptydoublepage
 
+\phantomsection
 \input{acronyms.tex}
-\cleardoublepage
+\clearemptydoublepage
 
 \clearscrheadfoot
 \ohead{\headmark}
@@ -215,10 +216,8 @@
 \input{appendixD.tex}
 \end{appendices}
 
-%%\section{Literaturverzeichnis}
-%% bibs...
-%%\nocite{*}
 \cleardoublepage
+\phantomsection
 \addcontentsline{toc}{chapter}{Bibliography}
 \bibliographystyle{apa}
 \bibliography{bibtex}
