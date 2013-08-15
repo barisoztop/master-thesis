@@ -19,6 +19,8 @@
  -- analytics view as a feaature!!
   -- mobile support as a feauter to chapter 6
 
+---> And the final feature that  finalizing this study along with it is....
+
 
 - TO PHILLIP
   - no need to write e-mails
