@@ -169,8 +169,6 @@ Having a ready-to-use email client to implement the first version of the persona
 \vspace{1cm}
 
 EmailValet requires a Gmail account to register and sign in\footnote{EmailValet uses an open protocol named OAuth to provide credentials for authentication with Gmail. OAuth's community webpage is at http://oauth.net/} to the system, therefore the application's users have to grant access to EmailValet before using it. Figure \ref{fig:GmailValetInbox} shows EmailValet's inbox view after a user signed in and browse to a campaign\footnote{In this study, the word campaign is used as a shorhand for a mass email communication campaign, wherein a researcher initiates a conversation with groups of people related to one specific topic.}. On the left hand side, there is the email list pane, and a selected email can be read on the reading pane on the right.
-
-\clearpage
  
 \begin{figure}[H]
 	\centering
@@ -196,6 +194,9 @@ Figure \ref{fig:ComposePaneWithTemplates} also shows the template tree used to r
 \vspace{1cm}
 
 Finally, there is an option to add \ac{KVP}s while reading the respondents' answers. In the reading pane, two input fields are present, allowing users to enter a key and its value corresponding to the extracted information from those emails while reading them. As shown on figure \ref{fig:EMailKVPs}, as a user adds a new \ac{KVP}, they can also see the existing ones added earlier to that email message.
+\vspace{1cm}
+
+In the next section, we will address some implementation details about EmailValet's mass email communication modifications.
 
 \begin{figure}[htbp]
 	\centering
@@ -204,14 +205,12 @@ Finally, there is an option to add \ac{KVP}s while reading the respondents' answ
 	\label{fig:EMailKVPs}
 \end{figure}
 
-In the next section, we will address some implementation details about EmailValet's mass email communication modifications.
-
 \subsection{Architecture}
 \label{subsec:4.2.3:ProtArch}
 
 Even though, we have a ready-to-use email client with EmailValet, there were quite many changes to reflect the requirements that were mentioned in section \ref{subsec:4.2.1:ProtReqiAnal}. Since EmailValet dealt with single email messages, and not a group of them as an email client, there were also some modifications needed to be done in order to make the prototype understand whether a message belongs to the campaign or not. In this section, we will briefly see how the changes for the prototype fit into the existing EmailValet's design, and make a technology overview to fully understand how a mass email communication is done.
 
-\paragraph{Identification of a Campaign Message}
+\paragraph{Identification of a Campaign Message} \mbox{}\\
 An email message consists of a header and body sections as defined by RFC 5322. While a message's header keeps structured information such as "From", "To", "\ac{CC}", Subject, Date, and other information with a special syntax, a message's body contains the content, which is an unstructured text and it is optional to have \citep{rfc5322}. An example email message with its header fields and body can be seen in Appendix \ref{app:EmaiMessForm}.
 \vspace{1cm}
 
@@ -219,6 +218,8 @@ One of the fields in an email message's header is called Message-ID\footnote{The
 \vspace{1cm}
 
 EmailValet had already the data model to store an email message's related data when it is synchronized\footnote{Fetching the emails from Gmail is done via the \ac{IMAP} extension that Gmail provides. \ac{IMAP} is a Internet message access standard defined by RFC3501. It allows a client to access and manipulate mail messages on server \citep{rfc3501}. On the other hand, EmailValet uses \ac{SMTP} protocol to connect to the Google's \ac{SMTP} servers to send a composed email in EmailValet. \ac{SMTP} is a mail transport and delivery protocol defined by RFC5321 \citep{rfc5321}.} with Gmail. However, creating a mass email campaign requires to identify if the synchronized email belongs to a mass email campaign created or if it is an answer to a campaign message that was sent before. Because EmailValet's initial design was able to fetch emails from Gmail, then assigning of different properties should follow. The emails composed by EmailValet comes to an existence in the EmailValet database after recipients send a reply to them, since EmailValet fetches them from Gmail's inbox as part of the thread of messages. Therefore, Message-ID and In-Reply-To fields of an email message are leveraged to keep track of a campaign message by setting a Message-ID into it, and store it in a "Campaign" data model as illustrated on \ref{fig:UML_Prototype}. With this, we were able to identify the type of messages during the synchronization with Gmail, whether the message is an initial campaign message, or if it is an answer to a campaign message that was created earlier. Before this, setting a Message-ID was done by EmailValet's "mail" gem\footnote{A Gem or a RubyGem is a software package, containing a packaged Ruby application or library \citep{RubyGemsGuides2013}.} during its execution time without allowing to get its value.
+
+\clearpage
 
 \begin{figure}[htbp]
 	\centering
@@ -229,7 +230,9 @@ EmailValet had already the data model to store an email message's related data w
 	\label{fig:UML_Prototype}
 \end{figure}
 
-\paragraph{Template and Email Message Relation} Each campaign message composed in EmaiValet is actually a template with dynamic variables in it. Therefore, the campaign messages fetched from Gmail corresponds to a template in EmailValet. This interaction can be seen in figure \ref{fig:UML_Prototype}. As mentioned in the previous section, there is an available tree view when a user replies to a respondent's answer. This tree view's purpose is to let users choose earlier templates to reuse, and give an overview of the latest state of the conversation. The hierarchy between the nodes of the tree is a nested set model, in which each node has a left and a right integer values. The left and right values in a node represent a set of child nodes. The same concept applies for the each child nodes as well; hence, each child node has a left and right value that represents another set of children, as a part of outer nested set. Figure \ref{fig:NestedSetModelTree} depicts a tree in a nested set model.
+\paragraph{Template and Email Message Relation}  \mbox{}\\
+Each campaign message composed in EmaiValet is actually a template with dynamic variables in it. Therefore, the campaign messages fetched from Gmail corresponds to a template in EmailValet. This interaction can be seen in figure \ref{fig:UML_Prototype}. As mentioned in the previous section, there is an available tree view when a user replies to a respondent's answer. This tree view's purpose is to let users choose earlier templates to reuse, and give an overview of the latest state of the conversation. The hierarchy between the nodes of the tree is a nested set model, in which each node has a left and a right integer values. The left and right values in a node represent a set of child nodes. The same concept applies for the each child nodes as well; hence, each child node has a left and right value that represents another set of children, as a part of outer nested set. Figure \ref{fig:NestedSetModelTree} depicts a tree in a nested set model.
+\vspace{1cm}
 
 \begin{figure}[htbp]
 	\centering
@@ -243,7 +246,7 @@ Nested set model helps us on finding a node's children faster than a usual adjac
 
 The template data model in \ref{fig:UML_Prototype} keeps those left and right number information in one column named "ancestry", which is populated by a gem named Ancestry\footnote{https://github.com/stefankroes/ancestry}.
 
-\paragraph{\ac{KVP}s Relation with a Campaign and a Message}
+\paragraph{\ac{KVP}s Relation with a Campaign and a Message} \mbox{}\\
 As shown in figure \ref{fig:UML_Prototype}, each email message can have more than one value corresponding to a key of \ac{KVP}. This allows us to identify when a \ac{KVP} is added to a message that belongs to a respondent. Keys are organized according to campaigns; therefore, same key's value can be used in different campaigns for different purposes. This is mainly because a word chosen as a key can have different meanings, depending on context.
 \vspace{1cm}
 
