@@ -84,8 +84,6 @@ The corresponding columns in a Google Spreadsheet start with "first name", "last
 
 As mentioned in section \ref{subsec:5.1.4:InteEmaiClie}, importing existing email conversations as a campaign message into the system is an important feature. Researchers might have initiated conversations using their regular email client, and if later on they decide to make them more manageable, they can import them to Myriad. Myriad takes advantage of Gmail's labeling feature, which is equivalent to the \ac{IMAP} protocol's folders for the same purpose \citep{GoogleInc.2013}. Myriad creates a Gmail label in the user's account, and the only thing a user needs to do is the enable the label syncing feature at the campaign creation screen. Next, there will be a label similar to the campaign's name, and grouped under the root label, "myriad" in the Gmail's inbox (see figure \ref{fig:GmailLabels}). Hence, researchers will able to import email messages not considered a part of a campaign for some reason, into Myriad.
 
-\clearpage
-
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[scale=0.60]{imgs/GmailLabels.png}
@@ -97,7 +95,6 @@ As mentioned in section \ref{subsec:5.1.4:InteEmaiClie}, importing existing emai
 \label{subsec:5.2.3:CreaEmaiCamp}
 
 The campaign creation screen (see figure \ref{fig:CreateCampaign}) has input fields for a campaign name and Google Spreadsheet's \ac{URL} to synchronize with. Other two checkboxes for the spreadsheet are used to manage the frequency of synchronization and disabling the cascading warning messages in case of an erroneous data in the spreadsheet such as an empty email address field for a contact. The option for importing emails from Gmail's inbox is also in this screen, labeled as "synching section".
-\vspace{1cm}
 
 \begin{figure}[htbp]
 	\centering
@@ -121,6 +118,7 @@ After the campaign is created, all the contacts and their \ac{KVP}s will be impo
 \label{subsec:5.2.4:CompEmaiMess}
 
 Users can send emails to all of the contacts they entered or imported into the system, or select a subset of them by using the filtering function as shown in figure \ref{fig:ContactFilters}. Provided filtering options are according to the values of \ac{KVP}s, the conversation statuses such as unread, replied, or unreplied, or the message's template names.
+\vspace{1cm}
 
 \begin{figure}[htbp]
 	\centering
@@ -142,8 +140,6 @@ By pressing the corresponding button, users can now readily compose emails for t
 The compose pane allows users to add dynamic variables in the content of messages to personalize them according to the recipients. These variables are not just limited to the first name and last name, as they can also be of any keys from the assigned \ac{KVP}s in the campaign.
 \vspace{1cm}
 
-\clearpage
-
 Each campaign has a link to the other campaigns, as long as the recipient is involved in both campaigns, as featured in the next section. A researcher can access conversations and \ac{KVP}s from other campaigns by switching to the campaign via the provided link. Providing an option to see the earlier campaigns a recipient got involved in gives broader knowledge about a recipient that may help researchers in personalizing the content of the emails more easily and properly. For example, if we have extracted information regarding which sports did the recipients got involved with in an earlier campaign. We can use the same information in making a friendlier and to frankly start a new campaign by mentioning details about the latest events of those sports areas in the country. Such a technique also supports the social exchange theory and the diffusion of responsibility theory as discussed in section \ref{sec:2.3:PersEmai}. There is also an option to hide the \ac{KVP}s in a campaign if they are not related at all or have become obsolete during the flow of a campaign to avoid cluttering the application's view.
 \vspace{1cm}
 
@@ -151,8 +147,6 @@ In figure \ref{fig:ComposeEmail}, at the pane of "after-sending actions", users 
 \vspace{1cm}
 
 At the beginning of this section it was mentioned that a user can filter the recipients list, and then send an email to a subset, according to the filter's criteria. Myriad saves those filtered criteria under the "Rules" menu as shown in figure \ref{fig:AutomatedRules} after the user sent the email. Therefore, the next time the system receives new emails with the same conditions as before, user will see them under the rules menu, and the earlier sent email messages can be sent to those new matching recipients automatically, if user opt to enable the automated response feature or a user can simply press the send button manually in the same screen. For example, in figure \ref{fig:AutomatedRules}, there are three recipients whose "attending" key were set to "yes", and since the system already recognized that we have already sent an email to those attending, new matches for the same condition applies. In this case, the user can simply press the send button, or automate the process by enabling the provided option.
-
-\clearpage
 
 \begin{figure}[htbp]
 	\centering
@@ -171,6 +165,7 @@ Each of the researcher's message is annotated with the name of the message templ
 \vspace{1cm}
 
 While reading a recipient's answer, the extracted information can be recorded as \ac{KVP}s at the right-hand side of the reading pane (see figure \ref{fig:MyriadReadingPane}). Earlier recorded keys' values can also be updated at the same pane. Having \ac{KVP}s along with the conversation thread gives the researcher necessary information about the person being replied to. Under the \ac{KVP}s pane, the researcher can also see if the recipient is involved with another campaign, and a link to the involved campaigns are provided with the number of emails exchanged, next to it. This is a helpful feature in reminding researchers about the existence of previous interactions with the recipient, and if necessary, the researcher can switch to other campaigns to get an overview of extracted information as \ac{KVP}s.
+\vspace{1cm}
 
 \begin{figure}[htbp]
 	\centering
@@ -256,6 +251,7 @@ The identification of the emails depends on the three different conditions:
 	\item The emails composed in Myriad as a part of the campaign, whether they are the emails to initiate a campaign or replies to recipients' emails.
 	\item The emails imported into Myriad from Gmail's inbox via label synchronization (as shown in section \ref{subsec:5.2.2:SyncOtheSyst} for label synchronization)
 \end{compactenum}
+\vspace{1cm}
 
 Myriad initially retrieves all the email's \ac{UID}s\footnote{UID (Unique Identifier) is 32-bit integer value to uniquely identify emails in a mailbox in \ac{IMAP}. Each email added into mailbox will have a higher value than the ones added before, however they are not necessarily contiguous \citep{rfc3501}. \ac{UID} is used as it was in the prototype by the implementation of the EmailValet's part. It is used to identify if a message is already fetched from Gmail, if it is not, it is fetched since it is a new message.} from Gmail's inbox for the last 14 days, instead of all the emails in the inbox to reduce the time needed for the fetching process. For those \ac{UID}s not stored in the Email data model of Myriad, Myriad retrieves the actual email along with the metadata, such as Gmail thread ID\footnote{Gmail thread ID is a 64-bit integer that is part of the provided Gmail's IMAP extension. It helps to associate groups of messages in the same manner as in the Gmail web interface \citep{GoogleInc.2013a}.} and Gmail labels.
 \vspace{1cm}
@@ -332,6 +328,7 @@ In this section, testimonials from the very active users of Myriad will be evalu
 	\item How satisfied are you with Myriad?
 	\item How regularly do you use Myriad?
 \end{compactenum}
+\vspace{1cm}
 
 Testimonials written in listing \ref{lst:Testimonial1} and \ref{lst:Testimonial2} belongs to lecturers from the Stanford \ac{HCI} group. The last testimonial belongs to a Stanford organization who performs mass email communication very often to reach their community.
 
@@ -397,7 +394,6 @@ After discussing what Myriad is, its features, and users' testimonials, let us s
 \end{figure}
 
 The information will be extracted from the recipients' emails and then a researcher will compose personalized emails for each recipient, according to the extracted information. Therefore, the discussed features of Myriad and their benefits can be grouped under the handling of the incoming emails and the outgoing email as follows:
-\vspace{1cm}
 
 \paragraph{Handling The Incoming Emails} \mbox{}\\
 

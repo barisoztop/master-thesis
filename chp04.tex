@@ -14,8 +14,6 @@ Whenever a researcher initiates a mass email communication, several outcomes can
 In section~\ref{sec:1:EmailDataCol}, an online learning platform scenario was used to illustrate the possible reasons explaining the need for an email data collection. Considering it once more, assuming that we are exploring our users in helping us improve our platform. Therefore, we started sending out emails to our registered users to obtain their permission for us to ask some questions. This initial email might be similar to listing~\ref{lst:EmaiInvtQest}.
 \vspace{1cm}
 
-\clearpage
-
 \lstset {
  basicstyle=\footnotesize,
  frame=shadowbox,
@@ -77,8 +75,7 @@ The above mentioned sample scenario can be handled manually with individual effo
 However, the larger the amount of participants there is, the harder it is to manually work on all of them, thus, the lesser personalization the emails will get. For example, the "maybe" cases might not get a personalized feedback, but instead just an email indication that they will be reminded on a later date. Moreover, this is just one of the possible cases. There are a lot more cases in real life situations, which might require the researchers to completely write a generic email by again ignoring the context personalizing the emails to be sent out according to each recipient, since manual efforts will not be enough to write custom emails for those cases. For extreme cases, we might even consider the need to terminate the communication forever, or results might give the side effect of a diffusion of responsibility theory as mentioned in section~\ref{sec:2.3:PersEmai}.
 \vspace{1cm}
 
-In figure~\ref{fig:ChartEffortCustom}, it is shown that the personalization of emails is directly proportional to the effort of composing those emails. The shaded part of the graph represents the situation, when the researchers used an application to create a mass email communication, while the area marked with a star represents the gold standard, which is really hard to reach with the available applications. 
-\vspace{1cm}
+In figure~\ref{fig:ChartEffortCustom}, it is shown that the personalization of emails is directly proportional to the effort of composing those emails. The shaded part of the graph represents the situation, when the researchers used an application to create a mass email communication, while the area marked with a star represents the gold standard, which is really hard to reach with the available applications.
 
 \begin{figure}[htbp]
 	\centering
@@ -155,6 +152,7 @@ In section~\ref{subsec:4.1.2:ImprReduEffo}, we initially considered some feature
 	\item The application must show the whole flow of the conversation. Therefore, the template list can be showed in a tree structure as in figure~\ref{fig:ConvStatView}. Each node must represent the templates the user created with a custom name given by the use to identify.
 	\item The application must offer a template selection and conversation flow representation under a specific single view. Therefore, the user should be allowed to pick which templates to reuse by looking at the nodes in the tree to figure out the current flow of the conversation.
 \end{compactenum}
+\vspace{1cm}
 
 The next section will introduce the implemented prototype to satisfy the initial idea of a personalized mass email communication system and analyze how the aforementioned requirements are satisfied --- or not --- during the evaluation of the prototype.
 
@@ -169,12 +167,14 @@ Having a ready-to-use email client to implement the first version of the persona
 
 EmailValet requires a Gmail account to register and sign in\footnote{EmailValet uses an open protocol named OAuth to provide credentials for authentication with Gmail. OAuth's community webpage is at http://oauth.net/} to the system, therefore the application's users have to grant access to EmailValet before using it. Figure \ref{fig:GmailValetInbox} shows EmailValet's inbox view after a user signed in and browse to a campaign\footnote{In this study, the word campaign is used as a shorhand for a mass email communication campaign, wherein a researcher initiates a conversation with groups of people related to one specific topic.}. On the left hand side, there is the email list pane, and a selected email can be read on the reading pane on the right.
  
-\begin{figure}[H]
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[width=1.00\textwidth]{imgs/GmailValetInbox.png}
 	\caption[EmailValet Inbox View and Message Reading Pane]{EmailValet Inbox View and Message Reading Pane}
 	\label{fig:GmailValetInbox}
 \end{figure}
+
+\vspace{1cm}
 
 Starting a campaign is done exactly the same way as in composing an email. However, the corresponding view has two additional input fields to get the campaign's and the template's names from the user. A campaign name will help on identifying groups of conversations from other campaigns, or from regular email conversations in the inbox. A template name will help us identify which respondent's answers correspond to which emails that we sent. For example, in figure \ref{fig:GmailValetInbox}, a recipient's answer is the response to the questionnaire invitation that we sent earlier. A template name will also help us represent the template in a tree structure to pick from and reuse, and show the state of the conversation in the same tree structure.
 \vspace{1cm}
@@ -182,7 +182,7 @@ Starting a campaign is done exactly the same way as in composing an email. Howev
 The researchers can add their recipients list into the "Merge"\footnote{The word "merge" comes from the term "mail merge", which means a procedure to enable to combine a document with data files consisting a list of names. Therefore, the copies of the document will be different for each person it is sent to \citep{CollinsEnglishDictionary2013}.} input field as shown in figure \ref{fig:ComposePaneWithTemplates}, which corresponds to the "To" field in a regular email client. However, the format should be similar to the shown figure --- first name, last name, and email address written in angle brackets. Hence, those fields can be used dynamically in the salutation of the emails by writing one of the variables of \textit{\{\{first\_name\}\}} and \textit{\{\{last\_name\}\}}. Once the recipients list is entered, and the email is sent, these contacts will be recorded on Gmail's contacts book.
 \vspace{1cm}
 
-\begin{figure}[H]
+\begin{figure}[htbp]
 	\centering
 	\includegraphics[scale=0.70]{imgs/ComposePaneWithTemplates.png}
 	\caption[Email Template Selection to Reuse Earlier Replies]{Email Template Selection to Reuse Earlier Replies}
@@ -193,9 +193,6 @@ Figure \ref{fig:ComposePaneWithTemplates} also shows the template tree used to r
 \vspace{1cm}
 
 Finally, there is an option to add \ac{KVP}s while reading the respondents' answers. In the reading pane, two input fields are present, allowing users to enter a key and its value corresponding to the extracted information from those emails while reading them. As shown on figure \ref{fig:EMailKVPs}, as a user adds a new \ac{KVP}, they can also see the existing ones added earlier to that email message.
-\vspace{1cm}
-
-In the next section, we will address some implementation details about EmailValet's mass email communication modifications.
 
 \begin{figure}[htbp]
 	\centering
@@ -203,6 +200,8 @@ In the next section, we will address some implementation details about EmailVale
 	\caption[Extracted Key-Value Pairs and Input Fields to Add New Ones]{Extracted Key-Value Pairs and Input Fields to Add New Ones}
 	\label{fig:EMailKVPs}
 \end{figure}
+
+In the next section, we will address some implementation details about EmailValet's mass email communication modifications.
 
 \subsection{Architecture}
 \label{subsec:4.2.3:ProtArch}
@@ -230,7 +229,7 @@ EmailValet had already the data model to store an email message's related data w
 \end{figure}
 
 \paragraph{Template and Email Message Relation}  \mbox{}\\
-Each campaign message composed in EmaiValet is actually a template with dynamic variables in it. Therefore, the campaign messages fetched from Gmail corresponds to a template in EmailValet. This interaction can be seen in figure \ref{fig:UML_Prototype}. As mentioned in the previous section, there is an available tree view when a user replies to a respondent's answer. This tree view's purpose is to let users choose earlier templates to reuse, and give an overview of the latest state of the conversation. The hierarchy between the nodes of the tree is a nested set model, in which each node has a left and a right integer values. The left and right values in a node represent a set of child nodes. The same concept applies for the each child nodes as well; hence, each child node has a left and right value that represents another set of children, as a part of outer nested set. Figure \ref{fig:NestedSetModelTree} depicts a tree in a nested set model.
+Each campaign message composed in EmaiValet is actually a template with dynamic variables in it. Therefore, the campaign messages fetched from Gmail corresponds to a template in EmailValet. This interaction can be seen in figure \ref{fig:UML_Prototype}. As mentioned in the previous section, there is an available tree view when a user replies to a respondent's answer. This tree view's purpose is to let users choose earlier templates to reuse, and give an overview of the latest state of the conversation. The hierarchy between the nodes of the tree is a nested set model, in which each node has a left and a right integer values\footnote{The template data model in figure \ref{fig:UML_Prototype} keeps those left and right number information in one column named "ancestry", which is populated by a gem named Ancestry, https://github.com/stefankroes/ancestry.}. The left and right values in a node represent a set of child nodes. The same concept applies for the each child nodes as well; hence, each child node has a left and right value that represents another set of children, as a part of outer nested set. Figure \ref{fig:NestedSetModelTree} depicts a tree in a nested set model.
 \vspace{1cm}
 
 \begin{figure}[htbp]
@@ -241,9 +240,6 @@ Each campaign message composed in EmaiValet is actually a template with dynamic 
 \end{figure}
 
 Nested set model helps us on finding a node's children faster than a usual adjacency set model, where each node only keeps information about its parent node, which is the ID \citep[pages 45--47]{Celko2004}. For example, in order to find all the nodes of the root node named "Albert" in figure \ref{fig:NestedSetModelTree}, we just need to find all nodes whose left value is greater than 1, and right value is less than 12. In the adjacency list, however, we first need to find all the nodes whose parent IDs are equal to "Albert's", then for those nodes' IDs, we need to find other nodes whose parent IDs are equal to them, and it continues on until all nodes are finished in the tree in the same way.
-\vspace{1cm}
-
-The template data model in figure \ref{fig:UML_Prototype} keeps those left and right number information in one column named "ancestry", which is populated by a gem named Ancestry\footnote{https://github.com/stefankroes/ancestry}.
 
 \paragraph{\ac{KVP}s Relation with a Campaign and a Message} \mbox{}\\
 As shown in figure \ref{fig:UML_Prototype}, each email message can have more than one value corresponding to a key of \ac{KVP}. This allows us to identify when a \ac{KVP} is added to a message that belongs to a respondent. Keys are organized according to campaigns; therefore, a key with a same name can be used in different campaigns for different purposes. This is mainly because a word chosen as a key can have different meanings, depending on context.
